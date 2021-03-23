@@ -1,0 +1,21 @@
+logs
+*.log
+
+*lock*.yaml
+*lock*.yml
+
+.DS_Store
+**/.DS_Store
+**/*.DS_Store
+
+.ipynb*/
+
+**/*.css.map
+**/*.js.map
+
+public/bundles
+public/video
+config/
+
+# Dependency directories
+node_modules/

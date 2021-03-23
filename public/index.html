@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+	<title>Holmes</title>
+
+	<!-- <link rel='icon' type='image/svg+xml' href='./icons/sherlock.svg'> -->
+	<link rel='stylesheet' href='./shared/global.css'>
+	<link rel='stylesheet' href='./bundles/command.css'>
+
+	<link rel="preconnect" href="https://eu.startpage.com">
+	<link rel="preconnect" href="https://en.wikipedia.org/">
+	<link rel="preconnect" href="https://github.com">
+
+	<link rel="prefetch" href="stream.html">
+
+	<script defer src='./shared/js/katana.js'></script>
+	<script defer src='./bundles/command.js'></script>
+</head>
+
+<body xmlns:svg="http://www.w3.org/2000/svg"></body>
+
+<script>
+	// BACKGROUND
+	// const fadeIn = t => { t.style.opacity = 0; let e = () => { t.style.opacity = +t.style.opacity + .025, +t.style.opacity < .66 && ( window.requestAnimationFrame && requestAnimationFrame( e ) || setTimeout( e, 1 ) ) }; e() }, fadeOut = t => { t.style.opacity = 1, t.style.background = "transparent"; let e = () => { t.style.opacity = +t.style.opacity - .075, +t.style.opacity > 0 && ( window.requestAnimationFrame && requestAnimationFrame( e ) || setTimeout( e, 1 ) ), +t.style.opacity < 0 && t.remove() }; e() }; let bgImg = new Image( 1440, 810 ); bgImg.src = "https://picsum.photos/1440/810?random=1", bgImg.onload = ( () => { const t = document.getElementById( "bgContainer" ); t.appendChild( bgImg ), fadeIn( bgImg ), fadeOut( t.childNodes[ 0 ] ) } );
+
+	// ? MAIN command
+	let suggList = [], suggI = null; const returnSug = ( data ) => { const bar = document.getElementById( 'magic' ); check = ( e ) => { bar.value = e.innerText; bar.focus() }; document.getElementById( 'autoComplete' ).innerHTML = data[ 1 ].slice( 0, 2 ).map( el => `<li onclick="check(this)">${ el[ 0 ] }</li>` ).join( '<br />' ); suggList = data[ 1 ].slice( 0, 5 ).map( el => el[ 0 ] ) };
+</script>
+
+<script>
+	const fadeIn = ( el ) => {
+		el.style.opacity = 0;
+		let tick = () => {
+			el.style.opacity = +el.style.opacity + 0.025;
+			if ( +el.style.opacity < 0.66 )
+				( ( window.requestAnimationFrame && requestAnimationFrame( tick ) ) || setTimeout( tick, 1 ) );
+		};
+		tick();
+	}
+
+	let bgImg = new Image( 1440, 810 );
+	bgImg.src = 'https://picsum.photos/1440/810?random=1';
+	bgImg.onload = () => {
+		const cont = document.getElementById( 'bgContainer' );
+		cont.appendChild( bgImg );
+		fadeIn( bgImg );
+		cont.childNodes[ 0 ].remove();
+	};
+</script>
+
+</html>

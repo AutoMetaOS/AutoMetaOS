@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+
+<body>
+    <div contenteditable id="container">
+
+    </div>
+</body>
+
+<style>
+    body,
+    #container {
+        width: 99.9vw;
+        height: 100%;
+        outline: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #333;
+        color: #fff;
+    }
+
+    #container {
+        min-height: 100vh;
+        margin: 20px;
+        font: lighter 16px Helvetica;
+    }
+</style>
+
+<script>
+    const container = document.querySelector( '#container' );
+
+    fetch( '/file' + window.location.pathname )
+        .then( res => res.text() )
+        .then( r => container.innerHTML = r );
+
+    const save = () => {
+        fetch( window.location.pathname, { method: 'POST', body: container.innerHTML } )
+            .then( res => res.text() )
+            .then( r => console.log( r ) );
+    }
+    window.addEventListener( 'keyup', ( e ) => {
+        if ( e.altKey && e.keyCode === 83 ) {
+            e.preventDefault();
+            save();
+        };
+    } )
+    setInterval( save, 5e3 );
+</script>
+
+</html>

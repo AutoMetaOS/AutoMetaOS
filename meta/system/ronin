@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function start(){
+    cd ~/Documents/GitHub.nosync/Ronin/
+    npm run server
+}
+
+function code(){
+    cd ~/Documents/GitHub.nosync/Ronin/
+    code .
+}
+
+function open(){
+    cd ~/Documents/GitHub.nosync/Ronin/
+    code .
+}
+
+eval $1
