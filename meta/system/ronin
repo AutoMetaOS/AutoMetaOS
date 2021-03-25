@@ -3,15 +3,16 @@ FUNC="$1";
 TYPE="$2";
 PARA="$3";
 
+cd ~/Documents/GitHub.nosync/
+
 start(){
-    cd ~/Documents/GitHub.nosync/Ronin/;
+    cd ./Ronin/;
     npm run server;
     echo "Running Engine"
 };
 
 new(){
     if [ "$1"="svelte" ]; then
-         cd ~/Documents/GitHub.nosync/
          mkdir $2
          cp -a ./svelte-boilerplate/ ./$2/
     echo "Created Project $2";

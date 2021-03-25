@@ -23,8 +23,8 @@ export const date = ( date = new Date() ) => {
 
 export const fallback = "https://i.redd.it/1if85xwae7qy.jpg";
 export const redditImage = ( obj ) => {
-    const set = obj?.resolutions;
+    const set = obj?.resolutions.reverse();
     if ( !set ) return fallback;
-    const res = set[ set.length - 2 ] || set[ set.length - 1 ] || set[ 0 ];
-    return res.url.replace( /&amp;/g, "&" );
+    const res = set[ 1 ] || set[ 0 ];
+    return res.url.replaceAll( '&amp;', "&" );
 };

@@ -1,25 +1,39 @@
 const fetch = require( 'node-fetch' );
 const googleTrends = require( 'google-trends-api' );
 
+const filterOut = [
+    // SPORTS
+    "sports", "sport",
+    "nba", "baseball", "football",
+    "basketball", "nfl", "wrestling",
+    "cricket", "wwe", "league",
+    "hockey", "rugby",
+    "cricinfo",
+
+    "madrid", "fifa", "juventus", "F.C.",
+
+    // TECH
+    "oppo", "oneplus", "motorola", "vivo", "realme",
+
+    // LANGUAGE
+    "panchang", "हिंदी", "tamil", "telugu",
+
+    // ENTERTAINMENT
+    "bts"
+]
+
+const keepIn = [
+    // Significant
+    "dies", "quits"
+]
+
 const smartFilter = ( item ) => {
-    const filertlist = [
-        // SPORTS
-        "sports", "sport",
-        "nba", "baseball", "football",
-        "basketball", "nfl", "wrestling",
-        "cricket", "wwe", "league",
-        "cricinfo", ,
-
-        // TECH
-        "oppo", "oneplus", "motorola", "vivo",
-
-        // LANGUAGE
-        "panchang", "हिंदी", "tamil",
-
-        // ENTERTAINMENT
-        "bts"
-    ];
-    if ( filertlist.some( v => JSON.stringify( item ).includes( v ) ) ) return 0;
+    if ( keepIn.some( v => JSON.stringify( item ).includes( v ) ) ) {
+        return 1
+    };
+    if ( filterOut.some( v => JSON.stringify( item ).includes( v ) ) ) {
+        return 0
+    };
     return 1;
 };
 
@@ -79,8 +93,8 @@ async function routes ( fastify, options ) {
                         } ).slice( 0, 1 )
                     }
                 } )
-                    .filter( smartFilter )
                     .sort( ( a, b ) => b.traffic - a.traffic )
+                    .filter( smartFilter )
                     .slice( 0, 6 );
                 res.send( newsItems );
             } )
@@ -108,8 +122,8 @@ async function routes ( fastify, options ) {
                         } ).slice( 0, 1 )
                     }
                 } )
-                    .filter( smartFilter )
                     .sort( ( a, b ) => b.traffic - a.traffic )
+                    .filter( smartFilter )
                     .slice( -6 );
                 res.send( newsItems );
             } )

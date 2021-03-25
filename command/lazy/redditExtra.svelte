@@ -27,7 +27,7 @@
                 alt={el.data.title}
             />
             <div style="font-weight:400;padding:5px;">
-                {el.data.title}
+                {@html el.data.title}
             </div>
         </a>
     </div>
