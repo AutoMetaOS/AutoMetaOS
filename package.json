@@ -31,7 +31,7 @@
         "svelte-preprocess": "4.6.5"
     },
     "dependencies": {
-        "brain": "1.0.0",
+        "fast-speedtest-api": "^0.3.2",
         "fastify": "3.13.0",
         "fastify-cors": "^5.2.0",
         "fastify-static": "4.0.1",

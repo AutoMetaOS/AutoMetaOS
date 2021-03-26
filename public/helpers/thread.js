@@ -8,9 +8,6 @@ const ms = ( milli ) => {
       if ( d > 0 ) time += ` ${ d } d`;
       return time
 }
-
-const HNBase = 'https://hacker-news.firebaseio.com/v0/';
-const HNCfg = '?print=pretty'
 this.onmessage = e => {
       if ( e.data.func === "getShows" ) {
             fetch( "/data/multiple.json" )
@@ -37,27 +34,5 @@ this.onmessage = e => {
                                           )
                         } );
                   } );
-      }
-      if ( e.data.func === 'getHNTop' ) {
-            let news = [];
-            fetch( HNBase + 'topstories.json' + HNCfg )
-                  .then( res => res.json() )
-                  .then( r => {
-                        Promise.all( r.slice( 0, 40 ).map( e => fetch( HNBase + 'item/' + e + '.json' + HNCfg ) ) )
-                              .then( resp => Promise.all( resp.map( r => r.json() ) ) )
-                              .then( result => {
-                                    result.map( e => {
-                                          return {
-                                                title: e.title,
-                                                by: e.by,
-                                                descendants: e.descendants,
-                                                score: e.score,
-                                                url: e.url,
-                                                time: e.time
-                                          }
-                                    } );
-                                    this.postMessage( { "HN": result } )
-                              } )
-                  } )
       }
 }
