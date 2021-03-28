@@ -11,19 +11,19 @@ app.register( require( './js/google' ) );
 app.register( require( './js/socials' ) );
 app.register( require( './js/macos' ) );
 app.register( require( 'fastify-cors' ), {} )
-app.register( require( 'fastify-static' ), { root: path.join( __dirname, '../public' ) } );
+app.register( require( 'fastify-static' ), { root: path.join( __dirname, '../svelte/build/' ), prefix: '/' } );
 
 // ROUTES
-app.get( '/', function ( req, res ) {
-      return res.sendFile( 'index.html' );
-} );
+// app.get( '/', function ( req, res ) {
+//       return res.sendFile( 'index.html' );
+// } );
 
-app.get( '/:file', function ( req, res ) {
-      const file = req.params.file;
-      const options = fs.readdirSync( 'public' ).filter( e => e.includes( '.html' ) );
-      if ( options.includes( file + '.html' ) ) return res.sendFile( req.params.file + '.html' );
-      else return res.sendFile( 'index.html' );
-} );
+// app.get( '/:file', function ( req, res ) {
+//       const file = req.params.file;
+//       const options = fs.readdirSync( 'public' ).filter( e => e.includes( '.html' ) );
+//       if ( options.includes( file + '.html' ) ) return res.sendFile( req.params.file + '.html' );
+//       else return res.sendFile( 'index.html' );
+// } );
 
 // APIs
 app.post( '/data/:file', ( req, res ) => {

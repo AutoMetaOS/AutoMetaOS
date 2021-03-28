@@ -5,7 +5,7 @@ logs
 *lock*.yml
 
 .svelte/
-svelte/
+build/
 
 .DS_Store
 **/.DS_Store
@@ -16,9 +16,7 @@ svelte/
 **/*.css.map
 **/*.js.map
 
-public/bundles
-public/video
-config/
+**/config/
 
 # Dependency directories
 node_modules/
