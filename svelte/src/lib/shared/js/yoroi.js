@@ -1,5 +1,7 @@
+const serverURL = 'http://localhost:1872/';
+
 export const repoSecurity = async () => {
-    const req = await fetch( "http://localhost:4000/security/git" );
+    const req = await fetch( serverURL + "security/git" );
     const json = await req.json();
     return json;
 };

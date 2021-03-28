@@ -26,7 +26,7 @@
             fr("recommendation")
         );
         set = [show, ...set];
-        fetch("/data/track", {
+        fetch(serverURL + "data/track", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -28,7 +28,7 @@
             fr("speed")
         );
         set = [t, ...set];
-        fetch("/data/single", {
+        fetch(serverURL + "data/single", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

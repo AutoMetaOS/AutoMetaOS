@@ -1,9 +1,6 @@
 <script>
     import { onMount } from "svelte";
 
-    const serverURL = "http://localhost:4000/";
-    const testURL = "http://localhost:3000/";
-
     let body;
     const URLpars = () => {
         const entries = new URLSearchParams(window.location.search).entries();
@@ -41,7 +38,7 @@
             if (e.parentElement.parentElement.tagName === "A") {
                 e.src = decodeURIComponent(
                     e.parentElement.parentElement.href
-                        .replace(testURL + "imgres?imgurl=", "")
+                        .replace(clientURL + "imgres?imgurl=", "")
                         .split("&")[0]
                 );
             }
@@ -51,7 +48,7 @@
             e.classList.toggle("ronin-a");
             if (e.href.includes("/url?"))
                 e.href = decodeURIComponent(
-                    e.href.replace(testURL + "url?q=", "").split("&")[0]
+                    e.href.replace(clientURL + "url?q=", "").split("&")[0]
                 );
         });
         // MINIFY DIVS

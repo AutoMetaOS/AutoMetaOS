@@ -56,10 +56,10 @@
 		};
 	</script>
 
-	<link rel="preconnect" href="https://eu.startpage.com" />
 	<link rel="preconnect" href="https://en.wikipedia.org/" />
 	<link rel="preconnect" href="https://github.com" />
 	<link rel="prefetch" href="/stream" />
+	<link rel="prefetch" href="/search" />
 
 	<style>
 		*::-webkit-scrollbar {

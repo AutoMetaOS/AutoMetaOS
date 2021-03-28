@@ -4,7 +4,7 @@
     let MBstats = [];
 
     const sendCMD = () =>
-        fetch("http://localhost:4000/sys/smc")
+        fetch(serverURL + "sys/smc")
             .then((res) => res.json())
             .then((r) => (MBstats = r));
 

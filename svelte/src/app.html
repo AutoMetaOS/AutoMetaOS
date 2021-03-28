@@ -23,6 +23,9 @@
 			let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
 			window.history.pushState( { path: newurl }, '', newurl );
 		}
+
+		const serverURL = 'http://localhost:1872/';
+		const clientURL = 'http://localhost:1873/';
 	</script>
 </head>
 

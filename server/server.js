@@ -2,7 +2,7 @@ const app = require( 'fastify' )( { logger: 0 } );
 const path = require( 'path' );
 const fs = require( 'fs' );
 const mths = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC' ];
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 1872;
 const db = './config/database/';
 
 // app.use( express.json() );

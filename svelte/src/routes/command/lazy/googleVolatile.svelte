@@ -1,8 +1,6 @@
 <script>
     const googleTrends = async () => {
-        const resp = await fetch(
-            "http://localhost:4000/social/google/hyper-trends"
-        );
+        const resp = await fetch(serverURL + "social/google/hyper-trends");
         return await resp.json();
     };
     let google = googleTrends();

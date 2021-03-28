@@ -3,14 +3,12 @@
 ## Pending
 - System hourly stats logger - Fan Speed, CPU+MB Temp, Battery level
 - Uptime session logger/shutdown script
-- Add insta viewer
 - Create a development system with API testing in browser, test scripts editing etc...
-- Create social systems with twitter
-- Create Security system to generate totp, github security alerts
 - Add goto top button in Quartermaster
 
 ## Code Quality (Search Done)
 - Add a testing system
+- Test for all functions return value. Made as many funcs return as possible
 - Add defualt value to EVERY variable
 - Convert all short names to proper names variables and functions
 - Remove all multiple e.style.property1, 2, 3..n and change combine them to one e.toggleclass
@@ -19,11 +17,12 @@
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-## Adding Tests
-- Test for all functions return value. Made as many funcs return as possible
+## v5.0.0
+- Remove Tasks and Timer
+- Full migrate to SvelteKit (Server and client are now two distinct entities)
 
 
-## v4.0.0 (In Progress | Ronin)
+## v4.0.0
 - News System
 - Youtube Stores
 - Bug Fixes
@@ -62,7 +61,7 @@
 
 ## v3.1.0 & v3.2.0
 
-- Full Merge DashBoard, started making structure cleaner, to work more efficiently 
+- Full Merge DashBoard, started making structure cleaner, to work more efficiently
 
 - Add Lazy Loaded BG Image, still with lava lamp
 - Remove a lot of useless shit

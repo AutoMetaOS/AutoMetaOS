@@ -7,7 +7,7 @@ cd ~/Documents/GitHub.nosync/
 
 start(){
     cd ./Ronin/;
-    npm run server;
+    npm run start;
     echo "Running Engine"
 };
 

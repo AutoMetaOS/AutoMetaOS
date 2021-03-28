@@ -4,7 +4,7 @@
     let rss = [];
 
     onMount(() =>
-        fetch("http://localhost:4000/social/google/trends")
+        fetch(serverURL + "social/google/trends")
             .then((response) => response.json())
             .then((data) => (rss = data))
     );

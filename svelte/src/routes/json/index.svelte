@@ -8,16 +8,14 @@
 
     $: search = "";
 
-    const server = "http://localhost:4000";
-
     onMount(() => {
-        fetch(server + "/data/multiple.json")
+        fetch(serverURL + "data/multiple.json")
             .then((res) => res.json())
             .then((r) => (mlt = r));
-        fetch(server + "/data/single.json")
+        fetch(serverURL + "data/single.json")
             .then((res) => res.json())
             .then((r) => (sng = r));
-        fetch(server + "/data/track.json")
+        fetch(serverURL + "data/track.json")
             .then((res) => res.json())
             .then((r) => (trk = r));
     });
