@@ -69,13 +69,18 @@
 </svelte:head>
 
 <div id="bgContainer">
-	<img src="./shared/images/bigSur.jpg" class="w-100" alt="" />
+	<img src="./shared/images/Terra.jpg" class="w-100" alt="" />
 </div>
 
 <section class="w-100">
 	<TopBar />
 	<Search />
 	<Alerts />
+	<br />
+	<div class="w-100 flex" style="justify-content:center;">
+		<a href="/debug" class="altURL">Jupiter</a>
+		<a href="/social" class="altURL">Saturn</a>
+	</div>
 	<div id="Qlinks">
 		Scroll for Today <br />
 		<svg
@@ -110,6 +115,12 @@
 			height: 100%;
 			object-fit: cover;
 		}
+	}
+	.altURL {
+		color: #dddd;
+		font-weight: 400;
+		font-style: italic;
+		padding: 0 10px;
 	}
 	#Qlinks {
 		width: calc(100% - 10px);

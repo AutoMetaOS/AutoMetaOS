@@ -17,8 +17,10 @@
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-## v5.1.1
+## v5.1.2
 - Add realtime REPL for HTML/CSS/JS
+- Planetary Backgrounds
+- Improvements to Command
 
 
 ## v5.0.0

@@ -1,15 +1,18 @@
 <script>
     import { onMount } from "svelte";
+    import { w3, replLinks, debounce } from "./micro/functions";
 
-    import { w3, replLinks } from "./micro/functions";
-
-    let iframe;
+    let //
+        iframe,
+        oldHT = "";
 
     const recalculate = () => {
-        iframe.src =
-            "data:text/html;charset=utf-8," +
-            encodeURI(editor.getValue()) +
-            encodeURI(w3.style);
+        const html = editor.getValue();
+        const blob = new Blob([html], { type: "text/html" });
+        const htmlURI = window.URL.createObjectURL(blob);
+        if (oldHT === htmlURI) return 0;
+        oldHT = htmlURI;
+        iframe.src = htmlURI;
     };
 
     onMount(() => {
@@ -26,14 +29,10 @@
         });
         setTimeout(() => {
             let scrip = document.createElement("script");
-            scrip.innerText = `
-            let editor = CodeMirror.fromTextArea(document.getElementById("code"), {lineNumbers: true,mode: "htmlmixed",lineWrapping: true,matchBrackets: true});
-            editor.setSize("50vw", "100%");;
-            editor.setOption("theme", "material");
-            document.title="Jupiter Code"`;
+            scrip.innerText = w3.repl;
             document.head.appendChild(scrip);
             recalculate();
-        }, 500);
+        }, 1000);
     });
 </script>
 
@@ -52,27 +51,27 @@
     </style>
 </svelte:head>
 
-<section class="flex">
-    <div class="blur boxes" style="background:#8f8">
+<section class="flex blurW">
+    <div
+        class="boxes"
+        style="background:#666"
+        on:keyup={debounce(recalculate, 1000)}
+    >
         <div class="flex w-100" style="padding:0;height:2em;">
             <button on:click={recalculate}>Render</button>
         </div>
-        <div
-            class="w-100 codeContainer"
-            on:keyup={recalculate}
-            style="position:relative;height:95vh;"
-        >
+        <div class="w-100 codeContainer" style="position:relative;height:95vh;">
             <textarea spellcheck="true" id="code" value={w3.base} />
         </div>
     </div>
-    <div class="blur boxes">
+    <div class="boxes">
         <iframe
             src="data:text/html;charset=utf-8,"
             title="simulator"
             class="w-100"
             frameborder="0"
             bind:this={iframe}
-            style="padding:0;"
+            style="padding:0;background:#fff"
         />
     </div>
 </section>

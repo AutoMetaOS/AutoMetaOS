@@ -47,7 +47,7 @@
 <style>
     #deets {
         position: fixed;
-        top: -20px;
+        top: -30px;
         padding: 0 5px;
         justify-content: space-between;
         width: calc(100% - 10px);

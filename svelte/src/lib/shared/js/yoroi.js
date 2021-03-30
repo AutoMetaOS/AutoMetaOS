@@ -6,6 +6,12 @@ export const repoSecurity = async () => {
     return json;
 };
 
+export const smc = async () => {
+    const req = await fetch( serverURL + 'sys/smc' );
+    const json = await req.json();
+    return json;
+};
+
 export const getReddit = async ( sub ) => {
     const raw = await fetch( "https://www.reddit.com/r/" + sub + "/top/.json?limit=3" );
     const json = await raw.json();

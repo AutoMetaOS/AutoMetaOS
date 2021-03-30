@@ -1,64 +1,76 @@
 <script>
     import { fade } from "svelte/transition";
-    import { repoSecurity } from "$lib/shared/js/yoroi";
+    import { smc } from "$lib/shared/js/yoroi";
     import { onMount } from "svelte";
 
     let promise;
-    onMount(() => (promise = repoSecurity()));
+    onMount(() => (promise = smc()));
+
+    const safety = (resp) => {
+        if (resp) {
+            const cpu = +resp.cpu.split("°")[0];
+            const mbo = +resp.board.split("°")[0];
+            const fan = +resp.fan.split(" ")[0];
+            console.log(cpu);
+            console.log(mbo);
+            console.log(fan);
+            if (cpu > 90 && mbo > 72 && fan < 3000) return 2;
+            if (cpu > 75 && mbo > 65 && fan < 2000) return 1;
+        }
+        return 0;
+    };
 </script>
 
 {#await promise}
-    <a class="blur flex safe" href="/">
+    <div class="a blur flex safe" href="/">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor">
             <path d="M16 14 L16 23 M16 8 L16 10" />
             <circle cx="16" cy="16" r="14" />
         </svg>
         Checking...
-    </a>
+    </div>
 {:then response}
     <div style="display:none;">{JSON.stringify(response)}</div>
-    <a
+    <div
         in:fade
-        href="https://github.com/notifications?query=reason%3Asecurity-alert"
-        class="blur flex {response ? 'alert' : 'safe'}"
+        class="a blur flex {safety(response) === 2
+            ? 'alert'
+            : safety(response)
+            ? 'warn'
+            : 'safe'}"
     >
         <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor">
             <path d="M16 14 L16 23 M16 8 L16 10" />
             <circle cx="16" cy="16" r="14" />
         </svg>
-        {#if response}
-            Security Vulnerability Found in&nbsp;<strong
-                >{response[0].name}</strong
-            >&nbsp;(Code 0)
+        {#if safety(response) === 2}
+            System too Hot! {response.fan.split(" ")[0]}
+        {:else if safety(response) === 1}
+            System Heating Up {response.fan.split(" ")[0]}
         {:else}
-            All Good Secuirty check passed!
+            System Nominal
         {/if}
-    </a>
+    </div>
 {:catch err}
-    <a in:fade href="https://github.com/" class="blur flex warn">
+    <div in:fade class="a blur flex warn">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor">
             <path d="M16 14 L16 23 M16 8 L16 10" />
             <circle cx="16" cy="16" r="14" />
         </svg>
         Unknown error, try again!
-    </a>
+    </div>
 {/await}
 
 <style type="text/scss">
-    a {
+    .a {
         align-items: center;
         justify-content: center;
         width: 400px;
         margin: 0 auto;
         padding: 10px 5px;
         border-radius: 20px;
-        transform: scale(1);
         animation: aja 1s ease forwards;
         animation-delay: 1s;
-        transition: transform 0.2s ease;
-        &:hover {
-            transform: scale(1.05);
-        }
         svg {
             padding: 0 5px 0 0;
             stroke-width: 2;

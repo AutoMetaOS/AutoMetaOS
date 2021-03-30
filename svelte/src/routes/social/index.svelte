@@ -19,9 +19,11 @@
 <svelte:head>
     <style>
         body {
-            background: url(./shared/images/xdrGrad.jpg) no-repeat fixed;
+            background: url(./shared/images/Saturn.jpg) no-repeat fixed;
+            background-size: cover;
         }
     </style>
+    <title>Saturn Social</title>
 </svelte:head>
 
 <section>

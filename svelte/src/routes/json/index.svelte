@@ -84,7 +84,8 @@
             margin: 3px 5px;
         }
         body {
-            background: url(/shared/images/bigSurDark.jpg) no-repeat fixed;
+            background: url(/shared/images/Mars.jpg) no-repeat fixed;
+            background-size: cover;
         }
     </style>
 </svelte:head>
