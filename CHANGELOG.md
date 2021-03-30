@@ -6,7 +6,7 @@
 - Create a development system with API testing in browser, test scripts editing etc...
 - Add goto top button in Quartermaster
 
-## Code Quality (Search Done)
+## Code Quality
 - Add a testing system
 - Test for all functions return value. Made as many funcs return as possible
 - Add defualt value to EVERY variable
@@ -16,6 +16,10 @@
 - DOn't do i=0;i<a.length. It reads length repeatedly and is shit. Do. i=0,j=a.length;i<j; or predeclare
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
+
+## v5.1.1
+- Add realtime REPL for HTML/CSS/JS
+
 
 ## v5.0.0
 - Remove Tasks and Timer

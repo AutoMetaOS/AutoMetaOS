@@ -3,13 +3,14 @@
 
     let MBstats = [];
 
-    const sendCMD = () =>
-        fetch(serverURL + "sys/smc")
-            .then((res) => res.json())
-            .then((r) => (MBstats = r));
-
-    onMount(() => sendCMD());
-    setInterval(sendCMD, 1e5);
+    onMount(() => {
+        const sendCMD = () =>
+            fetch(serverURL + "sys/smc")
+                .then((res) => res.json())
+                .then((r) => (MBstats = r));
+        sendCMD();
+        setInterval(sendCMD, 1e5);
+    });
 </script>
 
 <table>

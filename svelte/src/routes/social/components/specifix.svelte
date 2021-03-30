@@ -1,8 +1,11 @@
 <script>
+    import { onMount } from "svelte";
     let space = [];
-    fetch("https://www.spaceflightnewsapi.net/api/v2/articles")
-        .then((res) => res.json())
-        .then((r) => (space = r));
+    onMount(() => {
+        fetch("https://www.spaceflightnewsapi.net/api/v2/articles")
+            .then((res) => res.json())
+            .then((r) => (space = r));
+    });
 </script>
 
 <section>

@@ -1,4 +1,6 @@
 <script>
+    import { onMount } from "svelte";
+
     let newzes = [
         { name: "TechNews", news: [] },
         { name: "WallStreetBets", news: [] },
@@ -8,11 +10,13 @@
 
     const [cfg, r] = ["/top/.json?limit=5", "https://www.reddit.com/r/"];
 
-    Promise.all(newzes.map((e) => fetch(r + e.name + cfg)))
-        .then((resp) => Promise.all(resp.map((r) => r.json())))
-        .then((result) =>
-            result.map((r, i) => (newzes[i].news = r.data.children))
-        );
+    onMount(() => {
+        Promise.all(newzes.map((e) => fetch(r + e.name + cfg)))
+            .then((resp) => Promise.all(resp.map((r) => r.json())))
+            .then((result) =>
+                result.map((r, i) => (newzes[i].news = r.data.children))
+            );
+    });
 </script>
 
 <section class="flex">
