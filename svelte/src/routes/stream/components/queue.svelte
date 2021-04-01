@@ -2,9 +2,9 @@
     import { vidoer, destacker, stack } from "../core/store";
 </script>
 
-<section id="search">
+<section class="flex p-20px" id="search" style="flex-wrap: wrap;">
     {#if $stack.length}
-        <span style="width:100%;padding:0 5px;">Queue ({$stack.length})</span>
+        <span class="w-100 p-5px">Queue ({$stack.length})</span>
         {#each $stack as vid, i}
             <div class="recom" style="position:relative;">
                 <div
@@ -12,10 +12,12 @@
                     style="position:absolute;right:5px;top:5px;border-radius:7px;"
                 >
                     <svg
+                        class="p-5px"
                         viewBox="0 0 32 32"
                         width="20"
                         height="20"
-                        style="background:#000c;padding:5px;"
+                        stroke="#fff"
+                        style="background:#000c;"
                     >
                         <path d="M2 30 L30 2 M30 30 L2 2" />
                     </svg>
@@ -34,8 +36,8 @@
                             : ""}
                     </div>
                     <div
-                        class="channel"
-                        style="display:flex;justify-content:space-between;"
+                        class="channel flex"
+                        style="justify-content:space-between;"
                     >
                         <span>{vid.snippet.channelTitle}</span>
                         <span>
@@ -49,14 +51,3 @@
         {/each}
     {/if}
 </section>
-
-<style type="text/scss">
-    section {
-        padding: 20px 10px;
-        display: flex;
-        flex-wrap: wrap;
-        svg {
-            stroke: #fff;
-        }
-    }
-</style>

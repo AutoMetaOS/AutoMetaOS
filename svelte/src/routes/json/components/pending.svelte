@@ -12,7 +12,7 @@
 </script>
 
 {#each shows as show}
-    <div class="show rpm-10 flex blurW">
+    <div class="show rpm-10px flex blurW">
         <img src={show.image} alt="" />
         <div style="padding: 2px 5px;">
             <div>{show.latest}</div>

@@ -47,7 +47,7 @@
 
 <section>
     {#each news as n}
-        <div class="rpm-10 blur">
+        <div class="rpm-10px blur">
             <a href={n.url} class="news">
                 <div class="title">
                     {n.title} - <i>{n.by}</i>

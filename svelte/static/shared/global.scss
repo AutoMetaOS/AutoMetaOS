@@ -21,37 +21,73 @@ input, button, textarea{
 	position: relative;
 	border: 0;
 	outline: 0;
+	margin: 0;
 	background: transparent;
+	font-size: 1em;
 	&:focus{
 		outline: none;
 	}
-}
-input{
-	font-size: 1em;
 }
 
 .blur{
 	background: #2228;
 	backdrop-filter: blur(32px);
 	-webkit-backdrop-filter: blur(32px);
+	-moz-backdrop-filter: blur(32px);
 }
 .blurW{
 	background: #8884;
 	backdrop-filter: blur(32px);
 	-webkit-backdrop-filter: blur(32px);
+	-moz-backdrop-filter: blur(32px);
+}
+.blurWW{
+	background: #ccc4;
+	backdrop-filter: blur(32px);
+	-webkit-backdrop-filter: blur(32px);
+	-moz-backdrop-filter: blur(32px);
+}
+.blurWWW{
+	background: #fff8;
+	backdrop-filter: blur(32px);
+	-webkit-backdrop-filter: blur(32px);
+	-moz-backdrop-filter: blur(32px);
 }
 
-.rpm-5{
+.rpm-0{
+	margin: 0;
+	padding: 0;
+	border-radius: 0;
+}
+.rpm-5px{
 	margin: 5px;
 	padding: 5px;
 	border-radius: 5px;
 }
-
-.rpm-10{
+.rpm-10px{
 	margin: 10px;
 	padding: 10px;
 	border-radius: 10px;
 }
+
+.o-0{ opacity: 0; }
+.o-50{ opacity: 0.5; }
+.o-66{ opacity: 0.66; }
+.o-75{ opacity: 0.75; }
+.o-100{ opacity: 1; }
+
+.p-0{ padding:0; }
+.p-5px{ padding:5px; }
+.p-10px{ padding:10px; }
+.p-20px{ padding:20px; }
+
+.m-0{ margin:0; }
+.m-5px{ margin:5px; }
+.m-10px{ margin:10px; }
+.m-20px{ margin:20px; }
+.m-h-auto{ margin: 0 auto; }
+
+details summary, details summary:focus{ outline:none; }
 
 .QMmenu{
 	opacity: 0.1;
@@ -79,30 +115,16 @@ input{
 }
 
 .w{
-	&-100{
-		width: 100%;
-	}
-	&-50{
-		width: 50%;
-	}
-	&-33{
-		width: 33.33%;
-	}
-	&-25{
-		width: 25%;
-	}
-	&-20{
-		width: 20%;
-	}
+	&-100{ width: 100%; }
+	&-50{ width: 50%; }
+	&-33{ width: 33.33%; }
+	&-25{ width: 25%; }
+	&-20{ width: 20%; }
 }
 
 .t{
-	&-rhs{
-		text-align: right;
-	}
-	&-lhs{
-		text-align: left;
-	}
+	&-rhs{  text-align: right; }
+	&-lhs{  text-align: left; }
 }
 
 .flex{
@@ -123,35 +145,8 @@ input{
 	padding: 10px;
 	margin: 0 7px;
 	overflow: hidden;
-	backdrop-filter: blur(25px);
-	-webkit-backdrop-filter: blur(25px);
-	-moz-backdrop-filter: blur(25px);
-	-ms-backdrop-filter: blur(25px);
 	background: #222a;
 }
-
-@keyframes bobX {
-	0% {transform: translateX(50vw);}
-	50% {transform: translateX(-50vw);}
-	100% {transform: translateX(50vw);}
-}
-@keyframes bobX_rev {
-	0% {transform: translateX(-50vw);}
-	50% {transform: translateX(50vw);}
-	100% {transform: translateX(-50vw);}
-}
-@keyframes bobY {
-	0% {transform: translateY(50vh);}
-	50% {transform: translateY(-50vh);}
-	100% {transform: translateY(50vh);}
-}
-@keyframes bobY_rev {
-	0% {transform: translateY(-50vh);}
-	50% {transform: translateY(50vh);}
-	100% {transform: translateY(-50vh);}
-}
-.x {animation: bobX 23s infinite ease-in-out alternate;}
-.x-rev {animation: bobX_rev 21s infinite ease-in-out alternate;}
 
 // VIDEO
 .recom {

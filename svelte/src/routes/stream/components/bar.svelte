@@ -8,10 +8,10 @@
     onMount(() => (searchText = URLpars().q || ""));
 </script>
 
-<section bind:this={bar} style="z-index:9;">
+<section class="o-0 p-10px flex" bind:this={bar}>
     <button
         on:click={() => (states.plist ^= 1)}
-        class="plist {states.plist && 'active'}"
+        class="plist p-10px {states.plist && 'active'}"
     >
         PLAYLISTS
     </button>
@@ -29,27 +29,21 @@
 <style type="text/scss">
     section {
         width: calc(100% - 10px);
-        display: flex;
+        z-index: 9;
         position: fixed;
-        opacity: 0;
         top: 0;
         justify-content: space-between;
         background: #222;
         transition: all 0.3s ease;
         align-items: center;
-        padding: 10px 5px;
         &:hover {
             opacity: 1;
         }
         input {
             padding: 5px 10px;
             background: #444;
-            font-size: 1.1em;
             color: #fff;
-            border: 0;
             border-radius: 2px;
-            margin: 0;
-            outline: none;
             &::placeholder {
                 color: #aaaa;
             }
@@ -61,7 +55,6 @@
         color: #fff;
         border-radius: 5px;
         margin: 0 2px;
-        padding: 10px;
         transition: all 0.2s ease;
         &:hover {
             border: 1px solid #c22;

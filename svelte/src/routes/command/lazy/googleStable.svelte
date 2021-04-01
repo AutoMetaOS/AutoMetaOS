@@ -7,18 +7,21 @@
 </script>
 
 {#await google}
-    <div class="w-100 blurW rpm-10" style="text-align:center;font-size:1.25em;">
+    <div
+        class="w-100 blurW rpm-10px"
+        style="text-align:center;font-size:1.25em;"
+    >
         Getting News...
     </div>
 {:then google}
-    <details class="blurW rpm-5 w-100" style="padding:15px;" open>
+    <details class="blurW rpm-5px w-100" style="padding:15px;" open>
         <summary class="w-100" style="font-size:1.25em;font-weight:700;"
             >Top News</summary
         >
         <p>
             {#each google as news}
                 {#each news.articles as article}
-                    <a class="boxy flex" href={article.url}>
+                    <a class="boxy m-5px p-10px flex" href={article.url}>
                         <div style="padding:20px 50x;">
                             <div style="font-weight:400;font-size:0.75em;">
                                 {article.source}
@@ -48,9 +51,7 @@
 
 <style type="text/scss">
     .boxy {
-        margin: 5px;
         justify-content: space-between;
-        padding: 10px 5px;
         &:hover {
             background: #3338;
         }
@@ -58,9 +59,5 @@
             border-radius: 5px;
             object-fit: cover;
         }
-    }
-    summary,
-    summary:focus {
-        outline: none;
     }
 </style>

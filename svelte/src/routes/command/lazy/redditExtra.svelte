@@ -13,7 +13,7 @@
     return new Date(a.data.created * 1e3) - new Date(b.data.created * 1e3);
 }) as el}
     <div
-        class="boxy2 blurW"
+        class="boxy2 m-5px blurW"
         style="width:{el.data.title.length > 280 ? '100%' : 'calc(50% - 10px)'}"
     >
         <a href={el.data.url_overridden_by_dest}>
@@ -31,7 +31,6 @@
 
 <style type="text/scss">
     .boxy2 {
-        margin: 5px;
         border-radius: 3px;
         &:hover {
             background: #3338;

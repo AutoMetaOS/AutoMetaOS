@@ -46,7 +46,7 @@
 			tick();
 		};
 
-		let bgImg = new Image(1440, 810);
+		let bgImg = new Image(1440, 900);
 		bgImg.src = "https://picsum.photos/1440/810?random=1";
 		bgImg.onload = () => {
 			const cont = document.getElementById("bgContainer");
@@ -78,8 +78,8 @@
 	<Alerts />
 	<br />
 	<div class="w-100 flex" style="justify-content:center;">
-		<a href="/debug" class="altURL">Jupiter</a>
-		<a href="/social" class="altURL">Saturn</a>
+		<a href="/debug" class="altURL p-10px">Jupiter</a>
+		<a href="/social" class="altURL p-10px">Saturn</a>
 	</div>
 	<div id="Qlinks">
 		Scroll for Today <br />
@@ -97,7 +97,7 @@
 </section>
 
 <section style="padding:0 25%;height:auto;">
-	<div id="newsBox" class="w-100" style="margin:0 auto;margin-top:20%;">
+	<div id="newsBox" class="w-100 m-h-auto" style="margin-top:20%;">
 		{#if state.news}
 			<News />
 		{/if}
@@ -120,7 +120,6 @@
 		color: #dddd;
 		font-weight: 400;
 		font-style: italic;
-		padding: 0 10px;
 	}
 	#Qlinks {
 		width: calc(100% - 10px);

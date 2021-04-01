@@ -38,40 +38,33 @@
 
 <svelte:head>
     <style>
-        body {
-            background: url(./shared/images/Jupiter.jpg) no-repeat fixed;
-            background-size: cover;
-        }
         body::-webkit-scrollbar {
             display: none;
-        }
-        .CodeMirror {
-            height: auto;
         }
     </style>
 </svelte:head>
 
-<section class="flex blurW">
+<section class="flex">
     <div
-        class="boxes"
+        class="boxes rpm-0 w-50"
         style="background:#666"
         on:keyup={debounce(recalculate, 1000)}
     >
-        <div class="flex w-100" style="padding:0;height:2em;">
+        <div class="flex w-100 p-0 m-0" style="height:100%;">
             <button on:click={recalculate}>Render</button>
         </div>
-        <div class="w-100 codeContainer" style="position:relative;height:95vh;">
+        <div class="w-100 codeContainer" style="position:relative;height:95%;">
             <textarea spellcheck="true" id="code" value={w3.base} />
         </div>
     </div>
-    <div class="boxes">
+    <div class="boxes rpm-0 w-50">
         <iframe
             src="data:text/html;charset=utf-8,"
             title="simulator"
-            class="w-100"
+            class="w-100 p-0"
             frameborder="0"
             bind:this={iframe}
-            style="padding:0;background:#fff"
+            style="background:#fff"
         />
     </div>
 </section>
@@ -80,10 +73,8 @@
     section {
         flex-wrap: wrap;
         button {
-            margin: 0;
             color: #fff;
             background: #1ad;
-            font-size: 1em;
             border-radius: 0;
             cursor: pointer;
             height: 2em;
@@ -92,11 +83,7 @@
         .boxes {
             flex-wrap: wrap;
             color: #fff;
-            padding: 0;
-            width: 50%;
-            margin: 1px 0;
-            border-radius: 0;
-            height: 99.9vh;
+            height: 100vh;
             overflow-y: scroll;
         }
     }

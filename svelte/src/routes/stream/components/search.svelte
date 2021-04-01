@@ -4,9 +4,9 @@
     import { vidoer, stacker } from "../core/store";
 </script>
 
-<section id="search">
+<section class="p-20px flex" id="search" style="flex-wrap: wrap;">
     {#if videos.length}
-        <div style="width:99vw;padding:5px;">
+        <div class="p-5px" style="width:99vw;">
             <div on:click={() => (videos = [])}>Search</div>
         </div>
         {#each videos as vid}
@@ -16,10 +16,12 @@
                     style="position:absolute;right:5px;top:5px;border-radius:7px;"
                 >
                     <svg
+                        class="p-5px"
                         viewBox="0 0 32 32"
                         width="20"
+                        stroke="#fff"
                         height="20"
-                        style="background:#000c;padding:5px;"
+                        style="background:#000c;"
                     >
                         <path d="M16 2 L16 30 M2 16 L30 16" />
                     </svg>
@@ -38,8 +40,8 @@
                             : ""}
                     </div>
                     <div
-                        class="channel"
-                        style="display:flex;justify-content:space-between;"
+                        class="channel flex"
+                        style="justify-content:space-between;"
                     >
                         <div>{vid.snippet.channelTitle}</div>
                         <div>
@@ -53,14 +55,3 @@
         {/each}
     {/if}
 </section>
-
-<style type="text/scss">
-    section {
-        padding: 20px 10px;
-        display: flex;
-        flex-wrap: wrap;
-        svg {
-            stroke: #fff;
-        }
-    }
-</style>

@@ -9,7 +9,7 @@
 </script>
 
 <section>
-    <article class="rpm-5 w-33">
+    <article class="rpm-5px w-33">
         {#each space as el}
             <div class="boxy w-100 blur">
                 <a href={el.url}>
@@ -17,7 +17,8 @@
                     <div style="font-weight:400;">{el.title}</div>
                     <p>{el.summary}</p>
                     <div
-                        style="display: flex;color:#888;justify-content:space-between;"
+                        class="flex"
+                        style="color:#888;justify-content:space-between;"
                     >
                         <span>{el.newsSite}</span>
                         <span

@@ -29,9 +29,7 @@
             return send;
       };
 
-      onMount(() => {
-            setTimeout(magic.focus(), 1e3);
-      });
+      onMount(() => setTimeout(magic.focus(), 1e3));
 </script>
 
 <section class="flex-col" style="justify-content: center;align-items: center;">
@@ -49,8 +47,8 @@
             </div>
             <input id="submit" type="submit" value="SEARCH" />
       </form>
-      <div style="width:calc(100% - 1em);padding:0.5em;margin-top:0.5em;">
-            <ul id="autoComplete" class="blur" />
+      <div class="p-10px" style="width:calc(100% - 1em);margin-top:0.5em;">
+            <ul id="autoComplete" class="blur m-h-auto o-100" />
       </div>
 </section>
 
@@ -90,8 +88,6 @@
       #autoComplete {
             width: calc(75% - 1.5em);
             padding: 0.5em 0.75em;
-            opacity: 1;
-            margin: 0 auto;
             list-style-type: none;
             border-radius: 1em;
             &:empty {

@@ -27,7 +27,7 @@
 </svelte:head>
 
 <section>
-    <nav class="rpm-10 flex blur" on:click={chNews}>
+    <nav class="rpm-10px flex blur" on:click={chNews}>
         {#each pages as pg}
             <div title={pg.name} class="ln {state.src === pg.name && 'blurW'}">
                 {pg.name}

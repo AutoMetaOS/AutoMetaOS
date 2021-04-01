@@ -12,15 +12,15 @@
 
 <section>
     {#each rss as n}
-        <div class="news blur rpm-10">
+        <div class="news blur rpm-10px">
             <div class="body-first">
                 <span style="color:#f00">{n.title}</span>
                 <i>{n.related.length ? `(${n.related.join(", ")})` : ""}</i>
             </div>
-            <div class="container">
+            <div class="container flex">
                 {#each n.articles as nSub}
                     <div class="innerCont">
-                        <a class="body flex" href={nSub.url}>
+                        <a class="body m-10px flex" href={nSub.url}>
                             <img src={nSub.image} alt="" />
                             <div>
                                 <div class="by">{nSub.source}</div>
@@ -44,12 +44,10 @@
         }
         .container {
             overflow-x: scroll;
-            display: flex;
             overflow: auto;
             .innerCont {
                 .body {
                     width: 500px;
-                    margin: 10px;
                     &-first {
                         width: 200px;
                     }

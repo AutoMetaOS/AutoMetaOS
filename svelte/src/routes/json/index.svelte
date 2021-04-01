@@ -27,7 +27,7 @@
 </script>
 
 <section>
-    <nav class="blurW">
+    <nav class="blurW rpm-10 flex">
         {#each ["Movies", "Shows", "Tracker", "Pending"] as sh, i}
             <div
                 class={display === i ? "blurW" : ""}
@@ -47,10 +47,10 @@
         <Pending />
     {/if}
 </section>
-<section class="filter">
+<section class="filter w-100">
     <input
         type="text"
-        class="engine blurW"
+        class="engine blurW w-75"
         placeholder="Search"
         bind:value={search}
     />
@@ -95,14 +95,10 @@
         padding: 60px 0;
     }
     nav {
-        display: flex;
         justify-content: space-around;
         position: absolute;
         top: 0;
         z-index: 999;
-        border-radius: 10px;
-        margin: 10px;
-        padding: 10px;
         width: calc(100% - 40px);
         color: #fff;
         div {
@@ -119,10 +115,8 @@
     .filter {
         position: fixed;
         bottom: 0;
-        width: 100%;
         transition: background 0.2s ease;
         .engine {
-            width: 80%;
             font-size: 1.5em;
             margin: 0 5%;
             padding: 10px 5%;

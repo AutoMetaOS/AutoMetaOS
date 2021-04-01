@@ -4,11 +4,9 @@
     import { vidoer, stacker } from "../core/store";
 </script>
 
-<section id="search">
+<section class="flex p-20px" id="search" style="flex-wrap: wrap;">
     {#if videos.length}
-        <span style="width:100%;padding:0 5px;"
-            >Subscriptions ({videos.length})</span
-        >
+        <span class="w-100 p-5px">Subscriptions ({videos.length})</span>
         {#each videos.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt)) as vid, i}
             <div class="recom" style="position:relative;">
                 <div
@@ -16,10 +14,12 @@
                     style="position:absolute;right:5px;top:5px;border-radius:7px;"
                 >
                     <svg
+                        stroke="#fff"
                         viewBox="0 0 32 32"
                         width="20"
                         height="20"
-                        style="background:#000c;padding:5px;"
+                        class="p-5px"
+                        style="background:#000c;"
                     >
                         <path d="M16 2 L16 30 M2 16 L30 16" />
                     </svg>
@@ -38,8 +38,8 @@
                             : ""}
                     </div>
                     <div
-                        class="channel"
-                        style="display:flex;justify-content:space-between;"
+                        class="channel flex"
+                        style="justify-content:space-between;"
                     >
                         <span>{vid.snippet.channelTitle}</span>
                         <span>
@@ -56,11 +56,3 @@
         {/each}
     {/if}
 </section>
-
-<style type="text/scss">
-    section {
-        padding: 20px 10px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-</style>

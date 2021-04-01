@@ -20,9 +20,9 @@
     };
 </script>
 
-<section id="search">
+<section class="p-20px flex" id="search" style="flex-wrap: wrap;">
     {#if videos.length}
-        <span style="width:100%;padding:0 5px;">Playlists</span>
+        <span class="w-100 p-5px">Playlists</span>
         {#each videos as vid}
             <div on:click={usePL} class="recom" id={vid.id.playlistId}>
                 <img src={vid.snippet.thumbnails.medium.url} alt="" />
@@ -33,8 +33,8 @@
                         : ""}
                 </div>
                 <div
-                    class="channel"
-                    style="display:flex;justify-content:space-between;"
+                    class="channel flex"
+                    style="justify-content:space-between;"
                 >
                     <span>{vid.snippet.channelTitle}</span>
                     <span>
@@ -47,11 +47,3 @@
         {/each}
     {/if}
 </section>
-
-<style type="text/scss">
-    section {
-        padding: 20px 10px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-</style>

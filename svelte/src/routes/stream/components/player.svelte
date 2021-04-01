@@ -11,9 +11,10 @@
     ];
 </script>
 
-<div id="wrapper">
+<div class="w-100" id="wrapper">
     <iframe
         title="vid"
+        class="w-100"
         bind:this={maxwell}
         src={`${yt}${$vId}${ext}`}
         allow={ald}
@@ -23,10 +24,8 @@
 
 <style type="text/scss">
     #wrapper {
-        width: 100%;
         height: 100vh;
         iframe {
-            width: 100%;
             height: 100%;
             border: 0;
             background: #111;

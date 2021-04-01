@@ -22,7 +22,7 @@
 </script>
 
 {#await promise}
-    <div class="a blur flex safe" href="/">
+    <div class="a m-h-auto blur flex safe" href="/">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor">
             <path d="M16 14 L16 23 M16 8 L16 10" />
             <circle cx="16" cy="16" r="14" />
@@ -33,7 +33,7 @@
     <div style="display:none;">{JSON.stringify(response)}</div>
     <div
         in:fade
-        class="a blur flex {safety(response) === 2
+        class="a m-h-auto blur flex {safety(response) === 2
             ? 'alert'
             : safety(response)
             ? 'warn'
@@ -52,7 +52,7 @@
         {/if}
     </div>
 {:catch err}
-    <div in:fade class="a blur flex warn">
+    <div in:fade class="a m-h-auto blur flex warn">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentcolor">
             <path d="M16 14 L16 23 M16 8 L16 10" />
             <circle cx="16" cy="16" r="14" />
@@ -66,7 +66,6 @@
         align-items: center;
         justify-content: center;
         width: 400px;
-        margin: 0 auto;
         padding: 10px 5px;
         border-radius: 20px;
         animation: aja 1s ease forwards;
