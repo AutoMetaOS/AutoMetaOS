@@ -29,11 +29,10 @@
                         <img
                             class="w-100"
                             src={el.data.thumbnail}
-                            alt={el.data.title}
+                            alt=""
                             onerror="this.onerror=null;this.src='https://i.redd.it/1if85xwae7qy.jpg';"
-                            style="object-fit: cover;border-radius:5px;"
                         />
-                        <div class="p-5px" style="font-weight:400;">
+                        <div class="p-5px f-wt4">
                             {el.data.title.replace(/TIL/g, "")}
                         </div>
                     </a>
@@ -47,10 +46,6 @@
     .boxy {
         margin: 5px 0;
         border-radius: 10px;
-        transition: all 0.2s ease;
-        &:hover {
-            background: #3338;
-        }
         img {
             object-fit: cover;
             height: 200px;

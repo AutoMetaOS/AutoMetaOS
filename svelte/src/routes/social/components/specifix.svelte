@@ -1,5 +1,7 @@
 <script>
     import { onMount } from "svelte";
+    import { date } from "$lib/shared/js/yoroi";
+
     let space = [];
     onMount(() => {
         fetch("https://www.spaceflightnewsapi.net/api/v2/articles")
@@ -9,45 +11,48 @@
 </script>
 
 <section>
-    <article class="rpm-5px w-33">
+    <article class="w-33">
         {#each space as el}
-            <div class="boxy w-100 blur">
-                <a href={el.url}>
-                    <img class="w-100" src={el.imageUrl} alt={el.title} />
-                    <div style="font-weight:400;">{el.title}</div>
-                    <p>{el.summary}</p>
-                    <div
-                        class="flex"
-                        style="color:#888;justify-content:space-between;"
-                    >
-                        <span>{el.newsSite}</span>
-                        <span
-                            >{new Date(el.publishedAt).toLocaleDateString(
-                                "en-GB",
-                                {
-                                    timeZone: "UTC",
-                                    timeZoneName: "short",
-                                }
-                            )}</span
+            <a class="boxy m-20px w-100 blur" href={el.url}>
+                <img src={el.imageUrl} class="w-100" alt={el.title} />
+                <div class="title p-20px">
+                    <span class="f-wt7">{el.title}</span>
+                    <hr />
+                    <details>
+                        <summary>{el.newsSite} / {date(el.publishedAt)}</summary
                         >
-                    </div>
-                </a>
-            </div>
+                        <p>{el.summary}</p>
+                    </details>
+                </div>
+            </a>
         {/each}
     </article>
 </section>
 
 <style type="text/scss">
+    details summary::-webkit-details-marker {
+        position: absolute;
+        right: 1em;
+        top: 3.75em;
+        font-size: 1.25em;
+        transform: rotate(-90deg);
+    }
     .boxy {
-        margin: 5px 0;
-        border-radius: 10px;
+        position: relative;
+        height: 300px;
         img {
+            height: 300px;
             object-fit: cover;
-            border-radius: 5px;
+            z-index: 0;
         }
-        p,
-        div {
-            padding: 2px 10px;
+        .title {
+            background: linear-gradient(to bottom, transparent, #000);
+            position: absolute;
+            bottom: 0;
+            width: calc(100% - 40px);
+            left: 0;
+            word-wrap: break-word;
+            font-size: 1.2em;
         }
         &:hover {
             background: #3338;

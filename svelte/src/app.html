@@ -16,13 +16,15 @@
 			const params = {};
 			for ( let entry of entries ) params[ entry[ 0 ] ] = entry[ 1 ];
 			return params;
-		}
+		};
 		const chURL = ( key, value ) => {
 			let searchParams = new URLSearchParams( window.location.search );
 			searchParams.set( key, value );
-			let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
-			window.history.pushState( { path: newurl }, '', newurl );
-		}
+			let newurl = `${ window.location.protocol }//${ window.location.host + window.location.pathname
+				}?${ searchParams.toString() }`;
+			window.history.pushState( { path: newurl }, "", newurl );
+			return 0;
+		};
 
 		const serverURL = 'http://localhost:1872/';
 		const clientURL = 'http://localhost:1873/';

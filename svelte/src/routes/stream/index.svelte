@@ -16,44 +16,36 @@
     import { onMount } from "svelte";
     import { vId, stack } from "./core/store";
 
-    import { search, plSearch, playlist, k, YT } from "./core/api";
+    import { search, plSearch, getRecents } from "./core/api";
 
     let [base, plStack] = [[], []];
-    $: states = { plist: 0 };
     $: substack = [];
 
     const channels = () => {
         substack = [];
         chanList.forEach((cList) => {
-            const link = `${YT}channels?part=snippet%2CcontentDetails&id=${cList
-                .map((el) => el.id)
-                .join("%2C")}&key=${k}`;
-            fetch(link)
-                .then((res) => res.json())
-                .then((r) => {
-                    r.items
-                        .map((el) => el.contentDetails.relatedPlaylists.uploads)
-                        .forEach((el) => {
-                            playlist(el + "&order=date", 4).then((r2) => {
-                                const arr = r2.items.filter(
-                                    (r1) =>
-                                        new Date() -
-                                            new Date(r1.snippet.publishedAt) <=
-                                        2 * 864e5
-                                );
-                                if (arr) substack = [...substack, ...arr];
-                            });
-                        });
-                });
+            getRecents(cList).then(
+                (arr) => (substack = [...substack, ...(arr || {})])
+            );
         });
+        
+        return 0;
     };
 
     const searcher = (sc) => {
         const q = typeof sc === "string" ? sc : sc.target[0].value;
-        search(q).then((r) => (base = r.items));
-        window.location.href = "#search";
+        console.log(q);
+        if (!q) {
+            chURL("q", "");
+            return 0;
+        } else if (q.charAt(0) === "+") {
+            search(q.replace("+", "")).then((r) => (base = r.items));
+            plSearch(q).then((r) => (plStack = r.items));
+            return 0;
+        } else search(q).then((r) => (base = r.items));
         chURL("q", q);
-        if (states.plist) plSearch(q).then((r) => (plStack = r.items));
+        window.location.href = "#search";
+        return 0;
     };
 
     onMount(() => {
@@ -65,7 +57,7 @@
 </script>
 
 <main>
-    <Bar {searcher} {states} {channels} />
+    <Bar {searcher} {channels} />
     {#if $vId}
         <Player />
     {/if}
@@ -74,31 +66,6 @@
     <Subsc videos={substack} />
     <Plist videos={plStack} />
 </main>
-
-<svelte:head>
-    <script>
-        const URLpars = () => {
-            const entries = new URLSearchParams(
-                window.location.search
-            ).entries();
-            const params = {};
-            for (let entry of entries) params[entry[0]] = entry[1];
-            return params;
-        };
-        const chURL = (key, value) => {
-            let searchParams = new URLSearchParams(window.location.search);
-            searchParams.set(key, value);
-            let newurl =
-                window.location.protocol +
-                "//" +
-                window.location.host +
-                window.location.pathname +
-                "?" +
-                searchParams.toString();
-            window.history.pushState({ path: newurl }, "", newurl);
-        };
-    </script>
-</svelte:head>
 
 <style>
     main {

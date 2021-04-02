@@ -23,8 +23,10 @@
                         <a class="body m-10px flex" href={nSub.url}>
                             <img src={nSub.image} alt="" />
                             <div>
-                                <div class="by">{nSub.source}</div>
-                                <div class="title">{@html nSub.title}</div>
+                                <div class="by"><i>{nSub.source}</i></div>
+                                <div class="title f-wt7">
+                                    {@html nSub.title}
+                                </div>
                                 <div class="desc">{@html nSub.desc}</div>
                             </div>
                         </a>
@@ -53,12 +55,6 @@
                     }
                 }
             }
-        }
-        .by {
-            font-style: italic;
-        }
-        .title {
-            font-weight: 600;
         }
     }
 </style>

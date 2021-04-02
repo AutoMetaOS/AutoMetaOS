@@ -4,8 +4,7 @@
     import HNews from "./components/hackernews.svelte";
     import Specifics from "./components/specifix.svelte";
 
-    let state = { src: "TechNews" };
-
+    let state = { src: "Specifics" };
     const pages = [
         { name: "TechNews", component: TechNews },
         { name: "Google", component: Google },
@@ -13,7 +12,7 @@
         { name: "Specifics", component: Specifics },
     ];
 
-    const chNews = (e) => (state.src = e.target.title);
+    const chNews = (e) => (state.src = e.target.innerText);
 </script>
 
 <svelte:head>
@@ -29,9 +28,9 @@
 <section>
     <nav class="rpm-10px flex blur" on:click={chNews}>
         {#each pages as pg}
-            <div title={pg.name} class="ln {state.src === pg.name && 'blurW'}">
+            <button class="ln rpm-10px {state.src === pg.name && 'blurW'}">
                 {pg.name}
-            </div>
+            </button>
         {/each}
     </nav>
 
@@ -44,12 +43,10 @@
     nav {
         justify-content: space-around;
         .ln {
-            padding: 5px 10px;
-            border-radius: 5px;
             transform: scale(1);
-            cursor: pointer;
+            color: #fff;
             &:hover {
-                transform: scale(1.01);
+                transform: scale(1.1);
             }
         }
     }

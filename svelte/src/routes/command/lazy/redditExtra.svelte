@@ -22,7 +22,7 @@
                 src={redditImage(el.data?.preview?.images[0]) || fallback}
                 alt={el.data.title}
             />
-            <div style="font-weight:400;padding:5px;">
+            <div class="f-wt4 p-5px">
                 {@html el.data.title}
             </div>
         </a>

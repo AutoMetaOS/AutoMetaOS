@@ -15,22 +15,20 @@
     </div>
 {:then google}
     <details class="blurW rpm-5px w-100" style="padding:15px;" open>
-        <summary class="w-100" style="font-size:1.25em;font-weight:700;"
-            >Top News</summary
+        <summary class="w-100 f-wt7" style="font-size:1.25em;">Top News</summary
         >
         <p>
             {#each google as news}
                 {#each news.articles as article}
                     <a class="boxy m-5px p-10px flex" href={article.url}>
                         <div style="padding:20px 50x;">
-                            <div style="font-weight:400;font-size:0.75em;">
+                            <div class="f-wt4" style="font-size:0.75em;">
                                 {article.source}
                             </div>
-                            <div style="font-weight:500">
-                                {@html article.title}
-                            </div>
+                            <div class="f-wt5">{@html article.title}</div>
                             <div
-                                style="font-weight:400;color:#888;font-size:0.75em;"
+                                class="f-wt4"
+                                style="color:#888;font-size:0.75em;"
                             >
                                 {news.title}
                             </div>

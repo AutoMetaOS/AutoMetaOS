@@ -40,7 +40,7 @@
             y="110">浪人</text
         >
     </svg>
-    <div style="font-weight:700">Segment {@html segmenter(dateTime)}</div>
+    <div class="f-wt7">Segment {@html segmenter(dateTime)}</div>
     <div>{dateTime}</div>
 </div>
 

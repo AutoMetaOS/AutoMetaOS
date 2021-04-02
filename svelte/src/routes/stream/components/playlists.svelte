@@ -26,11 +26,10 @@
         {#each videos as vid}
             <div on:click={usePL} class="recom" id={vid.id.playlistId}>
                 <img src={vid.snippet.thumbnails.medium.url} alt="" />
-                <div class="name">
-                    {@html vid.snippet.title.slice(0, 60)}{vid.snippet.title
-                        .length > 60
-                        ? "..."
-                        : ""}
+                <div class="name" title={vid.snippet.title}>
+                    {@html vid.snippet.title.length > 60
+                        ? vid.snippet.title.slice(0, 60) + "..."
+                        : vid.snippet.title}
                 </div>
                 <div
                     class="channel flex"

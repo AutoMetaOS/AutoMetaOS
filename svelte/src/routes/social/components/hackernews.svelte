@@ -53,7 +53,7 @@
                     {n.title} - <i>{n.by}</i>
                     <span class="desc">{urlP(n.url)}</span>
                 </div>
-                <div class="desc" style="font-size: 0.8em;">
+                <div class="desc">
                     {n.score} points | {n.descendants} comments | {date(
                         n.time * 1e3
                     )}
@@ -65,6 +65,7 @@
 
 <style>
     .desc {
+        font-size: 0.8em;
         color: #888;
     }
 </style>

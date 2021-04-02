@@ -36,14 +36,6 @@
     });
 </script>
 
-<svelte:head>
-    <style>
-        body::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
-</svelte:head>
-
 <section class="flex">
     <div
         class="boxes rpm-0 w-50"
@@ -76,7 +68,6 @@
             color: #fff;
             background: #1ad;
             border-radius: 0;
-            cursor: pointer;
             height: 2em;
             width: 100px;
         }
