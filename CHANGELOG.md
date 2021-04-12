@@ -17,10 +17,13 @@
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-## v5.1.2
+## v5.2.0
 - Add realtime REPL for HTML/CSS/JS
 - Planetary Backgrounds
 - Improvements to Command
+- Change logger to URL based
+- Return to google search, add helios URL blocker
+- Efficent News processor
 
 
 ## v5.0.0

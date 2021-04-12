@@ -44,8 +44,7 @@ app.post( '/log', ( req, res ) => {
       const d = new Date();
 
       const file = `./config/logs/${ d.getFullYear() }${ mths[ d.getMonth() ] }.txt`;
-      const log =
-            `${ d.getTime() } ::${ d.toString() } ::@${ q.key } ::${ q.params };;\n`;
+      const log = `${ d.getTime() } ::${ q.url };;\n`;
       fs.appendFile( file, log, ( e ) => { if ( e ) throw e } );
       res.sendStatus( 204 );
 } );

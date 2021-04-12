@@ -1,0 +1,36 @@
+<script>
+  import { redditImage, fallback } from "$lib/shared/js/yoroi";
+  export let news;
+</script>
+
+<style type="text/scss">
+  .boxy2 {
+    border-radius: 3px;
+    &:hover {
+      background: #3338;
+    }
+    img {
+      border-radius: 5px;
+      object-fit: cover;
+      height: 200px;
+    }
+  }
+</style>
+
+{#each news.sort((a, b) => {
+  return new Date(a.data.created * 1e3) - new Date(b.data.created * 1e3);
+}) as el}
+  <div
+    class="boxy2 m-5px blurW"
+    style="width:{el.data.title.length > 280 ? '100%' : 'calc(50% - 10px)'}">
+    <a href={el.data.url_overridden_by_dest}>
+      <img
+        class="w-100"
+        src={redditImage(el.data?.preview?.images[0]) || fallback}
+        alt={el.data.title} />
+      <div class="f-wt4 p-5px">
+        {@html el.data.title}
+      </div>
+    </a>
+  </div>
+{/each}

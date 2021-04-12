@@ -1,22 +1,28 @@
-logs
-*.log
-
-*lock*.yaml
-*lock*.yml
-
-.svelte/
-build/
-
+# GEN
 .DS_Store
 **/.DS_Store
 **/*.DS_Store
+logs
+*.log
 
-.ipynb*/
-
+# NODE
+node_modules/
+*lock*.yaml
+*lock*.yml
 **/*.css.map
 **/*.js.map
 
+# APP
+.svelte/
+build/
+.ipynb*/
 **/config/
 
-# Dependency directories
-node_modules/
+# EXT
+**/Data/
+xcuserdata/
+.build/
+Carthage/Build/
+Dependencies/
+.accio/
+*.app/

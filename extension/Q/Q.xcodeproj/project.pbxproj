@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F434DF692624AB3C00107D32 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F881B525D3B16B00D10A81 /* Cocoa.framework */; };
+		F434DF6C2624AB3C00107D32 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = F434DF6B2624AB3C00107D32 /* blockerList.json */; };
+		F434DF6E2624AB3C00107D32 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434DF6D2624AB3C00107D32 /* ContentBlockerRequestHandler.swift */; };
+		F434DF732624AB3C00107D32 /* Helios.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F434DF682624AB3C00107D32 /* Helios.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F4F881A325D3B16900D10A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F881A225D3B16900D10A81 /* AppDelegate.swift */; };
 		F4F881A625D3B16900D10A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F881A425D3B16900D10A81 /* Main.storyboard */; };
 		F4F881A825D3B16900D10A81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F881A725D3B16900D10A81 /* ViewController.swift */; };
@@ -23,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F434DF712624AB3C00107D32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4F8819625D3B16900D10A81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F434DF672624AB3C00107D32;
+			remoteInfo = Helios;
+		};
 		F4F881B225D3B16B00D10A81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F4F8819625D3B16900D10A81 /* Project object */;
@@ -39,6 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				F434DF732624AB3C00107D32 /* Helios.appex in Embed App Extensions */,
 				F4F881B125D3B16B00D10A81 /* Q Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -47,6 +59,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F434DF682624AB3C00107D32 /* Helios.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Helios.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F434DF6B2624AB3C00107D32 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
+		F434DF6D2624AB3C00107D32 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
+		F434DF6F2624AB3C00107D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F434DF702624AB3C00107D32 /* Helios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helios.entitlements; sourceTree = "<group>"; };
 		F4F8819E25D3B16900D10A81 /* Q.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F881A125D3B16900D10A81 /* Q.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Q.entitlements; sourceTree = "<group>"; };
 		F4F881A225D3B16900D10A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +85,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F434DF652624AB3C00107D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F434DF692624AB3C00107D32 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4F8819B25D3B16900D10A81 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,11 +111,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F434DF6A2624AB3C00107D32 /* Helios */ = {
+			isa = PBXGroup;
+			children = (
+				F434DF6B2624AB3C00107D32 /* blockerList.json */,
+				F434DF6D2624AB3C00107D32 /* ContentBlockerRequestHandler.swift */,
+				F434DF6F2624AB3C00107D32 /* Info.plist */,
+				F434DF702624AB3C00107D32 /* Helios.entitlements */,
+			);
+			path = Helios;
+			sourceTree = "<group>";
+		};
 		F4F8819525D3B16900D10A81 = {
 			isa = PBXGroup;
 			children = (
 				F4F881A025D3B16900D10A81 /* Q */,
 				F4F881B725D3B16B00D10A81 /* Q Extension */,
+				F434DF6A2624AB3C00107D32 /* Helios */,
 				F4F881B425D3B16B00D10A81 /* Frameworks */,
 				F4F8819F25D3B16900D10A81 /* Products */,
 			);
@@ -101,6 +138,7 @@
 			children = (
 				F4F8819E25D3B16900D10A81 /* Q.app */,
 				F4F881B025D3B16B00D10A81 /* Q Extension.appex */,
+				F434DF682624AB3C00107D32 /* Helios.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,6 +192,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F434DF672624AB3C00107D32 /* Helios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F434DF742624AB3C00107D32 /* Build configuration list for PBXNativeTarget "Helios" */;
+			buildPhases = (
+				F434DF642624AB3C00107D32 /* Sources */,
+				F434DF652624AB3C00107D32 /* Frameworks */,
+				F434DF662624AB3C00107D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Helios;
+			productName = Helios;
+			productReference = F434DF682624AB3C00107D32 /* Helios.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F4F8819D25D3B16900D10A81 /* Q */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4F881C225D3B16B00D10A81 /* Build configuration list for PBXNativeTarget "Q" */;
@@ -167,6 +222,7 @@
 			);
 			dependencies = (
 				F4F881B325D3B16B00D10A81 /* PBXTargetDependency */,
+				F434DF722624AB3C00107D32 /* PBXTargetDependency */,
 			);
 			name = Q;
 			productName = Q;
@@ -199,6 +255,9 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					F434DF672624AB3C00107D32 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					F4F8819D25D3B16900D10A81 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -222,11 +281,20 @@
 			targets = (
 				F4F8819D25D3B16900D10A81 /* Q */,
 				F4F881AF25D3B16B00D10A81 /* Q Extension */,
+				F434DF672624AB3C00107D32 /* Helios */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F434DF662624AB3C00107D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F434DF6C2624AB3C00107D32 /* blockerList.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4F8819C25D3B16900D10A81 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +320,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F434DF642624AB3C00107D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F434DF6E2624AB3C00107D32 /* ContentBlockerRequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4F8819A25D3B16900D10A81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +348,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F434DF722624AB3C00107D32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F434DF672624AB3C00107D32 /* Helios */;
+			targetProxy = F434DF712624AB3C00107D32 /* PBXContainerItemProxy */;
+		};
 		F4F881B325D3B16B00D10A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F4F881AF25D3B16B00D10A81 /* Q Extension */;
@@ -291,6 +372,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F434DF752624AB3C00107D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Helios/Helios.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7SKKW27LPH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Helios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ronin.Q.Helios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F434DF762624AB3C00107D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Helios/Helios.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7SKKW27LPH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Helios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ronin.Q.Helios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		F4F881BC25D3B16B00D10A81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -418,7 +541,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourCompany.Q.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ronin.Q.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -437,7 +560,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourCompany.Q.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ronin.Q.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -451,7 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Q/Q.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7SKKW27LPH;
@@ -461,7 +584,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ronin.Q;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ronin.Q;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -474,7 +597,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Q/Q.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7SKKW27LPH;
@@ -484,7 +607,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ronin.Q;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ronin.Q;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -493,6 +616,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F434DF742624AB3C00107D32 /* Build configuration list for PBXNativeTarget "Helios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F434DF752624AB3C00107D32 /* Debug */,
+				F434DF762624AB3C00107D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F4F8819925D3B16900D10A81 /* Build configuration list for PBXProject "Q" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

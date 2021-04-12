@@ -10,7 +10,7 @@ import SafariServices.SFSafariApplication
 import SafariServices.SFSafariExtensionManager
 
 let appName = "Q"
-let extensionBundleIdentifier = "com.yourCompany.Q.Extension"
+let extensionBundleIdentifier = "com.Ronin.Q.Extension"
 
 class ViewController: NSViewController {
 
