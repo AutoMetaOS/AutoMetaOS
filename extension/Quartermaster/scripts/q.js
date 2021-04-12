@@ -17,9 +17,9 @@ setInterval
             document.querySelector( 'qnav ul' ).addEventListener( 'click', ( e ) => {
                 const cmd = e.target;
                 if ( cmd.dataset.cmd === 'gbar' ) {
-                    if ( window.location.host.includes( 'youtube' ) ) window.location.href = 'http://localhost:4000/stream?id=' + window.location.href.split( 'v=' )[ 1 ].split( '&' )[ 0 ];
+                    if ( window.location.host.includes( 'youtube' ) ) window.location.href = 'http://ronin.host:1873/stream?id=' + window.location.href.split( 'v=' )[ 1 ].split( '&' )[ 0 ];
 
-                    if ( window.location.host.includes( 'meet' ) ) window.location.href += '?bar=1';
+                    if ( window.location.host.includes( 'meet' ) ) window.location.href += window.location.href.includes( '?' )?'&':'?' + 'bar=1';
                 };
                 if ( cmd.dataset.cmd === 'iframe' ) window.location.href = document.querySelector( 'iframe' ).src;
                 if ( cmd.dataset.cmd === 'top' ) window.scrollTo( 0, 0 );
