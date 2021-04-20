@@ -1,29 +1,20 @@
 const app = require( 'fastify' )( { logger: 0 } );
-const path = require( 'path' );
 const fs = require( 'fs' );
 const mths = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC' ];
 const port = process.env.PORT || 1872;
 const db = './config/database/';
 
-// app.use( express.json() );
-app.register( require( './js/security' ) );
 app.register( require( './js/google' ) );
 app.register( require( './js/socials' ) );
-app.register( require( './js/macos' ) );
 app.register( require( 'fastify-cors' ), {} )
-app.register( require( 'fastify-static' ), { root: path.join( __dirname, '../svelte/build/' ), prefix: '/' } );
 
-// ROUTES
-// app.get( '/', function ( req, res ) {
-//       return res.sendFile( 'index.html' );
-// } );
-
-// app.get( '/:file', function ( req, res ) {
-//       const file = req.params.file;
-//       const options = fs.readdirSync( 'public' ).filter( e => e.includes( '.html' ) );
-//       if ( options.includes( file + '.html' ) ) return res.sendFile( req.params.file + '.html' );
-//       else return res.sendFile( 'index.html' );
-// } );
+fastify.get( '/sys/smc', ( req, res ) => {
+      exec( 'smckit', ( err, sto, sterr ) => {
+            const data = sto.split( '\n' ).map( o => o.split( '\x1B[0;0m' )[ 1 ] );
+            const stats = { "cpu": data[ 1 ].trim(), "board": data[ 2 ].trim(), "fan": data[ 14 ].trim() };
+            res.send( stats );
+      } );
+} );
 
 // APIs
 app.post( '/data/:file', ( req, res ) => {

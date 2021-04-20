@@ -5,7 +5,7 @@ const pkg = require( './package.json' );
 module.exports = {
 	preprocess: sveltePreprocess(),
 	kit: {
-		adapter: node(),
+		adapter: static(),
 
 		files: {
 			assets: 'static',
