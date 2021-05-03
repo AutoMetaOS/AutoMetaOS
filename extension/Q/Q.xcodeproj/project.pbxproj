@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F434DF692624AB3C00107D32 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F881B525D3B16B00D10A81 /* Cocoa.framework */; };
-		F434DF6C2624AB3C00107D32 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = F434DF6B2624AB3C00107D32 /* blockerList.json */; };
-		F434DF6E2624AB3C00107D32 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434DF6D2624AB3C00107D32 /* ContentBlockerRequestHandler.swift */; };
-		F434DF732624AB3C00107D32 /* Helios.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F434DF682624AB3C00107D32 /* Helios.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F4F881A325D3B16900D10A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F881A225D3B16900D10A81 /* AppDelegate.swift */; };
 		F4F881A625D3B16900D10A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F881A425D3B16900D10A81 /* Main.storyboard */; };
 		F4F881A825D3B16900D10A81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F881A725D3B16900D10A81 /* ViewController.swift */; };
@@ -27,13 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F434DF712624AB3C00107D32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F4F8819625D3B16900D10A81 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F434DF672624AB3C00107D32;
-			remoteInfo = Helios;
-		};
 		F4F881B225D3B16B00D10A81 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F4F8819625D3B16900D10A81 /* Project object */;
@@ -50,7 +40,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F434DF732624AB3C00107D32 /* Helios.appex in Embed App Extensions */,
 				F4F881B125D3B16B00D10A81 /* Q Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -60,10 +49,6 @@
 
 /* Begin PBXFileReference section */
 		F434DF682624AB3C00107D32 /* Helios.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Helios.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		F434DF6B2624AB3C00107D32 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
-		F434DF6D2624AB3C00107D32 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
-		F434DF6F2624AB3C00107D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F434DF702624AB3C00107D32 /* Helios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helios.entitlements; sourceTree = "<group>"; };
 		F4F8819E25D3B16900D10A81 /* Q.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F881A125D3B16900D10A81 /* Q.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Q.entitlements; sourceTree = "<group>"; };
 		F4F881A225D3B16900D10A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,23 +96,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F434DF6A2624AB3C00107D32 /* Helios */ = {
-			isa = PBXGroup;
-			children = (
-				F434DF6B2624AB3C00107D32 /* blockerList.json */,
-				F434DF6D2624AB3C00107D32 /* ContentBlockerRequestHandler.swift */,
-				F434DF6F2624AB3C00107D32 /* Info.plist */,
-				F434DF702624AB3C00107D32 /* Helios.entitlements */,
-			);
-			path = Helios;
-			sourceTree = "<group>";
-		};
 		F4F8819525D3B16900D10A81 = {
 			isa = PBXGroup;
 			children = (
 				F4F881A025D3B16900D10A81 /* Q */,
 				F4F881B725D3B16B00D10A81 /* Q Extension */,
-				F434DF6A2624AB3C00107D32 /* Helios */,
 				F4F881B425D3B16B00D10A81 /* Frameworks */,
 				F4F8819F25D3B16900D10A81 /* Products */,
 			);
@@ -222,7 +195,6 @@
 			);
 			dependencies = (
 				F4F881B325D3B16B00D10A81 /* PBXTargetDependency */,
-				F434DF722624AB3C00107D32 /* PBXTargetDependency */,
 			);
 			name = Q;
 			productName = Q;
@@ -291,7 +263,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F434DF6C2624AB3C00107D32 /* blockerList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +295,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F434DF6E2624AB3C00107D32 /* ContentBlockerRequestHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,11 +318,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F434DF722624AB3C00107D32 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F434DF672624AB3C00107D32 /* Helios */;
-			targetProxy = F434DF712624AB3C00107D32 /* PBXContainerItemProxy */;
-		};
 		F4F881B325D3B16B00D10A81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F4F881AF25D3B16B00D10A81 /* Q Extension */;

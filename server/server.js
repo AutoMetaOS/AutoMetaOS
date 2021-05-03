@@ -1,14 +1,27 @@
 const app = require( 'fastify' )( { logger: 0 } );
 const fs = require( 'fs' );
+const { exec } = require( 'child_process' );
 const mths = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC' ];
 const port = process.env.PORT || 1872;
 const db = './config/database/';
+const FastSpeedtest = require( "fast-speedtest-api" );
 
 app.register( require( './js/google' ) );
 app.register( require( './js/socials' ) );
 app.register( require( 'fastify-cors' ), {} )
 
-fastify.get( '/sys/smc', ( req, res ) => {
+
+
+
+app.get( '/sys/net', ( req, res ) => {
+      let speedtest = new FastSpeedtest( {
+            token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm", timeout: 2e3, bufferSize: 16, unit: FastSpeedtest.UNITS.MBps,
+      } );
+      speedtest.getSpeed().then( s => res.send( s.toFixed( 2 ) ) ).catch( e => console.error( e.message ) );
+
+} );
+
+app.get( '/sys/smc', ( req, res ) => {
       exec( 'smckit', ( err, sto, sterr ) => {
             const data = sto.split( '\n' ).map( o => o.split( '\x1B[0;0m' )[ 1 ] );
             const stats = { "cpu": data[ 1 ].trim(), "board": data[ 2 ].trim(), "fan": data[ 14 ].trim() };

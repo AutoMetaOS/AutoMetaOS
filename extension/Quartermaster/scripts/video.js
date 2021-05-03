@@ -55,5 +55,5 @@ app.setup = () => {
     }
     if ( document.querySelector( 'video' ) ) app.speed = document.querySelector( 'video' ).playbackRate || 1.6;
 }
-setInterval( app.setup, 2000 )
+//setInterval( app.setup, 2000 )
 app.maintain_speed()

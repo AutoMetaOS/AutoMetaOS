@@ -1,5 +1,6 @@
 <script>
   import { engine, preprocessor } from "$lib/shared/js/samurai";
+  import { onMount } from "svelte";
   let magic;
 
   const go = (e) => {
@@ -21,11 +22,13 @@
     }
     return send;
   };
+
+  onMount(() => magic.focus());
 </script>
 
 <style type="text/scss">
   form {
-    padding-top: 22.5%;
+    padding-top: 25%;
     justify-content: center;
     .wrapper {
       background: transparent;
@@ -74,7 +77,7 @@
       <img id="engineImage" src="/icons/Basic.svg" alt="" />
       <input on:keyup={go} bind:this={magic} id="magic" required size="150" />
     </div>
-    <input id="submit" type="submit" value="SEARCH" autofocus />
+    <input id="submit" type="submit" value="SEARCH" />
   </form>
   <div class="p-10px" style="width:calc(100% - 1em);margin-top:0.5em;">
     <ul id="autoComplete" class="blur m-h-auto o-100" />

@@ -12,6 +12,12 @@ export const smc = async () => {
     return json;
 };
 
+export const net = async () => {
+    const req = await fetch( serverURL + 'sys/net' );
+    const text = await req.text();
+    return text;
+};
+
 export const getReddit = async ( sub ) => {
     const raw = await fetch( "https://www.reddit.com/r/" + sub + "/top/.json?limit=3" );
     const json = await raw.json();

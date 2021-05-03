@@ -10,7 +10,7 @@ const filterOut = [
     "hockey", "rugby",
     "cricinfo",
 
-    "madrid", "fifa", "juventus", "F.C.",
+    "madrid", "fifa", "juventus", "F.C.", "FC",
 
     // TECH
     "oppo", "oneplus", "motorola", "vivo", "realme",
