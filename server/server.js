@@ -24,7 +24,7 @@ app.get( '/sys/net', ( req, res ) => {
 app.get( '/sys/smc', ( req, res ) => {
       exec( 'smckit', ( err, sto, sterr ) => {
             const data = sto.split( '\n' ).map( o => o.split( '\x1B[0;0m' )[ 1 ] );
-            const stats = { "cpu": data[ 1 ].trim(), "board": data[ 2 ].trim(), "fan": data[ 14 ].trim() };
+            const stats = { "cpu": data[ 1 ].trim()?.split( '.' )[ 0 ], "board": data[ 2 ].trim()?.split( '.' )[ 0 ], "fan": data[ 14 ].trim().replace( ' RPM', '' ) };
             res.send( stats );
       } );
 } );
