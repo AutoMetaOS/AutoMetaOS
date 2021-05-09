@@ -1,6 +1,8 @@
 <script>
   import { redditImage, fallback } from "$lib/shared/js/yoroi";
   export let news;
+
+  import { show } from "../store";
 </script>
 
 <style type="text/scss">
@@ -23,14 +25,18 @@
   <div
     class="boxy2 m-5px blurW"
     style="width:{el.data.title.length > 280 ? '100%' : 'calc(50% - 10px)'}">
-    <a href={el.data.url_overridden_by_dest}>
-      <img
-        class="w-100"
-        src={redditImage(el.data?.preview?.images[0]) || fallback}
-        alt={el.data.title} />
-      <div class="f-wt4 p-5px">
+    <img
+      class="w-100"
+      src={redditImage(el.data?.preview?.images[0]) || fallback}
+      alt={el.data.title} />
+    <div class="f-wt4 p-5px">
+      <a href={el.data.url_overridden_by_dest}>
         {@html el.data.title}
-      </div>
-    </a>
+      </a>
+      <button
+        class="p-5 w-100"
+        style="color:#fff8;text-align: right;"
+        on:click={() => show(el.data.url_overridden_by_dest)}>See &rarr;</button>
+    </div>
   </div>
 {/each}

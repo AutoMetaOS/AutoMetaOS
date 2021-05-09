@@ -7,12 +7,8 @@ module.exports = {
 	kit: {
 		adapter: node(),
 
-		files: {
-			assets: 'static',
-			lib: 'src/lib',
-		},
+		files: { assets: 'static', lib: 'src/lib' },
 
-		// hydrate the <div id="svelte"> element in src/app.html
 		target: 'body',
 
 		vite: {

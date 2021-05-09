@@ -25,11 +25,13 @@ export const w3 = {
     <head>
         <style>
         body{
-            color: #fff;
             background: #ccc;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
         }
         h1{
-            text-align:center;
             font: lighter 30px Helvetica;
             color: #f42;
         }

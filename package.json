@@ -1,19 +1,17 @@
 {
     "name": "ronin",
-    "version": "5.2.0",
+    "version": "5.3.0",
     "license": "MIT",
     "private": true,
     "author": {
         "name": "Plutoniumm",
-        "email": "plutniumm@icloud.com",
-        "url": "https://me.nukes.in"
+        "email": "plutoniumm@icloud.com"
     },
     "contributors": [],
     "scripts": {
         "dev": "cd ./svelte && npm run dev",
         "build": "cd ./svelte && npm run build",
         "client": "cd ./svelte && npm run start",
-        "notes": "cd ./config/notes && ijsnotebook",
         "server": "clear && node ./server/server.js",
         "start": "clear && node ./server/server.js & npm run client"
     },
@@ -23,7 +21,6 @@
         "fastify-cors": "^5.2.0",
         "fastify-static": "4.0.1",
         "google-trends-api": "^4.9.2",
-        "ijavascript": "5.2.0",
         "minimist": "1.2.5",
         "node-fetch": "2.6.1",
         "pg": "8.5.1",

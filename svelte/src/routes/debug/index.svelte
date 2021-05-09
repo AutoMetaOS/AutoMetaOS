@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { w3, replLinks, debounce } from "./micro/functions";
+  import { w3, replLinks, debounce } from "./functions";
 
   let //
     iframe,

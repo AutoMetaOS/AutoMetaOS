@@ -3,10 +3,8 @@
 
   import TopBar from "./command/micro/topbar.svelte";
   import SummaryBox from "./command/micro/sumbox.svelte";
-
   import Search from "./command/components/search.svelte";
-  //   import Alerts from "./command/components/alerts.svelte";
-
+  import IFrame from "./command/components/ifr.svelte";
   import News from "./command/lazy/news.svelte";
 
   const state = { news: 0 };
@@ -112,6 +110,7 @@
       viewBox="0 0 32 32"
       width="25"
       height="25"
+      fill="none"
       stroke="currentcolor"
       stroke-width="1">
       <path d="M30 12 L16 24 2 12" />
@@ -126,3 +125,5 @@
     {/if}
   </div>
 </section>
+
+<IFrame />

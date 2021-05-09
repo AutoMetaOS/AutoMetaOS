@@ -14,10 +14,10 @@ app.register( require( 'fastify-cors' ), {} )
 
 
 app.get( '/sys/net', ( req, res ) => {
-      let speedtest = new FastSpeedtest( {
+      let speedTest = new FastSpeedtest( {
             token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm", timeout: 2e3, bufferSize: 16, unit: FastSpeedtest.UNITS.MBps,
       } );
-      speedtest.getSpeed().then( s => res.send( s.toFixed( 2 ) ) ).catch( e => console.error( e.message ) );
+      speedTest.getSpeed().then( s => res.send( s.toFixed( 2 ) ) ).catch( e => console.error( e.message ) );
 
 } );
 
@@ -41,16 +41,6 @@ app.get( '/data/:file', ( req, res ) => {
       const which = req.params.file;
       const file = fs.readFileSync( db + which, 'utf-8' );
       res.send( file );
-} );
-
-app.post( '/log', ( req, res ) => {
-      const q = req.query;
-      const d = new Date();
-
-      const file = `./config/logs/${ d.getFullYear() }${ mths[ d.getMonth() ] }.txt`;
-      const log = `${ d.getTime() } ::${ q.url };;\n`;
-      fs.appendFile( file, log, ( e ) => { if ( e ) throw e } );
-      res.sendStatus( 204 );
 } );
 
 app.listen( port, console.log( 'Server listening on PORT:' + port ) );
