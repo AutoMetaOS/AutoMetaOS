@@ -1,7 +1,9 @@
 import { writable, get } from 'svelte/store';
+import { getRecents } from "./api";
 
 export const vId = writable( "" );
 export const stack = writable( [] );
+export const substack = writable( [] );
 
 export const vidoer = ( e ) => {
     vId.set( e.target.parentElement.id );
@@ -27,4 +29,24 @@ export const destacker = ( i ) => {
         localStorage.setItem( trk, JSON.stringify( get( stack ) ) );
         chURL( "stack", trk );
     } else chURL( "stack", "" );
+};
+
+import cnls from "../../../lib/config/channels.json";
+
+export const channels = () => {
+    const size = 49;
+    let chanList = new Array( Math.ceil( cnls.length / size ) );
+    for ( let i = 0;i < chanList.length;i++ )
+        chanList[ i ] = cnls.splice( 0, size );
+
+    chanList.forEach( ( cList ) => {
+        getRecents( cList ).then(
+            ( arr ) => {
+                substack.set( [ ...get( substack ), ...( arr || {} ) ] )
+                console.log( get( substack ) );
+            }
+        );
+    } );
+
+    return 0;
 };

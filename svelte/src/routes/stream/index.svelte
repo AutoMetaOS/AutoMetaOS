@@ -6,35 +6,15 @@
     import Search from "./components/search.svelte";
     import Plist from "./components/playlists.svelte";
 
-    import cnls from "$lib/config/channels.json";
-
-    const size = 49;
-    const chanList = new Array(Math.ceil(cnls.length / size));
-    for (let i = 0; i < chanList.length; i++)
-        chanList[i] = cnls.splice(0, size);
-
     import { onMount } from "svelte";
-    import { vId, stack } from "./core/store";
+    import { vId, stack, channels } from "./core/store";
 
-    import { search, plSearch, getRecents } from "./core/api";
+    import { search, plSearch } from "./core/api";
 
     let [base, plStack] = [[], []];
-    $: substack = [];
-
-    const channels = () => {
-        substack = [];
-        chanList.forEach((cList) => {
-            getRecents(cList).then(
-                (arr) => (substack = [...substack, ...(arr || {})])
-            );
-        });
-        
-        return 0;
-    };
 
     const searcher = (sc) => {
         const q = typeof sc === "string" ? sc : sc.target[0].value;
-        console.log(q);
         if (!q) {
             chURL("q", "");
             return 0;
@@ -53,6 +33,9 @@
         vId.set(URLpars().id);
         if (URLpars().stack)
             stack.set(JSON.parse(localStorage.getItem(URLpars().stack)));
+        // if (window.location.href.split("/stream")[1] === "") channels();
+
+        return 0;
     });
 </script>
 
@@ -63,7 +46,7 @@
     {/if}
     <Queue />
     <Search videos={base} />
-    <Subsc videos={substack} />
+    <Subsc />
     <Plist videos={plStack} />
 </main>
 

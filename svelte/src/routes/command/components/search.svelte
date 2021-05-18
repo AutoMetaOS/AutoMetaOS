@@ -79,7 +79,7 @@
     </div>
     <input id="submit" type="submit" value="SEARCH" />
   </form>
-  <div class="p-10px" style="width:calc(100% - 1em);margin-top:0.5em;">
+  <div class="p-10" style="width:calc(100% - 1em);margin-top:0.5em;">
     <ul id="autoComplete" class="blur m-h-auto o-100" />
   </div>
 </section>

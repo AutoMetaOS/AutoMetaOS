@@ -15,12 +15,12 @@
   }
 </style>
 
-<details class="blurW rpm-5px w-100" style="padding:15px;" open>
+<details class="blurW rpm-5 w-100" style="padding:15px;" open>
   <summary class="w-100 f-wt7" style="font-size:1.25em;">Top News</summary>
   <p>
     {#each google as news}
       {#each news.articles as article}
-        <a class="boxy m-5px p-10px flex" href={article.url}>
+        <a class="boxy m-5 p-10 flex" href={article.url}>
           <div style="padding:20px 50x;">
             <div class="f-wt4" style="font-size:0.75em;">{article.source}</div>
             <div class="f-wt5">

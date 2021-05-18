@@ -23,13 +23,13 @@
   return new Date(a.data.created * 1e3) - new Date(b.data.created * 1e3);
 }) as el}
   <div
-    class="boxy2 m-5px blurW"
+    class="boxy2 m-5 blurW"
     style="width:{el.data.title.length > 280 ? '100%' : 'calc(50% - 10px)'}">
     <img
       class="w-100"
       src={redditImage(el.data?.preview?.images[0]) || fallback}
       alt={el.data.title} />
-    <div class="f-wt4 p-5px">
+    <div class="f-wt4 p-5">
       <a href={el.data.url_overridden_by_dest}>
         {@html el.data.title}
       </a>

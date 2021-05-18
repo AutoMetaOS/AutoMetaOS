@@ -42,7 +42,7 @@
       <div class="container flex">
         {#each n.articles as nSub}
           <div class="innerCont">
-            <a class="body m-10px flex" href={nSub.url}>
+            <a class="body m-10 flex" href={nSub.url}>
               <img src={nSub.image} alt="" />
               <div>
                 <div class="by"><i>{nSub.source}</i></div>

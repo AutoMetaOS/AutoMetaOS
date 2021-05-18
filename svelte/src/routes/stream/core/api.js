@@ -1,4 +1,4 @@
-import { YT_KEY, NEBULA_KEY, NEBULA_TOKEN } from '$lib/config/keys'
+import { YT_KEY } from '$lib/config/keys'
 
 export const YT = 'https://youtube.googleapis.com/youtube/v3/';
 
@@ -28,40 +28,4 @@ export const getRecents = async ( ids ) => {
             } )
     );
     return videoList.flat();
-}
-
-const apiZype = 'https://api.zype.com/';
-const playerZype = 'https://player.zype.com/embed/';
-const channelURL = apiZype + 'zobjects?zobject_type=channel&id=';
-const following = apiZype + 'zobjects?zobject_type=following&user=prod-215332&per_page=100&' + NEBULA_KEY;
-const playlistURL = apiZype + 'videos?per_page=5&sort=published_at&order=desc&playlist_id.inclusive=';
-
-const userPlaylistGetter = async ( id ) => {
-    // GET USER PROFILE
-    const response = await fetch( `${ channelURL }${ id }&${ NEBULA_KEY }` );
-    const channel = await response.json();
-    // GET PLAYLIST from URL
-    const channelDeets = await fetch( `${ playlistURL }${ channel.response[ 0 ].playlist_id }&${ NEBULA_KEY }` );
-    const playlist = await channelDeets.json();
-    const reducedPlaylist = playlist.response.map( e => {
-        return {
-            title: e.title,
-            embedURL: playerZype + e._id + NEBULA_TOKEN,
-            date: e.created_at,
-            channel: channel.response[ 0 ].friendly_title,
-            thumb: e.thumbnails[ 1 ]
-        }
-    } )
-    return reducedPlaylist;
-}
-
-export const getneb = () => {
-    fetch( following )
-        .then( response => response.json() )
-        .then( followList => {
-            let replies = followList.response.map( channel => userPlaylistGetter( channel.channel ) );
-            Promise.all( replies ).then( response => {
-                fs.writeFileSync( './replies.json', JSON.stringify( response ) );
-            } )
-        } )
 }
