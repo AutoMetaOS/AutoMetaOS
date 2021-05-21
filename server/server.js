@@ -5,8 +5,10 @@ const { exec } = require( 'child_process' );
 const port = process.env.PORT || 1872;
 // const db = './config/database/';
 const FastSpeedtest = require( "fast-speedtest-api" );
+const urlMetadata = require( 'url-metadata' )
 
 app.register( require( './js/google' ) );
+app.register( require( './js/notes' ) );
 app.register( require( './js/socials' ) );
 app.register( require( 'fastify-cors' ), {} )
 
@@ -28,7 +30,13 @@ app.get( '/sys/smc', ( req, res ) => {
 
 // APIs
 app.get( '/requestMetadata', ( req, res ) => {
-      console.log( req.body );
+      const URI = req.query.url;
+      urlMetadata( URI ).then(
+            ( metadata ) => {
+                  res.send( { "success": 1, "meta": { "title": metadata.title, "description": metadata.description, "image": { "url": metadata.image } } } );
+            },
+            ( e ) => { console.log( e ) }
+      );
 } );
 
 app.listen( port, console.log( 'Server listening on PORT:' + port ) );

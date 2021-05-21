@@ -1,42 +1,4 @@
 <script>
-    import { onMount } from "svelte";
-
-    let editor;
-    export let data;
-
-    onMount(() => {
-        editor = new EditorJS({
-            holder: "editorOfNotes",
-            tools: {
-                header: {
-                    class: Header,
-                    inlineToolbar: ["link"],
-                },
-
-                image: {
-                    class: SimpleImage,
-                    inlineToolbar: ["link"],
-                },
-                list: {
-                    class: List,
-                    inlineToolbar: ["link"],
-                },
-                link: {
-                    class: LinkTool,
-                    inlineToolbar: ["link"],
-                    config: {
-                        endpoint: serverURL + "/requestMetadata", // Your backend endpoint for url data fetching
-                    },
-                },
-                embed: {
-                    class: Embed,
-                    inlineToolbar: ["link"],
-                },
-            },
-            data,
-        });
-        console.log(serverURL);
-    });
 </script>
 
 <section id="editorOfNotes" />

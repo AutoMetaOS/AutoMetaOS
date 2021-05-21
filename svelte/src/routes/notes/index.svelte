@@ -1,59 +1,62 @@
 <script>
     import List from "./components/files.svelte";
     import Editor from "./components/editor.svelte";
+    import { onMount } from "svelte";
 
-    let data = {
-        blocks: [
-            {
-                type: "header",
-                data: {
-                    text: "Header 1",
-                    level: 1,
-                },
-            },
-            {
-                type: "paragraph",
-                data: {
-                    text: "Hey. Meet the new Editor. On this page you can see it in action — try to edit this text. Source code of the page contains the example of connection and configuration.",
-                },
-            },
+    import { getNotes } from "./components/api";
+    import { notesList, editorData } from "./components/store";
 
-            {
-                type: "list",
-                data: {
-                    items: [
-                        "It is a block-style editor",
-                        "It returns clean data output in JSON",
-                        "Designed to be extendable and pluggable with a simple API",
-                    ],
-                    style: "unordered",
-                },
-            },
+    let tools;
+    $: editor = 1;
 
-            {
-                type: "image",
-                data: {
-                    url: "https://picsum.photos/200",
-                    caption: "Random image From Picsum",
-                },
-            },
-            {
-                type: "link",
-                data: {
-                    link: "https://codex.so",
-                    meta: {
-                        title: "CodeX Team",
-                        site_name: "CodeX",
-                        description:
-                            "Club of web-development, design and marketing. We build team learning how to build full-valued projects on the world market.",
-                        image: {
-                            url: "https://codex.so/public/app/img/meta_img.png",
-                        },
-                    },
-                },
-            },
-        ],
+    const updateEditor = (e) => {
+        const mainEditor = document.querySelector("#editorOfNotes");
+        if (!(mainEditor.dataset.id === e.detail.data.id)) {
+            mainEditor.innerHTML = null;
+            editor = new EditorJS({
+                holder: "editorOfNotes",
+                tools,
+                data: JSON.parse(e.detail.data.body),
+            });
+            mainEditor.setAttribute("data-id", e.detail.data.id);
+        }
     };
+
+    onMount(() => {
+        getNotes().then((r) => ($notesList = r));
+
+        tools = {
+            header: {
+                class: Header,
+                inlineToolbar: ["link"],
+            },
+
+            image: {
+                class: SimpleImage,
+                inlineToolbar: ["link"],
+            },
+            list: {
+                class: List,
+                inlineToolbar: ["link"],
+            },
+            link: {
+                class: LinkTool,
+                inlineToolbar: ["link"],
+                config: {
+                    endpoint: serverURL + "requestMetadata", // Your backend endpoint for url data fetching
+                },
+            },
+            embed: {
+                class: Embed,
+                inlineToolbar: ["link"],
+            },
+        };
+        editor = new EditorJS({
+            holder: "editorOfNotes",
+            tools,
+            data: $editorData,
+        });
+    });
 </script>
 
 <svelte:head>
@@ -65,25 +68,28 @@
             min-height: 100vh;
         }
     </style>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
+    <script src="/helpers/notes/editorjs.js"></script>
+    <script src="/helpers/notes/list.js"></script>
+    <script src="/helpers/notes/embed.js"></script>
+    <script src="/helpers/notes/link.js"></script>
+    <script src="/helpers/notes/header.js"></script>
+    <script src="/helpers/notes/simple-image.js"></script>
 </svelte:head>
 
 <main class="flex">
     <nav class="lhs">
-        <header class="p-20" style="background:#eee;">Terrelysium</header>
+        <header class="p-20 flex" style="background:#eee;">
+            <img src="/icons/terrelys.svg" width="28px" height="28px" alt="" />
+            <div style="position:relative;top:1px;left:5px;font-size:24px;">
+                Terrelysium
+            </div>
+        </header>
         <lower>
-            <List />
+            <List on:message={updateEditor} />
         </lower>
     </nav>
     <main class="rhs">
-        <Editor {data} />
+        <Editor />
     </main>
 </main>
 
