@@ -1,17 +1,13 @@
 {
     "name": "ronin",
-    "version": "5.3.0",
+    "version": "5.4.0",
     "license": "MIT",
     "private": true,
-    "author": {
-        "name": "Plutoniumm",
-        "email": "plutoniumm@icloud.com"
-    },
     "contributors": [],
     "scripts": {
-        "dev": "cd ./svelte && npm run dev",
-        "build": "cd ./svelte && npm run build",
-        "client": "cd ./svelte && npm run start",
+        "dev": "cd ./svelte &&  npx svelte-kit dev",
+        "build": "cd ./svelte && npx svelte-kit build",
+        "client": "cd ./svelte && npx svelte-kit preview --port 1873",
         "server": "clear && node ./server/server.js",
         "start": "clear && node ./server/server.js & npm run client"
     },
@@ -24,7 +20,6 @@
         "minimist": "1.2.5",
         "node-fetch": "2.6.1",
         "pg": "8.5.1",
-        "playwright": "1.8.0",
         "rss-parser": "^3.12.0"
     },
     "dependencies": {

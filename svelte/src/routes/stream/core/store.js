@@ -5,6 +5,13 @@ export const vId = writable( "" );
 export const stack = writable( [] );
 export const substack = writable( [] );
 
+export const videoSet = ( e ) => {
+    vId.set( e.target.parentElement.dataset.url );
+    chURL( "id", encodeURIComponent( get( vId ) ) );
+    window.scrollTo( 0, 0 );
+    document.title = e.target.parentElement.dataset.title;
+};
+
 export const vidoer = ( e ) => {
     vId.set( e.target.parentElement.id );
     chURL( "id", get( vId ) );

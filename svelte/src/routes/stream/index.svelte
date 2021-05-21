@@ -6,6 +6,8 @@
     import Search from "./components/search.svelte";
     import Plist from "./components/playlists.svelte";
 
+    import NebSubsc from "./componentsNebula/subscriptions.svelte";
+
     import { onMount } from "svelte";
     import { vId, stack, channels } from "./core/store";
 
@@ -30,10 +32,10 @@
 
     onMount(() => {
         URLpars().q && searcher(URLpars().q);
-        vId.set(URLpars().id);
+        vId.set(decodeURIComponent(URLpars().id || ""));
         if (URLpars().stack)
             stack.set(JSON.parse(localStorage.getItem(URLpars().stack)));
-        // if (window.location.href.split("/stream")[1] === "") channels();
+        if (window.location.href.split("/stream")[1] === "") channels();
 
         return 0;
     });
@@ -41,12 +43,11 @@
 
 <main>
     <Bar {searcher} {channels} />
-    {#if $vId}
-        <Player />
-    {/if}
+    <Player />
     <Queue />
     <Search videos={base} />
     <Subsc />
+    <NebSubsc />
     <Plist videos={plStack} />
 </main>
 

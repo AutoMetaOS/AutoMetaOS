@@ -33,14 +33,14 @@ const smartFilter = ( item ) => {
     return 1;
 };
 
-async function routes ( fastify, options ) {
-    fastify.get( '/social/google/search', ( req, res ) => {
+async function routes ( app, options ) {
+    app.get( '/social/google/search', ( req, res ) => {
         fetch( 'https://www.google.com/search?client=toolbar&source=hp&q=' + req.query.q )
             .then( res => res.text() )
             .then( r => res.send( r ) );
     } );
 
-    fastify.get( '/social/google/trends', ( req, res ) => {
+    app.get( '/social/google/trends', ( req, res ) => {
         const locations = [ 'US', 'GB', 'IN' ];
         Promise.all( locations.map( e => googleTrends.dailyTrends( { geo: e } ) ) )
             .then( result => {
@@ -68,7 +68,7 @@ async function routes ( fastify, options ) {
             .catch( err => console.log( err ) );
     } );
 
-    fastify.get( '/social/google/top-trends', ( req, res ) => {
+    app.get( '/social/google/top-trends', ( req, res ) => {
         const locations = [ 'US', 'GB', 'IN' ];
         Promise.all( locations.map( e => googleTrends.dailyTrends( { geo: e } ) ) )
             .then( result => {

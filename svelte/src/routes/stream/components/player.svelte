@@ -3,29 +3,37 @@
 
     import { vId } from "../core/store";
 
-    const [ext, yt, ald, sbx] = [
-        "?autoplay=1&enablejsapi=1",
-        "https://www.youtube-nocookie.com/embed/",
+    let [allow, sandbox] = [
         "accelerometer;autoplay;clipboard-write;encrypted-media;picture-in-picture",
         "allow-scripts allow-same-origin",
     ];
 </script>
 
-<div class="w-100" id="wrapper">
-    <iframe
-        title="vid"
-        class="w-100"
-        bind:this={maxwell}
-        src={`${yt}${$vId}${ext}`}
-        allow={ald}
-        sandbox={sbx}
-    />
-</div>
+{#if $vId}
+    <div class="w-100" id="wrapper">
+        <iframe
+            title="vid"
+            class="w-100"
+            bind:this={maxwell}
+            src={$vId}
+            {allow}
+            {sandbox}
+        />
+    </div>
+{:else}
+    <div
+        class="w-100 tx-c"
+        style="height:400px;margin-top: 10%;font: italic 100 48px Helvetica;"
+    >
+        Helios
+    </div>
+{/if}
 
 <style type="text/scss">
     #wrapper {
         height: 100vh;
-        iframe {
+        iframe,
+        .iframe {
             height: 100%;
             border: 0;
             background: #111;

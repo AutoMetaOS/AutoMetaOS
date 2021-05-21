@@ -1,7 +1,6 @@
 # GEN
 .DS_Store
 **/.DS_Store
-**/*.DS_Store
 logs
 *.log
 
@@ -13,6 +12,7 @@ node_modules/
 **/*.js.map
 
 # APP
+.svelte-kit/
 .svelte/
 build/
 .ipynb*/

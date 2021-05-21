@@ -1,4 +1,4 @@
-import { writable, get } from 'svelte/store';
+import { writable } from 'svelte/store';
 import { getneb } from "./nebulaAPI";
 
 export const subscriptions = writable( [] );

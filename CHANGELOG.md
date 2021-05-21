@@ -1,10 +1,7 @@
 # Changelog
 
 ## Pending
-- System hourly stats logger - Fan Speed, CPU+MB Temp, Battery level
 - Uptime session logger/shutdown script
-- Create a development system with API testing in browser, test scripts editing etc...
-- Add goto top button in Quartermaster
 
 ## Code Quality
 - Add a testing system
@@ -16,6 +13,9 @@
 - DOn't do i=0;i<a.length. It reads length repeatedly and is shit. Do. i=0,j=a.length;i<j; or predeclare
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
+
+## v5.2.0
+- Minor Refactors to Stream + Weak Support for Nebula
 
 ## v5.2.0
 - Add realtime REPL for HTML/CSS/JS

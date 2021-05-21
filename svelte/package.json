@@ -7,13 +7,21 @@
 		"start": "svelte-kit start --port 1873"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "next",
 		"@sveltejs/adapter-node": "next",
+		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
-		"svelte": "^3.29.0",
-		"vite": "^2.1.0",
 		"sass": "^1.0.0",
-		"svelte-preprocess": "^4.0.0"
+		"svelte": "^3.29.0",
+		"svelte-preprocess": "^4.0.0",
+		"vite": "^2.1.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@editorjs/editorjs": "^2.21.0",
+		"@editorjs/embed": "^2.4.6",
+		"@editorjs/header": "^2.6.1",
+		"@editorjs/list": "^1.6.2",
+		"@editorjs/quote": "^2.4.0",
+		"@editorjs/simple-image": "^1.4.1"
+	}
 }

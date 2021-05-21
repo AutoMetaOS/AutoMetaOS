@@ -2,8 +2,8 @@ const fetch = require( 'node-fetch' );
 const keys = require( '../../config/nodeKeys' );
 const parser = new ( require( 'rss-parser' ) )();
 
-async function routes ( fastify, options ) {
-    fastify.get( '/security/git', ( req, res ) => {
+async function routes ( app, options ) {
+    app.get( '/security/git', ( req, res ) => {
         fetch( 'https://api.github.com/graphql', {
             method: 'POST',
             headers: { Authorization: "token " + keys().GIT_KEY },
@@ -31,7 +31,7 @@ async function routes ( fastify, options ) {
             .catch( err => res.send( 404 ) );
     } );
 
-    fastify.get( '/social/f1/', ( req, res ) => {
+    app.get( '/social/f1/', ( req, res ) => {
         parser.parseURL( 'https://www.autosport.com/rss/f1/news/' ).then( r => {
             r = r.items.map( e => {
                 return {
