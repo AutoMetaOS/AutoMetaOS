@@ -6,14 +6,11 @@
   "version": "2.2.0",
   "content_scripts": [
     {
-      "exclude_matches": [
-        "localhost:*/*"
-      ],
       "matches": [
         "https://*/*"
       ],
       "js": [
-        "scripts/video.js",
+        "scripts/dynamo.js",
         "scripts/q.js"
       ],
       "css": [
