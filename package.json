@@ -23,7 +23,7 @@
         "rss-parser": "^3.12.0"
     },
     "dependencies": {
-        "codemirror": "^5.60.0",
+        "codemirror": "^5.61.1",
         "node-sass": "4.14.1",
         "url-metadata": "^2.5.0"
     }

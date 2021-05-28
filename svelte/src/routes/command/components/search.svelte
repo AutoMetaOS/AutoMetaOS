@@ -26,6 +26,27 @@
   onMount(() => magic.focus());
 </script>
 
+<section class="flex-col" style="justify-content: center;align-items: center;">
+  <br />
+  <form class="flex" on:submit|preventDefault>
+    <div class="wrapper flex p-5">
+      <img id="engineImage" src="/icons/Basic.svg" alt="" />
+      <input
+        on:keyup={go}
+        bind:this={magic}
+        id="magic"
+        placeholder="Type Something..."
+        required
+        size="150"
+      />
+    </div>
+    <input id="submit" type="submit" value="SEARCH" />
+  </form>
+  <div class="p-10" style="width:calc(100% - 1em);margin-top:0.5em;">
+    <ul id="autoComplete" class="blur m-h-auto o-100" />
+  </div>
+</section>
+
 <style type="text/scss">
   form {
     padding-top: 25%;
@@ -69,17 +90,3 @@
     }
   }
 </style>
-
-<section class="flex-col" style="justify-content: center;align-items: center;">
-  <br />
-  <form class="flex" on:submit|preventDefault>
-    <div class="wrapper flex p-5">
-      <img id="engineImage" src="/icons/Basic.svg" alt="" />
-      <input on:keyup={go} bind:this={magic} id="magic" required size="150" />
-    </div>
-    <input id="submit" type="submit" value="SEARCH" />
-  </form>
-  <div class="p-10" style="width:calc(100% - 1em);margin-top:0.5em;">
-    <ul id="autoComplete" class="blur m-h-auto o-100" />
-  </div>
-</section>

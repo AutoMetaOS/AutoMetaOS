@@ -1,7 +1,11 @@
 <script>
+    import { onMount } from "svelte";
+    let dataSetId;
+
+    onMount(() => (dataSetId = randomString(6)));
 </script>
 
-<section id="editorOfNotes" />
+<section data-id={dataSetId} id="editorOfNotes" />
 
 <style>
     #editorOfNotes {

@@ -12,7 +12,7 @@ const suggestions = ( SIn ) => {
 };
 
 const setEngineImage = ( key ) => {
-    const engineImage = find( '#engineImage' );
+    const engineImage = document.querySelector( '#engineImage' );
     if ( engineImage ) engineImage.src = `./icons/${ sites[ key ].name }.svg`
 }
 
@@ -54,20 +54,7 @@ const siteFunctions = {
         else return url;
     },
     qm: ( q, url ) => {
-        if ( q.charAt( 0 ) === '+' ) {
-            const [ target, ...values ] = q.replace( '+', '' ).split( ' ' );
-            let vid = '';
-            if ( target === 'yt' || target === 'youtube' ) {
-                vid = values[ 0 ].split( 'id=' )[ 1 ]?.split( '&' )[ 0 ] || values[ 0 ];
-                fetch( serverURL + "/data/stack", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify( { "at": "YT", "value": vid } )
-                } );
-            }
-            return '#deets';
-        }
-        else return url;
+        return url;
     }
 }
 

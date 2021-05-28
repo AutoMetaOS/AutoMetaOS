@@ -11,19 +11,6 @@
   });
 </script>
 
-<style>
-  #stats {
-    position: absolute;
-    bottom: 3em;
-    right: 10px;
-    opacity: 1;
-    justify-content: space-between;
-    width: 20vw;
-    background: transparent;
-    animation: goOut 0.5s 5s forwards ease;
-  }
-</style>
-
 <div id="stats" class="blur rpm-10">
   <!-- <div class="head flex">
     <svg viewBox="0 0 32 32" fill="none" stroke="#fff" width="25" height="25">
@@ -36,3 +23,20 @@
   <br /> MBo Temp: <progress max="100" value={+system?.board || 0} />
   <br /> Network Av: <i> {network}</i>
 </div>
+
+<style type="text/scss">
+  #stats {
+    position: absolute;
+    bottom: 3em;
+    right: 10px;
+    opacity: 0;
+    justify-content: space-between;
+    width: 20vw;
+    background: transparent;
+    animation: goOut 0.5s 5s forwards ease;
+    transition: opacity 0.2s ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+</style>

@@ -3,8 +3,13 @@ const notes = './config/database/notes/';
 
 async function routes ( app, options ) {
     app.get( '/notes/', ( req, res ) => {
-        const list = fs.readFileSync( notes + 'list.json', 'utf8' );
-        res.send( list );
+        const list = fs.readdirSync( notes );
+        let notesList = [];
+        list.forEach( e => {
+            const title = JSON.parse( fs.readFileSync( notes + e ) ).blocks[ 0 ].data.text;
+            notesList.push( { title, id: e.split( '-' )[ 0 ] } );
+        } )
+        res.send( notesList );
     } );
 
     app.get( '/notes/:id', ( req, res ) => {
@@ -16,10 +21,9 @@ async function routes ( app, options ) {
     } );
 
     app.put( '/notes/:id', ( req, res ) => {
-        const note = fs.writeFileSync( note + req.params.id + '-note.txt', req.body );
-        res.sendStatus( 200 )
-        // fs.readFileSync;
-        // SEND NOTE ON REQUEST ID.Set random ids based on time.Alphanumeric 6 letter i would say.
+        const body = typeof req.body === 'object' ? JSON.stringify( req.body ) : req.body;
+        fs.writeFileSync( notes + req.params.id + '-note.txt', body );
+        res.code( 200 );
     } );
 
     app.post( '/notes/new', ( req, res ) => {

@@ -1,16 +1,27 @@
 <script>
     import List from "./components/files.svelte";
     import Editor from "./components/editor.svelte";
+    import Logo from "./micro/logo.svelte";
     import { onMount } from "svelte";
 
-    import { getNotes } from "./components/api";
+    import { getNotes, updateNote } from "./components/api";
     import { notesList, editorData } from "./components/store";
 
-    let tools;
+    let tools, mainEditor, currentData;
     $: editor = 1;
 
+    const saver = async () => {
+        const outputData = await editor.save();
+        if (JSON.stringify(outputData.blocks) === currentData)
+            console.log("Already Saved");
+        else {
+            currentData = JSON.stringify(outputData.blocks);
+            console.log(mainEditor.dataset.id, outputData);
+            updateNote(mainEditor.dataset.id, outputData);
+        }
+    };
+
     const updateEditor = (e) => {
-        const mainEditor = document.querySelector("#editorOfNotes");
         if (!(mainEditor.dataset.id === e.detail.data.id)) {
             mainEditor.innerHTML = null;
             editor = new EditorJS({
@@ -23,32 +34,26 @@
     };
 
     onMount(() => {
+        mainEditor = document.querySelector("#editorOfNotes");
         getNotes().then((r) => ($notesList = r));
-
         tools = {
             header: {
                 class: Header,
-                inlineToolbar: ["link"],
             },
-
             image: {
                 class: SimpleImage,
-                inlineToolbar: ["link"],
             },
             list: {
                 class: List,
-                inlineToolbar: ["link"],
             },
             link: {
                 class: LinkTool,
-                inlineToolbar: ["link"],
                 config: {
                     endpoint: serverURL + "requestMetadata", // Your backend endpoint for url data fetching
                 },
             },
             embed: {
                 class: Embed,
-                inlineToolbar: ["link"],
             },
         };
         editor = new EditorJS({
@@ -68,32 +73,52 @@
             min-height: 100vh;
         }
     </style>
-    <script src="/helpers/notes/editorjs.js"></script>
-    <script src="/helpers/notes/list.js"></script>
-    <script src="/helpers/notes/embed.js"></script>
-    <script src="/helpers/notes/link.js"></script>
-    <script src="/helpers/notes/header.js"></script>
-    <script src="/helpers/notes/simple-image.js"></script>
+    {#each ["editorjs", "header+embed", "link+list", "simple-image"] as js}
+        <script src="/helpers/notes/{js}.js"></script>
+    {/each}
 </svelte:head>
 
 <main class="flex">
     <nav class="lhs">
-        <header class="p-20 flex" style="background:#eee;">
-            <img src="/icons/terrelys.svg" width="28px" height="28px" alt="" />
-            <div style="position:relative;top:1px;left:5px;font-size:24px;">
-                Terrelysium
-            </div>
-        </header>
+        <Logo />
         <lower>
             <List on:message={updateEditor} />
         </lower>
     </nav>
-    <main class="rhs">
+    <main class="rhs" style="z-index:0">
         <Editor />
     </main>
 </main>
+<div class="w-100" style="z-index:1">
+    <button on:click={saver} id="save" style="bottom:1rem;right:1rem;">
+        <svg
+            viewBox="0 0 32 32"
+            width="24"
+            height="24"
+            stroke="currentcolor"
+            stroke-width="2"
+            fill="none"
+        >
+            <path
+                d="M9 22 C0 23 1 12 9 13 6 2 23 2 22 10 32 7 32 23 23 22 M11 18 L16 14 21 18 M16 14 L16 29"
+            />
+        </svg>
+        <span style="vertical-align:super;"> Save </span>
+    </button>
+</div>
 
-<style>
+<style type="text/scss">
+    #save {
+        position: absolute;
+        padding: 10px 15px 8px 10px;
+        color: #fff;
+        border-radius: 32px;
+        background: #18f;
+        transition: background 0.2s ease;
+        &:hover {
+            background: #06d;
+        }
+    }
     main {
         height: 100%;
         overflow: hidden;
