@@ -1,6 +1,6 @@
 {
     "name": "ronin",
-    "version": "5.4.0",
+    "version": "5.5.0",
     "license": "MIT",
     "private": true,
     "contributors": [],
@@ -19,7 +19,6 @@
         "google-trends-api": "^4.9.2",
         "minimist": "1.2.5",
         "node-fetch": "2.6.1",
-        "pg": "8.5.1",
         "rss-parser": "^3.12.0"
     },
     "dependencies": {

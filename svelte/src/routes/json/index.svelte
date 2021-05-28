@@ -2,9 +2,7 @@
     import { onMount } from "svelte";
     let // new line
         mlt = [],
-        sng = [],
-        trk = [],
-        display = 1;
+        display = 0;
 
     $: search = "";
 
@@ -12,23 +10,15 @@
         fetch(serverURL + "data/multiple.json")
             .then((res) => res.json())
             .then((r) => (mlt = r));
-        fetch(serverURL + "data/single.json")
-            .then((res) => res.json())
-            .then((r) => (sng = r));
-        fetch(serverURL + "data/track.json")
-            .then((res) => res.json())
-            .then((r) => (trk = r));
     });
 
     import Multi from "./components/multiple.svelte";
-    import Single from "./components/single.svelte";
-    import Tracker from "./components/track.svelte";
     import Pending from "./components/pending.svelte";
 </script>
 
 <section>
     <nav class="blurW rpm-10 flex">
-        {#each ["Movies", "Shows", "Tracker", "Pending"] as sh, i}
+        {#each ["Shows", "Pending"] as sh, i}
             <div
                 class={display === i ? "blurW" : ""}
                 on:click={() => (display = i)}
@@ -38,11 +28,7 @@
         {/each}
     </nav>
     {#if display === 0}
-        <Single set={sng} state={search.toLowerCase()} />
-    {:else if display === 1}
         <Multi set={mlt} state={search.toLowerCase()} />
-    {:else if display === 2}
-        <Tracker set={trk} state={search.toLowerCase()} />
     {:else}
         <Pending />
     {/if}

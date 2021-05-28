@@ -14,8 +14,9 @@
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-## v5.2.0
+## v5.5.0
 - Minor Refactors to Stream + Weak Support for Nebula
+- Add full notes system
 
 ## v5.2.0
 - Add realtime REPL for HTML/CSS/JS
@@ -26,12 +27,12 @@
 - Efficent News processor
 
 
-## v5.0.0
+## v5.0.0 (Ronin)
 - Remove Tasks and Timer
 - Full migrate to SvelteKit (Server and client are now two distinct entities)
 
 
-## v4.0.0
+## v4.0.0 (Gojira)
 - News System
 - Youtube Stores
 - Bug Fixes

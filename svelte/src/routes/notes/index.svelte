@@ -16,9 +16,12 @@
             console.log("Already Saved");
         else {
             currentData = JSON.stringify(outputData.blocks);
-            console.log(mainEditor.dataset.id, outputData);
             updateNote(mainEditor.dataset.id, outputData);
         }
+    };
+
+    const deleter = async () => {
+        console.log(mainEditor.dataset.id);
     };
 
     const updateEditor = (e) => {
@@ -90,7 +93,7 @@
     </main>
 </main>
 <div class="w-100" style="z-index:1">
-    <button on:click={saver} id="save" style="bottom:1rem;right:1rem;">
+    <button on:click={saver} class="btn" style="left:1rem;">
         <svg
             viewBox="0 0 32 32"
             width="24"
@@ -105,18 +108,46 @@
         </svg>
         <span style="vertical-align:super;"> Save </span>
     </button>
+    <button
+        on:click={deleter}
+        class="btn"
+        disabled
+        style="left:7rem;--theme:#f44"
+    >
+        <svg
+            viewBox="0 0 32 32"
+            width="24"
+            height="24"
+            stroke="currentcolor"
+            stroke-width="2"
+            fill="none"
+        >
+            <path
+                d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6"
+            />
+        </svg>
+        <span style="vertical-align:super;"> Delete </span>
+    </button>
 </div>
 
 <style type="text/scss">
-    #save {
+    .btn {
+        cursor: pointer;
+        bottom: 1rem;
+        --theme: #18f;
         position: absolute;
         padding: 10px 15px 8px 10px;
         color: #fff;
         border-radius: 32px;
-        background: #18f;
-        transition: background 0.2s ease;
-        &:hover {
-            background: #06d;
+        background: var(--theme);
+        transition: all 0.2s ease;
+        &:hover:not(:disabled) {
+            background: var(--theme);
+            color: #ddd;
+            opacity: 0.9;
+        }
+        &:disabled {
+            opacity: 0.5;
         }
     }
     main {
@@ -124,6 +155,7 @@
         overflow: hidden;
     }
     .lhs {
+        z-index: 0;
         width: 20%;
         border-right: 1px solid #ccc;
         height: 100vh;
