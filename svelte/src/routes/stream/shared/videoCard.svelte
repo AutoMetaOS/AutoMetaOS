@@ -1,5 +1,6 @@
 <script>
     import { videoSet } from "../core/store";
+    import { SvgIcon } from "$lib/components";
 
     export let title, lhs, rhs, type, image, url;
 
@@ -16,16 +17,14 @@
 
 <div class="recom" data-type={type} style="position:relative;">
     <div style="position:absolute;right:5px;top:5px;border-radius:7px;">
-        <svg
+        <SvgIcon
+            size="20"
+            classes="p-5"
             stroke="#fff"
-            viewBox="0 0 32 32"
-            width="20"
-            height="20"
-            class="p-5"
             style="background:#000c;"
         >
             <path d="M16 2 L16 30 M2 16 L30 16" />
-        </svg>
+        </SvgIcon>
     </div>
     <a
         href="#wrapper"

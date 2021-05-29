@@ -48,10 +48,7 @@ export const channels = () => {
 
     chanList.forEach( ( cList ) => {
         getRecents( cList ).then(
-            ( arr ) => {
-                substack.set( [ ...get( substack ), ...( arr || {} ) ] )
-                console.log( get( substack ) );
-            }
+            ( arr ) => substack.set( [ ...get( substack ), ...( arr || {} ) ] )
         );
     } );
 

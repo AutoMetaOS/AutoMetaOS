@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { nebula } from "../core/nebulaStore";
+  import { SvgIcon } from "$lib/components";
 
   export let searcher, channels;
 
@@ -21,15 +22,10 @@
       placeholder="Search"
       value={searchText}
     />
-    <svg
-      viewBox="0 0 32 32"
-      width="22"
-      height="22"
-      style="position:relative;top:3px;left:5px"
-    >
+    <SvgIcon size="22" style="position:relative;top:3px;left:5px">
       <circle cx="14" cy="14" r="12" />
       <path d="M23 23 L30 30" />
-    </svg>
+    </SvgIcon>
     <input class="o-0 w-0" type="submit" value="" />
   </form>
 
@@ -58,11 +54,6 @@
         color: #aaaa;
       }
     }
-  }
-  svg {
-    stroke: #fff;
-    fill: none;
-    stroke-width: 1;
   }
   button {
     height: 36px;

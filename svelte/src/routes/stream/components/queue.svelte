@@ -1,5 +1,6 @@
 <script>
   import { vidoer, destacker, stack } from "../core/store";
+  import { SvgIcon } from "$lib/components";
 </script>
 
 <section class="flex p-20" id="search" style="flex-wrap: wrap;">
@@ -9,31 +10,34 @@
       <div class="recom" style="position:relative;">
         <div
           on:click={() => destacker(i)}
-          style="position:absolute;right:5px;top:5px;border-radius:7px;">
-          <svg
-            class="p-5"
-            viewBox="0 0 32 32"
-            width="20"
-            height="20"
+          style="position:absolute;right:5px;top:5px;border-radius:7px;"
+        >
+          <SvgIcon
+            size="20"
+            classes="p-5"
             stroke="#fff"
-            style="background:#000c;">
+            style="background:#000c;"
+          >
             <path d="M2 30 L30 2 M30 30 L2 2" />
-          </svg>
+          </SvgIcon>
         </div>
         <a
           href="#wrapper"
           on:click={vidoer}
           data-title={vid.snippet.title}
-          id={vid.id.videoId || vid.snippet.resourceId.videoId}>
+          id={vid.id.videoId || vid.snippet.resourceId.videoId}
+        >
           <img src={vid.snippet.thumbnails.medium.url} alt="" />
           <div class="name">
             {@html vid.snippet.title.slice(0, 60)}
-            {vid.snippet.title.length > 60 ? '...' : ''}
+            {vid.snippet.title.length > 60 ? "..." : ""}
           </div>
           <div class="channel flex" style="justify-content:space-between;">
             <span>{vid.snippet.channelTitle}</span>
             <span>
-              {new Intl.DateTimeFormat('en-GB').format(new Date(vid.snippet.publishedAt))}
+              {new Intl.DateTimeFormat("en-GB").format(
+                new Date(vid.snippet.publishedAt)
+              )}
             </span>
           </div>
         </a>

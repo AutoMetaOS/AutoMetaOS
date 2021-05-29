@@ -4,6 +4,8 @@
     import Logo from "./micro/logo.svelte";
     import { onMount } from "svelte";
 
+    import { Button, SvgIcon } from "$lib/components";
+
     import { getNotes, updateNote } from "./components/api";
     import { notesList, editorData } from "./components/store";
 
@@ -11,6 +13,7 @@
     $: editor = 1;
 
     const saver = async () => {
+        console.log(1);
         const outputData = await editor.save();
         if (JSON.stringify(outputData.blocks) === currentData)
             console.log("Already Saved");
@@ -93,63 +96,36 @@
     </main>
 </main>
 <div class="w-100" style="z-index:1">
-    <button on:click={saver} class="btn" style="left:1rem;">
-        <svg
-            viewBox="0 0 32 32"
-            width="24"
-            height="24"
-            stroke="currentcolor"
-            stroke-width="2"
-            fill="none"
-        >
+    <Button
+        click={saver}
+        rx="32px"
+        theme="#18f"
+        style="position:absolute;left:0.25rem;bottom:0.5rem;"
+    >
+        <SvgIcon>
             <path
                 d="M9 22 C0 23 1 12 9 13 6 2 23 2 22 10 32 7 32 23 23 22 M11 18 L16 14 21 18 M16 14 L16 29"
             />
-        </svg>
+        </SvgIcon>
         <span style="vertical-align:super;"> Save </span>
-    </button>
-    <button
-        on:click={deleter}
-        class="btn"
+    </Button>
+    <Button
+        click={deleter}
+        rx="32px"
         disabled
-        style="left:7rem;--theme:#f44"
+        theme="#f44"
+        style="position:absolute;left:7rem;bottom:0.5rem;"
     >
-        <svg
-            viewBox="0 0 32 32"
-            width="24"
-            height="24"
-            stroke="currentcolor"
-            stroke-width="2"
-            fill="none"
-        >
+        <SvgIcon>
             <path
                 d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6"
             />
-        </svg>
+        </SvgIcon>
         <span style="vertical-align:super;"> Delete </span>
-    </button>
+    </Button>
 </div>
 
 <style type="text/scss">
-    .btn {
-        cursor: pointer;
-        bottom: 1rem;
-        --theme: #18f;
-        position: absolute;
-        padding: 10px 15px 8px 10px;
-        color: #fff;
-        border-radius: 32px;
-        background: var(--theme);
-        transition: all 0.2s ease;
-        &:hover:not(:disabled) {
-            background: var(--theme);
-            color: #ddd;
-            opacity: 0.9;
-        }
-        &:disabled {
-            opacity: 0.5;
-        }
-    }
     main {
         height: 100%;
         overflow: hidden;

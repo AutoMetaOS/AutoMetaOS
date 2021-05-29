@@ -7,6 +7,8 @@
   import IFrame from "./command/components/ifr.svelte";
   import News from "./command/lazy/news.svelte";
 
+  import { SvgIcon } from "$lib/components";
+
   const state = { news: 0 };
 
   onMount(
@@ -14,37 +16,6 @@
       (window.onscroll = () => (window.scrollY > 10 ? (state.news = 1) : null))
   );
 </script>
-
-<style type="text/scss">
-  #bgContainer {
-    position: fixed;
-    z-index: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #000;
-    img {
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  #Qlinks {
-    width: calc(100% - 10px);
-    text-align: center;
-    animation: downBar 0.2s 0.5s ease forwards;
-    position: absolute;
-    bottom: -5em;
-  }
-  @keyframes downBar {
-    to {
-      bottom: 0.5em;
-    }
-  }
-  section {
-    position: relative;
-    height: 100vh;
-    z-index: 1;
-  }
-</style>
 
 <svelte:head>
   <script>
@@ -102,19 +73,12 @@
   <TopBar />
   <SummaryBox />
   <Search />
-  <!-- <Alerts /> -->
   <br />
   <div id="Qlinks">
     Scroll for Today <br />
-    <svg
-      viewBox="0 0 32 32"
-      width="25"
-      height="25"
-      fill="none"
-      stroke="currentcolor"
-      stroke-width="1">
+    <SvgIcon>
       <path d="M30 12 L16 24 2 12" />
-    </svg>
+    </SvgIcon>
   </div>
 </section>
 
@@ -127,3 +91,34 @@
 </section>
 
 <IFrame />
+
+<style type="text/scss">
+  #bgContainer {
+    position: fixed;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  #Qlinks {
+    width: calc(100% - 10px);
+    text-align: center;
+    animation: downBar 0.2s 0.5s ease forwards;
+    position: absolute;
+    bottom: -5em;
+  }
+  @keyframes downBar {
+    to {
+      bottom: 0.5em;
+    }
+  }
+  section {
+    position: relative;
+    height: 100vh;
+    z-index: 1;
+  }
+</style>

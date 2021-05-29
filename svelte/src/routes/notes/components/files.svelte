@@ -3,6 +3,8 @@
     import { getNote } from "./api";
     import { createEventDispatcher } from "svelte";
 
+    import { SvgIcon } from "$lib/components";
+
     const dispatch = createEventDispatcher();
 
     $: notes = $notesList;
@@ -27,17 +29,10 @@
             type="text"
             bind:value={searchText}
         />
-        <svg
-            viewBox="0 0 32 32"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentcolor"
-            style="flex:1"
-        >
+        <SvgIcon style="flex:1">
             <circle cx="14" cy="14" r="12" />
             <path d="M23 23 L30 30" />
-        </svg>
+        </SvgIcon>
     </div>
     {#each notes.filter((e) => e.title.includes(searchText)) as note}
         <input type="radio" id={note.id} name="noteTitle" value={note.title} />
