@@ -1,9 +1,9 @@
 <script>
     export let size = 24,
-        stroke,
-        classes,
-        style,
-        fill;
+        stroke = "currentcolor",
+        classes = "",
+        style = "",
+        fill = "none";
 </script>
 
 <svg
@@ -11,9 +11,9 @@
     viewBox="0 0 32 32"
     width={size}
     height={size}
-    stroke={stroke || "currentcolor"}
+    {stroke}
     stroke-width="2"
-    fill={fill || "none"}
+    {fill}
     {style}
 >
     <slot />

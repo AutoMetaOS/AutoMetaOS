@@ -2,12 +2,14 @@
     export let theme,
         style = "",
         disabled,
+        square,
         click = "",
         rx = 0,
         flat;
 </script>
 
 <button
+    {square}
     {flat}
     {disabled}
     on:click={click}
@@ -22,10 +24,11 @@
         --theme: #18f;
         cursor: pointer;
         margin: 10px;
-        padding: 10px 20px;
+        padding: 10px;
         transition: all 0.2s ease;
         &:disabled {
             opacity: 0.5;
+            color: #888;
         }
 
         color: #fff;
@@ -44,6 +47,11 @@
                 color: var(--theme);
                 background: #ddd;
             }
+        }
+
+        &[square] {
+            height: 50px;
+            width: 50px;
         }
     }
 </style>

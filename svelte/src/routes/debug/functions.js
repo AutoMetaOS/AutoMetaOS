@@ -1,38 +1,18 @@
-export const replLinks = {
-    js: [
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/css/css.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/htmlmixed/htmlmixed.js"
-    ],
-    css: [
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.css",
-        "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/material.css"
-    ]
-
-};
-
 export const w3 = {
-    style: `<style>
-    body{
-        color: #000;
-        background: #fff;
-    }
-</style>`,
+    style: `<style>body{color: #000;background: #fff;}</style>`,
     base: `<!DOCTYPE html>
 <html>
     <head>
         <style>
         body{
-            background: #ccc;
+            background: #fff;
             display:flex;
             justify-content:center;
             align-items:center;
             height:100vh;
         }
         h1{
-            font: lighter 30px Helvetica;
+            font: lighter 32px Helvetica;
             color: #f42;
         }
         </style>
@@ -49,12 +29,7 @@ export const w3 = {
         //     .then((r) => ACTION);
         </script>
     </body>
-</html>`,
-    repl: `
-    let editor = CodeMirror.fromTextArea(document.getElementById("code"), {lineNumbers: true,mode: "htmlmixed",lineWrapping: true,matchBrackets: true});
-    editor.setSize("50vw", "100%");;
-    editor.setOption("theme", "material");
-    document.title="Jupiter Code"`
+</html>`
 };
 
 export const debounce = function ( func, wait, immediate ) {

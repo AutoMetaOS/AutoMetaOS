@@ -29,12 +29,7 @@
 
     const updateEditor = (e) => {
         if (!(mainEditor.dataset.id === e.detail.data.id)) {
-            mainEditor.innerHTML = null;
-            editor = new EditorJS({
-                holder: "editorOfNotes",
-                tools,
-                data: JSON.parse(e.detail.data.body),
-            });
+            editor.render(JSON.parse(e.detail.data.body));
             mainEditor.setAttribute("data-id", e.detail.data.id);
         }
     };
@@ -97,31 +92,31 @@
 </main>
 <div class="w-100" style="z-index:1">
     <Button
+        square
         click={saver}
         rx="32px"
         theme="#18f"
-        style="position:absolute;left:0.25rem;bottom:0.5rem;"
+        style="position:absolute;left:1rem;bottom:0.5rem;"
     >
         <SvgIcon>
             <path
                 d="M9 22 C0 23 1 12 9 13 6 2 23 2 22 10 32 7 32 23 23 22 M11 18 L16 14 21 18 M16 14 L16 29"
             />
         </SvgIcon>
-        <span style="vertical-align:super;"> Save </span>
     </Button>
     <Button
+        square
         click={deleter}
         rx="32px"
         disabled
         theme="#f44"
-        style="position:absolute;left:7rem;bottom:0.5rem;"
+        style="position:absolute;left:5rem;bottom:0.5rem;"
     >
         <SvgIcon>
             <path
                 d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6"
             />
         </SvgIcon>
-        <span style="vertical-align:super;"> Delete </span>
     </Button>
 </div>
 
