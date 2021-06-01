@@ -47,3 +47,5 @@ export const debounce = function ( func, wait, immediate ) {
         if ( callNow ) func.apply( context, args );
     };
 };
+
+export const wordCount = ( str ) => str.replace( /(^\s*)|(\s*$)/gi, "" ).replace( /[ ]{2,}/gi, " " ).replace( /\n /, "\n" ).split( ' ' ).length;

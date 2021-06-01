@@ -1,12 +1,12 @@
 const fetch = require( 'node-fetch' );
-const keys = require( '../../config/nodeKeys' );
+const keys = require( '../../config/nodeKeys' )();
 const parser = new ( require( 'rss-parser' ) )();
 
 async function routes ( app, options ) {
     app.get( '/security/git', ( req, res ) => {
         fetch( 'https://api.github.com/graphql', {
             method: 'POST',
-            headers: { Authorization: "token " + keys().GIT_KEY },
+            headers: { Authorization: "token " + keys.GIT_KEY },
             body: JSON.stringify( {
                 query: `query {     user( login: "plutoniumm") {
                             repositories( first: 30) {    nodes{    name

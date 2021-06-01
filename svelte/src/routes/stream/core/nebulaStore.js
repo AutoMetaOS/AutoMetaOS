@@ -1,10 +1,10 @@
 import { writable } from 'svelte/store';
-import { getneb } from "./nebulaAPI";
 
 export const subscriptions = writable( [] );
 
 export const nebula = async () => {
-    let videos = await getneb();
+    const response = await fetch( serverURL + 'nebula/videos' );
+    const videos = await response.json();
     subscriptions.set( videos )
     return 0;
 }

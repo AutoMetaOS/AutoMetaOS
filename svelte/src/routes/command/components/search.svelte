@@ -1,5 +1,5 @@
 <script>
-  import { engine, preprocessor } from "$lib/shared/js/samurai";
+  import { engine, preprocessor, quickPages } from "$lib/shared/js/samurai";
   import { onMount } from "svelte";
   let magic;
 
@@ -13,7 +13,6 @@
         magic.value = "!" + send.key + " " + suggList[1];
         break;
       case 13:
-        navigator.sendBeacon(`${serverURL}/log?url=${send.url}`);
         window.location.href = preprocessor(send);
         break;
       default:

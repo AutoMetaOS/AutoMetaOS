@@ -8,6 +8,7 @@ const FastSpeedtest = require( "fast-speedtest-api" );
 const urlMetadata = require( 'url-metadata' )
 
 app.register( require( './js/google' ) );
+app.register( require( './js/nebula' ) );
 app.register( require( './js/notes' ) );
 app.register( require( './js/socials' ) );
 app.register( require( 'fastify-cors' ), {} )
