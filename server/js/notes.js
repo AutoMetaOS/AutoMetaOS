@@ -6,18 +6,16 @@ async function routes ( app, options ) {
         const list = fs.readdirSync( notes );
         let notesList = [];
         list.forEach( e => {
-            const title = JSON.parse( fs.readFileSync( notes + e ) ).blocks[ 0 ].data.text;
-            notesList.push( { title, id: e.split( '-' )[ 0 ] } );
+            const data = JSON.parse( fs.readFileSync( notes + e ) );
+            const [ title, date ] = [ data.blocks[ 0 ].data.text, data.time ];
+            notesList.push( { title, id: e.split( '-' )[ 0 ], date } );
         } )
-        res.send( notesList );
+        res.send( notesList.sort( ( a, b ) => ( a.title - b.title ) ) );
     } );
 
     app.get( '/notes/:id', ( req, res ) => {
         const note = fs.readFileSync( notes + req.params.id + '-note.txt', 'utf-8' );
-        res.send( {
-            id: req.params.id,
-            body: note
-        } );
+        res.send( { id: req.params.id, body: note } );
     } );
 
     app.put( '/notes/:id', ( req, res ) => {

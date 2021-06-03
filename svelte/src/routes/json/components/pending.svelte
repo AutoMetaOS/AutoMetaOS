@@ -11,17 +11,6 @@
   }
 </script>
 
-<style type="text/scss">
-  .show {
-    img {
-      border-radius: 5px;
-      width: 400px;
-      height: 250px;
-      object-fit: cover;
-    }
-  }
-</style>
-
 {#each shows as show}
   <div class="show rpm-10 flex blurW">
     <img src={show.image} alt="" />
@@ -32,3 +21,14 @@
     </div>
   </div>
 {/each}
+
+<style type="text/scss">
+  .show {
+    img {
+      border-radius: 5px;
+      width: 400px;
+      height: 250px;
+      object-fit: cover;
+    }
+  }
+</style>

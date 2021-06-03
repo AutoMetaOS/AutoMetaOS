@@ -49,3 +49,9 @@ export const debounce = function ( func, wait, immediate ) {
 };
 
 export const wordCount = ( str ) => str.replace( /(^\s*)|(\s*$)/gi, "" ).replace( /[ ]{2,}/gi, " " ).replace( /\n /, "\n" ).split( ' ' ).length;
+
+export const initialize = () => {
+    let scrip = document.createElement( "script" );
+    scrip.innerText = `let editor = CodeMirror.fromTextArea(document.getElementById("code"), {lineNumbers: true,mode: "htmlmixed",lineWrapping: true,matchBrackets: true});editor.setSize("50vw", "100%");editor.setOption("theme", "cobalt");`;
+    document.head.appendChild( scrip );
+};

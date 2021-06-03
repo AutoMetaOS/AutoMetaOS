@@ -13,8 +13,8 @@
     </summary>
     <nav class="flex rpm-10">
         {#each pages as pg}
-            <a class="rpm-5 tx-c" href={pg.url}>
-                <img src={pg.icon} height="75px" width="75px" alt={pg.name} />
+            <a class="rpm-10 tx-c" href={pg.url}>
+                <img src={pg.icon} height="60px" width="60px" alt={pg.name} />
                 <div>
                     {pg.name}
                 </div>
@@ -44,14 +44,13 @@
         transform: rotate(0deg) scale(0.66);
     }
     details nav {
-        background: #eef;
-
+        background: #eeeeef;
         z-index: 999;
         overflow: hidden;
         position: fixed;
         flex-wrap: wrap;
         top: 3rem;
-        left: 3rem;
+        left: 1rem;
     }
     img {
         background: #fff;

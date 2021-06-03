@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { w3, debounce, wordCount } from "./functions";
+  import { w3, debounce, wordCount, initialize } from "./functions";
   import { Button } from "$lib/components";
   import csso from "csso";
 
@@ -28,17 +28,11 @@
     words = wordCount(editor.getValue());
   };
 
-  const initialize = () => {
-    let scrip = document.createElement("script");
-    scrip.innerText = `let editor = CodeMirror.fromTextArea(document.getElementById("code"), {lineNumbers: true,mode: "htmlmixed",lineWrapping: true,matchBrackets: true});editor.setSize("50vw", "100%");editor.setOption("theme", "cobalt");`;
-    document.head.appendChild(scrip);
-    render();
-  };
-
   onMount(() => {
     let x = setInterval(() => {
       if (CodeMirror) {
         initialize();
+        render();
         clearInterval(x);
       }
     }, 10);
@@ -46,7 +40,7 @@
 </script>
 
 <svelte:head>
-  <title>Jupiter Code</title>
+  <title>Jupiter</title>
   {#each ["codemirror", "css", "xml+mixedHtml", "js"] as js}
     <script src="/helpers/codes/{js}.js"></script>
   {/each}
@@ -54,7 +48,7 @@
 </svelte:head>
 
 <section class="flex" style="background:#666">
-  <div class="boxies p-0 m-0 w-50" on:keyup={debounce(recalculate, 1000)}>
+  <div class="boxies p-0 m-0 w-50" on:keyup={debounce(render, 1000)}>
     <div class="flex w-100 p-0 m-0" style="justify-content: space-between;">
       <div>
         <Button click={render} theme="#18f" style="margin:0;">Render</Button>
@@ -67,17 +61,15 @@
     </div>
   </div>
   <div class="boxies p-0 m-0 w-50">
-    <iframe
-      title="simulator"
-      class="w-100 p-0"
-      frameborder="0"
-      bind:this={iframe}
-      style="background:#fff;height:100%;"
-    />
+    <iframe title="sim" class="w-100 p-0" frameborder="0" bind:this={iframe} />
   </div>
 </section>
 
 <style type="text/scss">
+  iframe {
+    background: #fff;
+    height: 100%;
+  }
   .boxies {
     flex-wrap: wrap;
     color: #fff;
