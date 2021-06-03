@@ -5,7 +5,7 @@
     onMount(() => (dataSetId = randomString(6)));
 </script>
 
-<section data-id={dataSetId} id="editorOfNotes" />
+<section data-new="true" data-id={dataSetId} id="editorOfNotes" />
 
 <style>
     #editorOfNotes {

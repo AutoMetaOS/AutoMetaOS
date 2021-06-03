@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { w3, debounce, wordCount, initialize } from "./functions";
+  import { w3, wordCount, initialize } from "./functions";
   import { Button } from "$lib/components";
   import csso from "csso";
 

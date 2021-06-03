@@ -1,6 +1,7 @@
 <script>
     export let theme,
         style = "",
+        classes = "",
         disabled,
         square,
         click = "",
@@ -13,7 +14,7 @@
     {flat}
     {disabled}
     on:click={click}
-    class="btn "
+    class="btn {classes}"
     style={`${style};--theme:${theme};border-radius:${rx};`}
 >
     <slot />
@@ -25,19 +26,22 @@
         cursor: pointer;
         margin: 10px;
         padding: 10px;
+        transform: scale(1);
         transition: all 0.2s ease;
-        &:disabled {
-            opacity: 0.5;
-            color: #888;
-        }
-
         color: #fff;
         background: var(--theme);
 
+        &:disabled {
+            cursor: default;
+            color: #fff;
+            background: #888;
+        }
+
         &:hover:not(:disabled) {
+            transform: scale(1.1);
             background: var(--theme);
             color: #ddd;
-            opacity: 0.9;
+            z-index: 999;
         }
 
         &[flat] {
