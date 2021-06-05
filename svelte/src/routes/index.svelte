@@ -7,6 +7,8 @@
   import IFrame from "./command/components/ifr.svelte";
   import News from "./command/lazy/news.svelte";
 
+  import { base } from "$app/paths";
+
   import { SvgIcon } from "$lib/components";
 
   const state = { news: 0 };
@@ -56,8 +58,8 @@
   </script>
   <link rel="preconnect" href="https://en.wikipedia.org/" />
   <link rel="preconnect" href="https://github.com" />
-  <link rel="prefetch" href="/stream" />
-  <link rel="prefetch" href="/search" />
+  <link rel="prefetch" href="{base}/stream" />
+  <link rel="prefetch" href="{base}/search" />
   <style>
     *::-webkit-scrollbar {
       display: none;

@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { base } from "$app/paths";
 
   let body;
   const URLpars = () => {
@@ -29,7 +30,7 @@
     const query = URLpars().q;
 
     body.innerHTML =
-      `<form action="/search"><input class="searcher" type="text" name="q" value="${query}" /></form>` +
+      `<form action="${base}/search"><input class="searcher" type="text" name="q" value="${query}" /></form>` +
       body.innerHTML
         .replaceAll(`http://${window.location.host}/imgres?imgurl=`, "")
         .replaceAll(`/imgres?imgurl=`, "")

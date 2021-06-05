@@ -1,5 +1,5 @@
 <script>
-  export let google;
+  export let google = [{ articles: [] }];
 </script>
 
 <details class="blurW rpm-5 w-100" style="padding:15px;" open>

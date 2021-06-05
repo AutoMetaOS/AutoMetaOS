@@ -1,6 +1,7 @@
 <script>
-  import { engine, preprocessor, quickPages } from "$lib/shared/js/samurai";
+  import { engine, preprocessor } from "$lib/shared/js/samurai";
   import { onMount } from "svelte";
+  import { base } from "$app/paths";
   let magic;
 
   const go = (e) => {
@@ -29,7 +30,7 @@
   <br />
   <form class="flex" on:submit|preventDefault>
     <div class="wrapper flex p-5">
-      <img id="engineImage" src="/icons/Basic.svg" alt="" />
+      <img id="engineImage" src="{base}/icons/Basic.svg" alt="" />
       <input
         on:keyup={go}
         bind:this={magic}

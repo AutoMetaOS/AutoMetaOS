@@ -9,7 +9,7 @@
 <section class="flex p-20" id="search" style="flex-wrap: wrap;">
     {#if videos.length}
         <span class="w-100 p-5">Nebula Subscriptions ({videos.length})</span>
-        {#each videos as vid, i}
+        {#each videos as vid}
             <Card
                 title={vid.title}
                 url={vid.embedURL}

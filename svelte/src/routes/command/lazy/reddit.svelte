@@ -1,6 +1,6 @@
 <script>
   import { redditImage, fallback } from "$lib/shared/js/yoroi";
-  export let news;
+  export let news = [];
 
   import { show } from "../store";
   import { Button } from "$lib/components";

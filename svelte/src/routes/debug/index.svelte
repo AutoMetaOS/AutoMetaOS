@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { w3, wordCount, initialize } from "./functions";
   import { Button } from "$lib/components";
+  import { base } from "$app/paths";
   import csso from "csso";
 
   let //
@@ -42,9 +43,9 @@
 <svelte:head>
   <title>Jupiter</title>
   {#each ["codemirror", "css", "xml+mixedHtml", "js"] as js}
-    <script src="/helpers/codes/{js}.js"></script>
+    <script src="{base}/helpers/codes/{js}.js"></script>
   {/each}
-  <link rel="stylesheet" href="/helpers/codes/codemirror+cobalt.css" />
+  <link rel="stylesheet" href="{base}/helpers/codes/codemirror+cobalt.css" />
 </svelte:head>
 
 <section class="flex" style="background:#666">

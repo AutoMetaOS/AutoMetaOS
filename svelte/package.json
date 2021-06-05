@@ -3,7 +3,7 @@
 	"version": "1.1.0",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
+		"build": "rm -rf build .svelte-kit && svelte-kit build && touch build/.nojekyll",
 		"start": "svelte-kit start --port 1873"
 	},
 	"devDependencies": {
@@ -15,13 +15,5 @@
 		"svelte-preprocess": "^4.7.3",
 		"vite": "^2.3.4"
 	},
-	"type": "module",
-	"dependencies": {
-		"@editorjs/editorjs": "^2.22.0",
-		"@editorjs/embed": "^2.4.6",
-		"@editorjs/header": "^2.6.1",
-		"@editorjs/list": "^1.6.2",
-		"@editorjs/quote": "^2.4.0",
-		"@editorjs/simple-image": "^1.4.1"
-	}
+	"type": "module"
 }

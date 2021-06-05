@@ -5,13 +5,12 @@ import node from '@sveltejs/adapter-node';
 export default {
 	preprocess: sveltePreprocess(),
 	kit: {
-		adapter: node(),
-
-		files: { assets: 'static', lib: 'src/lib' },
+		adapter: statix(),
 
 		target: 'body',
-
-		vite: {
-		}
+		paths: {
+			base: '/Ronin',
+			assets: '/Ronin'
+		},
 	}
 };

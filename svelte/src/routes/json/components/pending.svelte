@@ -1,6 +1,8 @@
 <script>
+  import { onMount } from "svelte";
+
   $: shows = [];
-  if (window.Worker) {
+  onMount(() => {
     let w = new Worker("./helpers/thread.js");
     const msg = { func: "getShows" };
     w.postMessage(msg);
@@ -8,7 +10,7 @@
       shows = [...shows, e.data.show];
       close();
     };
-  }
+  });
 </script>
 
 {#each shows as show}

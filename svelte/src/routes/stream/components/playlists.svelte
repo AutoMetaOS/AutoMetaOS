@@ -1,7 +1,7 @@
 <script>
   import { playlist } from "../core/api.js";
 
-  export let videos;
+  export let videos = [];
 
   import { fullStacker } from "../core/store";
 

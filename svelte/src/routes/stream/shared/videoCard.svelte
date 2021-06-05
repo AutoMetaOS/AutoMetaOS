@@ -2,7 +2,12 @@
     import { videoSet } from "../core/store";
     import { SvgIcon } from "$lib/components";
 
-    export let title, lhs, rhs, type, image, url;
+    export let title = "",
+        lhs,
+        rhs,
+        type,
+        image,
+        url;
 
     const [ext, yt] = [
         "?autoplay=1&enablejsapi=1",

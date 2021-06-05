@@ -1,5 +1,6 @@
 <script>
-    export let set, state;
+    export let set = [],
+        state;
 
     let form;
     import { sourcer, histSearch } from "../functions.js";

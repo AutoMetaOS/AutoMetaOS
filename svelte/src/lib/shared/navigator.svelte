@@ -1,9 +1,18 @@
 <script>
     export let title, titleStyle;
+    import { base } from "$app/paths";
     const pages = [
-        { name: "Home", url: "/", icon: "/assets/ronin.png" },
-        { name: "Notes", url: "/notes", icon: "/icons/terrelys.svg" },
-        { name: "Video", url: "/stream", icon: "/icons/Netflix.svg" },
+        { name: "Home", url: base + "/", icon: base + "/assets/ronin.png" },
+        {
+            name: "Notes",
+            url: base + "/notes",
+            icon: base + "/icons/terrelys.svg",
+        },
+        {
+            name: "Video",
+            url: base + "/stream",
+            icon: base + "/icons/Netflix.svg",
+        },
     ];
 </script>
 

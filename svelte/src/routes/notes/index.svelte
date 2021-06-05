@@ -3,6 +3,7 @@
     import Editor from "./components/editor.svelte";
     import Logo from "./micro/logo.svelte";
     import { onMount } from "svelte";
+    import { base } from "$app/paths";
 
     import { Button, SvgIcon } from "$lib/components";
 
@@ -77,7 +78,7 @@
         }
     </style>
     {#each ["editorjs", "header+embed", "link+list", "simple-image"] as js}
-        <script src="/helpers/notes/{js}.js"></script>
+        <script src="{base}/helpers/notes/{js}.js"></script>
     {/each}
 </svelte:head>
 
