@@ -1,23 +1,42 @@
 <script>
-  import TechNews from "./components/technews.svelte";
-  import Google from "./components/gtrends.svelte";
-  import HNews from "./components/hackernews.svelte";
-  import Specifics from "./components/specifix.svelte";
+  import Logo from "./micro/logo.svelte";
 
-  let state = { src: "Specifics" };
   const pages = [
-    { name: "TechNews", component: TechNews },
-    { name: "Google", component: Google },
-    { name: "HackerNews", component: HNews },
-    { name: "Specifics", component: Specifics },
+    { name: "Home", url: "" },
+    { name: "Google" },
+    { name: "HackerNews" },
+    { name: "Specifics" },
   ];
-
-  const chNews = (e) => (state.src = e.target.innerText);
 </script>
+
+<svelte:head>
+  <style>
+    body {
+      color: #000;
+      background: #fff;
+    }
+  </style>
+  <title>Saturn Social</title>
+</svelte:head>
+
+<section>
+  <nav class="flex">
+    <Logo />
+    <div class="flex p-20">
+      {#each pages as pg}
+        <a class="p-5" href="/social/{pg.url ?? pg.name}">{pg.name}</a>
+      {/each}
+    </div>
+  </nav>
+
+  <slot />
+</section>
 
 <style type="text/scss">
   nav {
-    justify-content: space-around;
+    justify-content: space-between;
+    font: 300 16px Helvetica;
+    border-bottom: 1px solid #ccc8;
     .ln {
       transform: scale(1);
       color: #fff;
@@ -27,26 +46,3 @@
     }
   }
 </style>
-
-<svelte:head>
-  <style>
-    body {
-      background: url(./shared/images/Saturn.jpg) no-repeat fixed;
-      background-size: cover;
-    }
-  </style>
-  <title>Saturn Social</title>
-</svelte:head>
-
-<section>
-  <nav class="rpm-10 flex blur" on:click={chNews}>
-    {#each pages as pg}
-      <button class="ln rpm-10 {state.src === pg.name && 'blurW'}">
-        {pg.name}
-      </button>
-    {/each}
-  </nav>
-
-  <svelte:component
-    this={pages[pages.findIndex((x) => x.name === state.src)].component} />
-</section>

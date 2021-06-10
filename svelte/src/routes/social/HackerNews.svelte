@@ -43,16 +43,9 @@
   };
 </script>
 
-<style>
-  .desc {
-    font-size: 0.8em;
-    color: #888;
-  }
-</style>
-
 <section>
   {#each news as n}
-    <div class="rpm-10 blur">
+    <div class="p-10 m-20" style="border-bottom: 1px solid #ccc8;">
       <a href={n.url} class="news">
         <div class="title">
           {n.title} - <i>{n.by}</i>
@@ -65,3 +58,10 @@
     </div>
   {/each}
 </section>
+
+<style>
+  .desc {
+    font-size: 0.8em;
+    color: #888;
+  }
+</style>

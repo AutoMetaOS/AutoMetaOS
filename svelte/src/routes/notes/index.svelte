@@ -1,5 +1,5 @@
 <script>
-    import List from "./components/files.svelte";
+    import Lister from "./components/files.svelte";
     import Editor from "./components/editor.svelte";
     import Logo from "./micro/logo.svelte";
     import { onMount } from "svelte";
@@ -30,24 +30,19 @@
     onMount(() => {
         window.mainEditor = document.querySelector("#editorOfNotes");
         tools = {
-            header: {
-                class: Header,
-            },
-            image: {
-                class: SimpleImage,
-            },
-            list: {
-                class: List,
-            },
+            header: Header,
+            alert: Alert,
+            image: SimpleImage,
+            list: List,
             link: {
                 class: LinkTool,
                 config: {
                     endpoint: serverURL + "requestMetadata",
                 },
             },
-            embed: {
-                class: Embed,
-            },
+            embed: Embed,
+            table: Table,
+            checklist: Checklist,
         };
         window.editor = new EditorJS({
             holder: "editorOfNotes",
@@ -77,7 +72,7 @@
             min-height: 100vh;
         }
     </style>
-    {#each ["editorjs", "header+embed", "link+list", "simple-image"] as js}
+    {#each ["editorjs", "header+embed", "table+alert", "checklist+list", "simple-image+link"] as js}
         <script src="{base}/helpers/notes/{js}.js"></script>
     {/each}
 </svelte:head>
@@ -88,7 +83,7 @@
     <nav class="lhs w-20">
         <Logo />
         <section id="list">
-            <List />
+            <Lister />
         </section>
         <functions class="flex" style="height:3.5rem;bottom:0;">
             <Button click={saver} theme={saveButton} style="margin:0;flex:1;">

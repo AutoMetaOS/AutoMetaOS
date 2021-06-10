@@ -10,19 +10,37 @@
   });
 </script>
 
+<section class="flex" style="flex-wrap: wrap;">
+  {#each space as el}
+    <a class="boxy m-20" href={el.url}>
+      <img src={el.imageUrl} class="w-100" alt={el.title} />
+      <div class="title p-20">
+        <span class="f-wt7">{el.title}</span>
+        <hr />
+        <details>
+          <summary>{el.newsSite} / {date(el.publishedAt)}</summary>
+          <p>{el.summary}</p>
+        </details>
+      </div>
+    </a>
+  {/each}
+</section>
+
 <style type="text/scss">
   details summary::-webkit-details-marker {
     position: absolute;
     right: 1em;
     top: 3.75em;
     font-size: 1.25em;
-    transform: rotate(-90deg);
+    transform: rotate(180deg);
   }
   .boxy {
+    color: #fff;
     position: relative;
-    height: 300px;
+    height: 350px;
+    width: calc(33% - 40px);
     img {
-      height: 300px;
+      height: 100%;
       object-fit: cover;
       z-index: 0;
     }
@@ -40,21 +58,3 @@
     }
   }
 </style>
-
-<section>
-  <article class="w-33">
-    {#each space as el}
-      <a class="boxy m-20 w-100 blur" href={el.url}>
-        <img src={el.imageUrl} class="w-100" alt={el.title} />
-        <div class="title p-20">
-          <span class="f-wt7">{el.title}</span>
-          <hr />
-          <details>
-            <summary>{el.newsSite} / {date(el.publishedAt)}</summary>
-            <p>{el.summary}</p>
-          </details>
-        </div>
-      </a>
-    {/each}
-  </article>
-</section>
