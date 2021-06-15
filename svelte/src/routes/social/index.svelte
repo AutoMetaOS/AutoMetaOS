@@ -1,58 +1,60 @@
 <script>
     import { onMount } from "svelte";
+    import { date } from "$lib/shared/js/yoroi";
 
-    let newzes = [
-        { name: "TechNews", news: [] },
-        { name: "Physics", news: [] },
-        { name: "Science", news: [] },
-        { name: "TodayILearned", news: [] },
-    ];
-
-    const [cfg, r] = ["/top/.json?limit=5", "https://www.reddit.com/r/"];
-
+    let space = [];
     onMount(() => {
-        Promise.all(newzes.map((e) => fetch(r + e.name + cfg)))
-            .then((resp) => Promise.all(resp.map((r) => r.json())))
-            .then((result) =>
-                result.map((r, i) => (newzes[i].news = r.data.children))
-            );
+        fetch("https://www.spaceflightnewsapi.net/api/v2/articles")
+            .then((res) => res.json())
+            .then((r) => (space = r));
     });
 </script>
 
-<section class="flex">
-    {#each newzes as topic}
-        <article class="w-25 p-5 m-5">
-            <div class="boxy p-10" style="border: 1px solid #ccc8;">
-                r/{topic.name}
+<section class="flex" style="flex-wrap: wrap;">
+    {#each space as el}
+        <a class="boxy m-20" href={el.url}>
+            <img src={el.imageUrl} class="w-100" alt={el.title} />
+            <div class="title p-20">
+                <span class="f-wt7">{el.title}</span>
+                <hr />
+                <details>
+                    <summary>{el.newsSite} / {date(el.publishedAt)}</summary>
+                    <p>{el.summary}</p>
+                </details>
             </div>
-            {#each topic.news as el}
-                <div class="boxy">
-                    <a href={el.data.url_overridden_by_dest}>
-                        <img
-                            class="w-100"
-                            src={el.data.thumbnail ||
-                                "https://i.redd.it/1if85xwae7qy.jpg"}
-                            alt=""
-                            onerror="this.onerror=null;this.src=;'https://i.redd.it/1if85xwae7qy.jpg'"
-                        />
-                        <div class="p-5 f-wt4">
-                            {el.data.title.replace(/TIL/g, "")}
-                        </div>
-                    </a>
-                </div>
-            {/each}
-        </article>
+        </a>
     {/each}
 </section>
 
 <style type="text/scss">
+    details summary::-webkit-details-marker {
+        position: absolute;
+        right: 1em;
+        top: 3.75em;
+        font-size: 1.25em;
+        transform: rotate(180deg);
+    }
     .boxy {
-        margin: 5px 0;
-        border: 1px solid #ccc8;
-        border-radius: 10px;
+        color: #fff;
+        position: relative;
+        height: 350px;
+        width: calc(33% - 40px);
         img {
+            height: 100%;
             object-fit: cover;
-            height: 200px;
+            z-index: 0;
+        }
+        .title {
+            background: linear-gradient(to bottom, transparent, #000);
+            position: absolute;
+            bottom: 0;
+            width: calc(100% - 40px);
+            left: 0;
+            word-wrap: break-word;
+            font-size: 1.2em;
+        }
+        &:hover {
+            background: #3338;
         }
     }
 </style>

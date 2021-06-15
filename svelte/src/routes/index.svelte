@@ -88,6 +88,13 @@
   <div id="newsBox" class="w-100 m-h-auto" style="margin-top:20%;">
     {#if state.news}
       <News />
+    {:else}
+      <div
+        class="blurW rpm-5 p-20 w-100"
+        style="text-align:center;font-size:100px;line-height:100px;"
+      >
+        &nbsp;
+      </div>
     {/if}
   </div>
 </section>

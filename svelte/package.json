@@ -3,7 +3,8 @@
 	"version": "1.1.0",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "rm -rf build .svelte-kit && svelte-kit build && touch build/.nojekyll",
+		"build": "rm -rf build .svelte-kit && svelte-kit build",
+		"deploy": "npx gh-pages -d build -t true",
 		"start": "svelte-kit start --port 1873"
 	},
 	"devDependencies": {

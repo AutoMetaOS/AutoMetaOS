@@ -4,22 +4,28 @@ const googleTrends = require( 'google-trends-api' );
 const filterOut = [
     // SPORTS
     "sports", "sport",
-    "nba", "baseball", "football",
+    "nba", "Hawks", "baseball", "football",
     "basketball", "nfl", "wrestling", "wrestle", "ufc",
     "cricket", "wwe", "league",
+    "UEFA",
     "hockey", "rugby",
     "cricinfo",
 
-    "madrid", "fifa", "juventus", "F.C.", "FC",
+    "madrid", "fifa", "juventus", "F.C.", "FC", "Liverpool",
+    "Euro 2020",
 
     // TECH
     "oppo", "oneplus", "motorola", "vivo", "realme",
 
     // LANGUAGE
-    "panchang", "हिंदी", "tamil", "telugu", "malayalam",
+    "panchang", "हिंदी", "tamil", "telugu", "malayalam", "Hindi",
 
     // ENTERTAINMENT
-    "bts"
+    "bts", "Teigen", "Lopez", "Dating", "Wedding", "Festival",
+
+    "test positive",
+
+    "BJP",
 ]
 
 const keepIn = [

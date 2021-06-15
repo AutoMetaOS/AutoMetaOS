@@ -7,9 +7,9 @@
     "scripts": {
         "dev": "cd ./svelte &&  npx svelte-kit dev",
         "build": "cd ./svelte && npx svelte-kit build",
-        "client": "cd ./svelte && npx svelte-kit preview --port 1873",
+        "client": "cd ./svelte/build && php -S localhost:1873",
         "server": "clear && node ./server/server.js",
-        "start": "clear && node ./server/server.js & npm run client"
+        "start": "npm run server & npm run client"
     },
     "devDependencies": {
         "fast-speedtest-api": "^0.3.2",

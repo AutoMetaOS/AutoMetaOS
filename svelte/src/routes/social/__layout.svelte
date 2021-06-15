@@ -1,12 +1,7 @@
 <script>
   import Logo from "./micro/logo.svelte";
 
-  const pages = [
-    { name: "Home", url: "" },
-    { name: "Google" },
-    { name: "HackerNews" },
-    { name: "Specifics" },
-  ];
+  const pages = [{ name: "Home", url: "" }, { name: "HackerNews" }];
 </script>
 
 <svelte:head>
