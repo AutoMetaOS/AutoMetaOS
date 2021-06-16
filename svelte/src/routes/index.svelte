@@ -77,9 +77,8 @@
   <Search />
   <br />
   <div id="Qlinks">
-    Scroll for Today <br />
     <SvgIcon>
-      <path d="M30 12 L16 24 2 12" />
+      <path d="M30 12 L16 24 2 12" stroke-width="1" />
     </SvgIcon>
   </div>
 </section>

@@ -1,5 +1,5 @@
 <script>
-  import { engine, preprocessor } from "$lib/shared/js/samurai";
+  import { engine, preprocessor } from "..//samurai";
   import { onMount } from "svelte";
   import { base } from "$app/paths";
   let magic;
@@ -31,16 +31,9 @@
   <form class="flex" on:submit|preventDefault>
     <div class="wrapper flex p-5">
       <img id="engineImage" src="{base}/icons/Basic.svg" alt="" />
-      <input
-        on:keyup={go}
-        bind:this={magic}
-        id="magic"
-        placeholder="Type Something..."
-        required
-        size="150"
-      />
+      <input on:keyup={go} bind:this={magic} id="magic" required size="150" />
     </div>
-    <input id="submit" type="submit" value="SEARCH" />
+    <input id="submit" type="submit" value=" " />
   </form>
   <div class="p-10" style="width:calc(100% - 1em);margin-top:0.5em;">
     <ul id="autoComplete" class="blur m-h-auto o-100" />

@@ -23,7 +23,7 @@ const filterOut = [
     // ENTERTAINMENT
     "bts", "Teigen", "Lopez", "Dating", "Wedding", "Festival",
 
-    "test positive",
+    "test positive", "apologizes",
 
     "BJP",
 ]
