@@ -3,28 +3,25 @@ const notes = './config/database/notes/';
 
 async function routes ( app, options ) {
     app.get( '/notes/', ( req, res ) => {
-        const list = fs.readdirSync( notes );
-        let notesList = [];
-        list.forEach( e => {
-            const data = JSON.parse( fs.readFileSync( notes + e ) );
-            const [ title, date ] = [ data.blocks[ 0 ].data.text, data.time ];
-            notesList.push( { title, id: e.split( '-' )[ 0 ], date } );
-        } )
-        res.send( notesList.sort( ( a, b ) => ( a.title - b.title ) ) );
+        const list = fs.readFileSync( notes + 'NOTELIST.txt', 'utf-8' );
+        res.send( list );
     } );
 
     app.get( '/notes/:id', ( req, res ) => {
         const note = fs.readFileSync( notes + req.params.id + '-note.txt', 'utf-8' );
-        res.send( { id: req.params.id, body: note } );
+        res.send( note );
     } );
 
-    app.put( '/notes/:id', ( req, res ) => {
-        const body = typeof req.body === 'object' ? JSON.stringify( req.body ) : req.body;
-        fs.writeFileSync( notes + req.params.id + '-note.txt', body );
+    app.patch( '/notes/:id', ( req, res ) => {
+        const body = req.body;
+        fs.writeFileSync( notes + 'NOTELIST.txt', body.list );
+        fs.writeFileSync( notes + req.params.id + '-note.txt', body.note );
         res.send( { code: 200 } );
     } );
 
-    app.delete( '/notes/:id', ( req, res ) => {
+    app.put( '/notes/:id', ( req, res ) => {
+        const body = req.body;
+        fs.writeFileSync( notes + 'NOTELIST.txt', body );
         fs.unlinkSync( notes + req.params.id + '-note.txt' );
         res.send( { code: 200 } );
     } );

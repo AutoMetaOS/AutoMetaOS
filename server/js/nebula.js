@@ -1,5 +1,5 @@
 const fetch = require( 'node-fetch' );
-const keys = require( '../../config/nodeKeys' )();
+const keys = require( '../../config/keys/server_keys' );
 const NEBULA_TOKEN = keys.NEBULA_TOKEN;
 
 const nebulaFilter = ( r, tok ) => {

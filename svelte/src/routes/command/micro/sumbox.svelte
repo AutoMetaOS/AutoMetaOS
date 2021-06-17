@@ -1,9 +1,20 @@
 <script>
-  import { smc, net } from "$lib/shared/js/yoroi";
   import { onMount } from "svelte";
 
   let system,
     network = "Calculating...";
+
+  const smc = async () => {
+    const req = await fetch(serverURL + "sys/smc");
+    const json = await req.json();
+    return json;
+  };
+
+  const net = async () => {
+    const req = await fetch(serverURL + "sys/net");
+    const text = await req.text();
+    return text;
+  };
 
   onMount(() => {
     net().then((r) => (network = r + " MB/s"));

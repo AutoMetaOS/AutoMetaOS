@@ -6,6 +6,7 @@
     import { SvgIcon } from "$lib/components";
 
     $: notes = $notesList;
+
     let searchText = "";
 
     onMount(getNotes);
@@ -23,7 +24,7 @@
         <path d="M23 23 L30 30" />
     </SvgIcon>
 </div>
-{#each notes.filter((e) => e.title.includes(searchText)) as note}
+{#each notes.filter((e) => e.title?.includes(searchText)) as note}
     <input type="radio" id={note.id} name="noteTitle" value={note.title} />
     <label
         class="note"

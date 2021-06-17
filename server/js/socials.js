@@ -1,5 +1,5 @@
 const fetch = require( 'node-fetch' );
-const keys = require( '../../config/nodeKeys' )();
+const keys = require( '../../config/keys/server_keys' );
 const parser = new ( require( 'rss-parser' ) )();
 
 async function routes ( app, options ) {

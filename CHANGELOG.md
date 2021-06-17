@@ -14,6 +14,14 @@
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
+## v6.0.0
+- Full migrate fastify to nanoexpress
+- Add Server certificate to run on HTTPS + Support CORS
+- Add encryption to Notes
+- Convert iframe URI to Page + Theme Improvements
+- Migrate keys to config folder from svelte
+
+
 ## v5.5.0
 - Minor Refactors to Stream + Weak Support for Nebula
 - Add full notes system

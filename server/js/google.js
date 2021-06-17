@@ -1,32 +1,8 @@
 const fetch = require( 'node-fetch' );
 const googleTrends = require( 'google-trends-api' );
+const keys = require( '../../config/keys/server_keys' );
 
-const filterOut = [
-    // SPORTS
-    "sports", "sport",
-    "nba", "Hawks", "baseball", "football",
-    "basketball", "nfl", "wrestling", "wrestle", "ufc",
-    "cricket", "wwe", "league",
-    "UEFA",
-    "hockey", "rugby",
-    "cricinfo",
-
-    "madrid", "fifa", "juventus", "F.C.", "FC", "Liverpool",
-    "Euro 2020",
-
-    // TECH
-    "oppo", "oneplus", "motorola", "vivo", "realme",
-
-    // LANGUAGE
-    "panchang", "हिंदी", "tamil", "telugu", "malayalam", "Hindi",
-
-    // ENTERTAINMENT
-    "bts", "Teigen", "Lopez", "Dating", "Wedding", "Festival",
-
-    "test positive", "apologizes",
-
-    "BJP",
-]
+const filterOut = keys.googleBlockList;
 
 const keepIn = [
     // Significant
@@ -39,7 +15,7 @@ const smartFilter = ( item ) => {
     return 1;
 };
 
-async function routes ( app, options ) {
+module.exports = function ( app ) {
     app.get( '/social/google/search', ( req, res ) => {
         fetch( 'https://www.google.com/search?client=toolbar&source=hp&q=' + req.query.q )
             .then( res => res.text() )
@@ -102,5 +78,4 @@ async function routes ( app, options ) {
             } )
             .catch( err => console.log( err ) );
     } );
-}
-module.exports = routes;
+};

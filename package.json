@@ -1,29 +1,28 @@
 {
     "name": "ronin",
-    "version": "5.5.0",
+    "version": "6.0.0",
     "license": "MIT",
     "private": true,
     "contributors": [],
     "scripts": {
         "dev": "cd ./svelte &&  npx svelte-kit dev",
         "build": "cd ./svelte && npx svelte-kit build",
-        "client": "cd ./svelte/build && php -S localhost:1873",
+        "client": "cd ./svelte/build && php -q -S ronin.host:1873",
         "server": "clear && node ./server/server.js",
         "start": "npm run server & npm run client"
     },
     "devDependencies": {
         "fast-speedtest-api": "^0.3.2",
-        "fastify": "3.13.0",
-        "fastify-cors": "^5.2.0",
-        "fastify-static": "4.0.1",
         "google-trends-api": "^4.9.2",
         "minimist": "1.2.5",
         "node-fetch": "2.6.1",
         "rss-parser": "^3.12.0"
     },
     "dependencies": {
-        "aes256": "^1.1.0",
+        "@nanoexpress/middleware-static-serve": "^1.0.3",
+        "cors": "^2.8.5",
         "csso": "^4.2.0",
+        "nanoexpress": "^5.0.6",
         "node-sass": "4.14.1",
         "url-metadata": "^2.5.0"
     }

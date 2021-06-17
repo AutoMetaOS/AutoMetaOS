@@ -1,4 +1,5 @@
-import { YT_KEY } from '$lib/config/keys'
+import keys from '../../../../../config/keys/client_keys';
+const YT_KEY = keys.YT_KEY;
 
 export const YT = 'https://youtube.googleapis.com/youtube/v3/';
 

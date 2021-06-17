@@ -16,12 +16,16 @@
 
     const saver = async () => {
         const outputData = await editor.save();
-        if (JSON.stringify(outputData.blocks) === currentData) return;
+
+        if (outputData === currentData) return;
         saveButton = "#06a";
-        currentData = JSON.stringify(outputData.blocks);
+        currentData = outputData;
         updateNote(mainEditor.dataset.id, outputData)
             .then((r) => (saveButton = "#18f"))
-            .catch((e) => (saveButton = "#f44"));
+            .catch((e) => {
+                console.log(e);
+                saveButton = "#f44";
+            });
         return 0;
     };
 

@@ -1,24 +1,35 @@
-const app = require( 'fastify' )( { logger: 0 } );
-// const fs = require( 'fs' );
-const { exec } = require( 'child_process' );
-// const mths = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC' ];
+const SSL = './config/keys/';
+const keys = require( '../config/keys/server_keys' );
 const port = process.env.PORT || 1872;
-// const db = './config/database/';
+
+// const staticServe = require( '@nanoexpress/middleware-static-serve/cjs' );
+const nanoexpress = require( 'nanoexpress' );
 const FastSpeedtest = require( "fast-speedtest-api" );
 const urlMetadata = require( 'url-metadata' )
+const cors = require( 'cors' )
+const { exec } = require( 'child_process' );
 
-app.register( require( './js/google' ) );
-app.register( require( './js/nebula' ) );
-app.register( require( './js/notes' ) );
-app.register( require( './js/socials' ) );
-app.register( require( 'fastify-cors' ), {} )
+const app = nanoexpress( {
+      https: {
+            key_file_name: SSL + 'key.pem',
+            cert_file_name: SSL + 'cert.pem',
+            passphrase: keys.SSL_PASS
+      }
+} );
+
+app.use( cors() )
+// app.use( staticServe( './svelte/build', { mode: 'live' } ) );
+
+require( './js/google' )( app );
+require( './js/nebula' )( app );
+require( './js/notes' )( app );
+require( './js/socials' )( app );
 
 app.get( '/sys/net', ( req, res ) => {
       let speedTest = new FastSpeedtest( {
-            token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm", timeout: 2e3, bufferSize: 16, unit: FastSpeedtest.UNITS.MBps,
+            token: keys.NFLX_TOK, timeout: 2e3, bufferSize: 16, unit: FastSpeedtest.UNITS.MBps,
       } );
       speedTest.getSpeed().then( s => res.send( s.toFixed( 2 ) ) ).catch( e => console.error( e.message ) );
-
 } );
 
 app.get( '/sys/smc', ( req, res ) => {

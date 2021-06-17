@@ -32,8 +32,7 @@
 <style type="text/scss">
     #wrapper {
         height: 100vh;
-        iframe,
-        .iframe {
+        iframe {
             height: 100%;
             border: 0;
             background: #111;

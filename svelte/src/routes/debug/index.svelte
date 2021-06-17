@@ -6,7 +6,7 @@
   import csso from "csso";
 
   let //
-    iframe,
+    ifr,
     words,
     oldHT = "";
 
@@ -21,11 +21,14 @@
   };
 
   const recalculate = (html) => {
-    const blob = new Blob([html], { type: "text/html" });
-    const htmlURI = window.URL.createObjectURL(blob);
+    const htmlURI = html;
     if (oldHT === htmlURI) return 0;
     oldHT = htmlURI;
-    iframe.src = htmlURI;
+
+    ifr.document.open();
+    ifr.document.write(htmlURI);
+    ifr.document.close();
+
     words = wordCount(editor.getValue());
   };
 
@@ -37,6 +40,8 @@
         clearInterval(x);
       }
     }, 10);
+    ifr = document.querySelector("iframe");
+    ifr = ifr.contentWindow || ifr.contentDocument?.document;
   });
 </script>
 
@@ -46,6 +51,11 @@
     <script src="{base}/helpers/codes/{js}.js"></script>
   {/each}
   <link rel="stylesheet" href="{base}/helpers/codes/codemirror+cobalt.css" />
+  <style>
+    body {
+      background: #000;
+    }
+  </style>
 </svelte:head>
 
 <section class="flex" style="background:#666">
@@ -58,11 +68,16 @@
       <div class="p-10">{words}</div>
     </div>
     <div class="w-100 codeContainer" style="position:relative;height:96%;">
-      <textarea spellcheck="true" id="code" value={w3.base} />
+      <textarea spellcheck="true" id="code" value={w3} />
     </div>
   </div>
   <div class="boxies p-0 m-0 w-50">
-    <iframe title="sim" class="w-100 p-0" frameborder="0" bind:this={iframe} />
+    <iframe
+      title="sim"
+      src="/assets/repl.html"
+      class="w-100 p-0"
+      frameborder="0"
+    />
   </div>
 </section>
 

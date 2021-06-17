@@ -1,36 +1,31 @@
-export const w3 = {
-    style: `<style>body{color: #000;background: #fff;}</style>`,
-    base: `<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-        body{
-            background: #fff;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-        }
-        h1{
-            font: lighter 32px Helvetica;
-            color: #f42;
-        }
-        </style>
-    </head>
-    <body>
-        <h1>This is a REPL!</h1>
-        <script>
-        // fetch(URL, {
-        //     method: "GET",
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify(data)
-        // })
-        //     .then((res) => res.TYPE)
-        //     .then((r) => ACTION);
-        </script>
-    </body>
-</html>`
-};
+export const w3 = `<style>
+body{
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h1{
+    /* CSS COMMENT */
+    font: lighter 32px Helvetica;
+    color: #f42;
+}
+</style>
+<h1>This is a REPL!</h1>
+<!-- HTML COMMENT -->
+<script>
+    import { base } from "$app/paths";
+    // JS COMMENT
+    const number = [ 1 || "One" ];
+    fetch(URL, {
+        method: "GET",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+    .then((res) => res.TYPE)
+    .then((r) => ACTION);
+</script>`;
 
 export const debounce = function ( func, wait, immediate ) {
     let timeout;

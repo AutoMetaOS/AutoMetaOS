@@ -1,11 +1,11 @@
 {
 	"name": "shogun",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "rm -rf build .svelte-kit && svelte-kit build",
 		"deploy": "npx gh-pages -d build -t true",
-		"start": "svelte-kit start --port 1873"
+		"start": "php -q -S ronin.host:1873"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-node": "next",
@@ -16,5 +16,8 @@
 		"svelte-preprocess": "^4.7.3",
 		"vite": "^2.3.4"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"crypto-js": "^4.0.0"
+	}
 }

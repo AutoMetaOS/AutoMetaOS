@@ -38,7 +38,7 @@ export const destacker = ( i ) => {
     } else chURL( "stack", "" );
 };
 
-import cnls from "../../../lib/config/channels.json";
+import cnls from "../../../../../config/channels.json";
 
 export const channels = () => {
     const size = 49;

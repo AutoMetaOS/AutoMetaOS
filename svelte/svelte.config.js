@@ -7,12 +7,5 @@ export default {
 		adapter: statix(),
 
 		target: 'body'
-		// paths:
-		// 	config.prod ?
-		// 		{
-		// 			base: '/Ronin',
-		// 			assets: '/Ronin'
-		// 		} :
-		// 		{}
 	}
 };

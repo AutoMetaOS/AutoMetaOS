@@ -32,12 +32,5 @@
     justify-content: space-between;
     font: 300 16px Helvetica;
     border-bottom: 1px solid #ccc8;
-    .ln {
-      transform: scale(1);
-      color: #fff;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
   }
 </style>
