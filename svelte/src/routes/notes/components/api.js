@@ -1,19 +1,19 @@
 import { get } from 'svelte/store'
 import { notesList, updateEditor } from "./store";
-const headers = { 'Content-Type': 'application/json' };
+import { Riquest, serverURL } from "$lib/shared/molecular.js";
+
+const reqr = new Riquest( serverURL, 'text', { identity: 'anonymous' } );
 
 export const getNotes = async () => {
     console.log( '[Terrelysium] Initialising...' );
-    const response = await fetch( serverURL + "notes/" );
-    const text = await response.text();
+    const text = await reqr.get( '/notes/' );
     console.log( '[Terrelysium] Initialised.' );
     notesList.set( decrypt( text ) );
     return 0;
 }
 
 export const getNote = async ( id ) => {
-    const response = await fetch( serverURL + "notes/" + id );
-    const text = await response.text();
+    const text = await reqr.get( '/notes/' + id );
     updateEditor( id, decrypt( text ) );
     return text;
 };
@@ -23,36 +23,25 @@ export const setNote = ( e ) => getNote( e.target.dataset.id );
 export const updateNote = async ( id, data ) => {
     let list = get( notesList );
 
-    if ( list.find( e => e.id === id ) ) {
-        list.find( e => e.id === id ).title = data.blocks[ 0 ].data.text;
-        list.find( e => e.id === id ).date = data.time;
+    if ( data ) {
+        if ( list.find( e => e.id === id ) ) {
+            list.find( e => e.id === id ).title = data.blocks[ 0 ].data.text;
+            list.find( e => e.id === id ).date = data.time;
+        }
+        else {
+            list.push( { title: data.blocks[ 0 ].data.text, id, date: data.time } )
+        }
     }
-    else {
-        list.push( { title: data.blocks[ 0 ].data.text, id, date: data.time } )
-    }
+
     notesList.set( list );
-    const response = await fetch( serverURL + "notes/" + id, {
-        headers,
-        method: "PATCH",
-        body: JSON.stringify( { note: encrypt( data ), list: encrypt( get( notesList ) ) } )
-    } );
-    const json = await response.json();
-    return json.code;
+    const json = await reqr.patch( '/notes/' + id, { note: data ? encrypt( data ) : '', list: encrypt( get( notesList ) ) } );
+    return json;
 };
 
 export const deleteNote = async ( id ) => {
     list = get( notesList ).filter( e => e.id !== id );
     notesList.set( list );
-
-    console.log( get( notesList ) );
-
-    const response = await fetch( serverURL + "notes/" + id, {
-        method: "PUT",
-        body: encrypt( get( notesList ) )
-    } );
-    const json = await response.json();
-    if ( !json ) console.log( 'err' );
-
+    updateNote( id, '' );
     const elt = document.querySelector( '#list input[type=radio]' );
     elt.checked = true;
     setNote( { target: { dataset: elt } } )

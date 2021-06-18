@@ -6,7 +6,7 @@
   let spinner,
     full = [];
 
-  const request = new Riquest(serverURL, "JSON");
+  const request = new Riquest(serverURL, "json");
 
   request.get("/social/google/trends").then((r) => {
     full = r;

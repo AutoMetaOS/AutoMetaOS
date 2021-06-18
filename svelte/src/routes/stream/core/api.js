@@ -1,22 +1,21 @@
 import keys from '../../../../../config/keys/client_keys';
+import { Riquest } from "$lib/shared/molecular";
+
+const request = new Riquest( 'https://youtube.googleapis.com/youtube/v3', 'json' );
+
 const YT_KEY = keys.YT_KEY;
 
 export const YT = 'https://youtube.googleapis.com/youtube/v3/';
 
-export const search = ( q ) => {
-    return fetch( `${ YT }search?part=snippet&key=${ YT_KEY }&q=${ q }&type=video&maxResults=10` ).then( res => { return res.json(); } );
-}
-export const plSearch = ( q ) => {
-    return fetch( `${ YT }search?part=snippet&key=${ YT_KEY }&q=${ q }&type=playlist&maxResults=10` ).then( res => { return res.json(); } );
-}
-export const playlist = ( q, num = 10 ) => {
-    return fetch( `${ YT }playlistItems?part=snippet&playlistId=${ q }&key=${ YT_KEY }&maxResults=${ num }` ).then( res => { return res.json(); } )
-}
+export const search = ( q ) => request.get( `/search?part=snippet&key=${ YT_KEY }&q=${ q }&type=video&maxResults=10` );
+
+export const plSearch = ( q ) => request.get( `/search?part=snippet&key=${ YT_KEY }&q=${ q }&type=playlist&maxResults=10` );
+
+export const playlist = ( q, num = 10 ) => request.get( `/playlistItems?part=snippet&playlistId=${ q }&key=${ YT_KEY }&maxResults=${ num }` );
 
 export const getRecents = async ( ids ) => {
-    const link = `${ YT }channels?part=snippet%2CcontentDetails&id=${ ids.map( ( el ) => el.id ).join( "%2C" ) }&key=${ YT_KEY }`;
-    const response = await fetch( link );
-    const json = await response.json();
+    const link = `/channels?part=snippet%2CcontentDetails&id=${ ids.map( ( el ) => el.id ).join( "%2C" ) }&key=${ YT_KEY }`;
+    const json = await request.get( link );
     let videoList = await Promise.all(
         json.items.map( ( el ) => el.contentDetails.relatedPlaylists.uploads )
             .map( async plId => {

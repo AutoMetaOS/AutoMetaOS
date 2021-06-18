@@ -20,11 +20,6 @@ const app = nanoexpress( {
 
 app.use( cors() );
 app.use( bodyParser() );
-app.use( ( req, res, next ) => {
-      console.log( req );
-      if ( req.params?.id === '3f0402' ) console.log( req );
-      next();
-} );
 // app.use( staticServe( './svelte/build', { mode: 'live' } ) );
 
 require( './js/google' )( app );

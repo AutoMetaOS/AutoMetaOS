@@ -8,18 +8,18 @@ export class Riquest {
     #config;
     constructor ( base_url, type, config ) {
         this.#base = base_url;
-        this.#type = type.toLowerCase() || 'JSON';
+        this.#type = type || 'json';
         this.#config = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
             redirect: 'follow',
-            referrerPolicy: config?.identity?.toLowerCase() === 'anonymous' ? 'no-referrer' : 'strict-origin-when-cross-origin'
+            referrerPolicy: config?.identity === 'anonymous' ? 'no-referrer' : 'strict-origin-when-cross-origin'
         };
     }
 
-    change_type = ( type ) => this.#type = type?.toLowerCase() || 'JSON';
+    change_type = ( type ) => this.#type = type || 'json';
     // JSON & TXT PROCESSOR
     async response_processor ( response ) {
         if ( this.#type === 'json' ) return await response.json();
@@ -34,11 +34,12 @@ export class Riquest {
     }
     handleError = ( e ) => console.warn( e );
     // MAIN
-    async requester ( endpoint ) {
+    async requester ( endpoint = '' ) {
         let response = await ( fetch( this.#base + endpoint, this.#config ).catch( this.handleError ) );
-        console.log( response );
+
         if ( response && !response.ok ) return `An ${ response.status } has occured on: ${ this.#config.method }`;
         if ( !response ) return 'Request Failed';
+
         const processed = await this.response_processor( response );
         if ( this.#config.body ) delete this.#config.body;
         return processed

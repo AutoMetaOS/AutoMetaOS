@@ -5,7 +5,7 @@
   let system,
     network = "...";
 
-  const request = new Riquest(serverURL, "JSON");
+  const request = new Riquest(serverURL, "json");
 
   const smc = () => request.get("/sys/smc").then((r) => (system = r));
   const net = () =>

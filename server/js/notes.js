@@ -15,14 +15,8 @@ async function routes ( app, options ) {
     app.patch( '/notes/:id', ( req, res ) => {
         const body = req.body;
         fs.writeFileSync( notes + 'NOTELIST.txt', body.list );
-        fs.writeFileSync( notes + req.params.id + '-note.txt', body.note );
-        res.send( { code: 200 } );
-    } );
-
-    app.put( '/notes/:id', ( req, res ) => {
-        const body = req.body;
-        fs.writeFileSync( notes + 'NOTELIST.txt', body );
-        fs.unlinkSync( notes + req.params.id + '-note.txt' );
+        if ( body.note ) fs.writeFileSync( notes + req.params.id + '-note.txt', body.note );
+        else fs.unlinkSync( notes + req.params.id + '-note.txt' );
         res.send( { code: 200 } );
     } );
 };

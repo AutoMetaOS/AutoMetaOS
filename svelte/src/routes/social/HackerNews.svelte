@@ -1,34 +1,30 @@
 <script>
-  import { date } from "$lib/shared/js/yoroi";
+  import { date } from "$lib/shared/molecular";
   import { onMount } from "svelte";
+  import { Riquest } from "$lib/shared/molecular";
+
+  const request = new Riquest("https://hacker-news.firebaseio.com/v0", "json");
 
   let news = [];
-  const HNBase = "https://hacker-news.firebaseio.com/v0/";
   const HNCfg = "?print=pretty";
   onMount(() => {
-    fetch(HNBase + "topstories.json" + HNCfg)
-      .then((res) => res.json())
-      .then((r) => {
-        Promise.all(
-          r
-            .slice(0, 40)
-            .map((e) => fetch(HNBase + "item/" + e + ".json" + HNCfg))
-        )
-          .then((resp) => Promise.all(resp.map((r) => r.json())))
-          .then((result) => {
-            result.map((e) => {
-              return {
-                title: e.title,
-                by: e.by,
-                descendants: e.descendants,
-                score: e.score,
-                url: e.url,
-                time: e.time,
-              };
-            });
-            news = result;
-          });
+    request.get("/topstories.json" + HNCfg).then((r) => {
+      Promise.all(
+        r.slice(0, 40).map((e) => request.get(`/item/${e}.json${HNCfg}`))
+      ).then((result) => {
+        result.map((e) => {
+          return {
+            title: e.title,
+            by: e.by,
+            descendants: e.descendants,
+            score: e.score,
+            url: e.url,
+            time: e.time,
+          };
+        });
+        news = result;
       });
+    });
   });
 
   const urlP = (url) => {

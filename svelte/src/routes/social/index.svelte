@@ -1,13 +1,15 @@
 <script>
     import { onMount } from "svelte";
-    import { date } from "$lib/shared/js/yoroi";
+    import { date } from "$lib/shared/molecular";
+    import { Riquest } from "$lib/shared/molecular";
+
+    const request = new Riquest(
+        "https://www.spaceflightnewsapi.net/api/v2/articles",
+        "json"
+    );
 
     let space = [];
-    onMount(() => {
-        fetch("https://www.spaceflightnewsapi.net/api/v2/articles")
-            .then((res) => res.json())
-            .then((r) => (space = r));
-    });
+    onMount(() => request.get().then((r) => (space = r)));
 </script>
 
 <section class="flex" style="flex-wrap: wrap;">

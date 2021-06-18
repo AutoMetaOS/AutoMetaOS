@@ -1,6 +1,7 @@
 <script>
   import { vidoer, destacker, stack } from "../core/store";
   import { SvgIcon } from "$lib/components";
+  import Card from "../shared/videoCard.svelte";
 </script>
 
 <section class="flex p-20" id="search" style="flex-wrap: wrap;">
@@ -21,26 +22,17 @@
             <path d="M2 30 L30 2 M30 30 L2 2" />
           </SvgIcon>
         </div>
-        <a
-          href="#wrapper"
-          on:click={vidoer}
-          data-title={vid.snippet.title}
-          id={vid.id.videoId || vid.snippet.resourceId.videoId}
-        >
-          <img src={vid.snippet.thumbnails.medium.url} alt="" />
-          <div class="name">
-            {@html vid.snippet.title.slice(0, 60)}
-            {vid.snippet.title.length > 60 ? "..." : ""}
-          </div>
-          <div class="channel flex" style="justify-content:space-between;">
-            <span>{vid.snippet.channelTitle}</span>
-            <span>
-              {new Intl.DateTimeFormat("en-GB").format(
-                new Date(vid.snippet.publishedAt)
-              )}
-            </span>
-          </div>
-        </a>
+        <Card
+          title={vid.snippet.title}
+          type="YoutubeVideo"
+          url={vid.id.videoId || vid.snippet.resourceId.videoId}
+          lhs={vid.snippet.channelTitle}
+          image={vid.snippet.thumbnails.medium.url}
+          rhs={~~(
+            (new Date() - new Date(vid.snippet.publishedAt)) /
+            (36 * 1e5)
+          ) + " hours ago"}
+        />
       </div>
     {/each}
   {/if}

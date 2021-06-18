@@ -1,7 +1,8 @@
 # Changelog
 
 ## Pending
-- Uptime session logger/shutdown script
+- Move debounce to molecular
+- Create auto minifier for server
 
 ## Code Quality
 - Add a testing system
@@ -13,6 +14,10 @@
 - DOn't do i=0;i<a.length. It reads length repeatedly and is shit. Do. i=0,j=a.length;i<j; or predeclare
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
+
+## v6.1.0
+- Create Riquest fetch wrapper & migrate svelte
+- Notes performace improvements
 
 ## v6.0.0
 - Full migrate fastify to nanoexpress
