@@ -32,34 +32,6 @@ module.exports = function ( app ) {
                 newsItems = newsItems.map( e => {
                     return {
                         title: e.title.query,
-                        related: e.relatedQueries?.map( e => e.query ),
-                        traffic: +( e.formattedTraffic?.replace( 'K+' ) ),
-                        articles: e.articles.map( e2 => {
-                            return {
-                                title: e2.title,
-                                url: e2.url,
-                                source: e2.source,
-                                desc: e2.snippet,
-                                image: e2.image?.imageUrl
-                            }
-                        } ).slice( 0, 5 )
-                    }
-                } );
-                res.send( newsItems.filter( smartFilter ) );
-            } )
-            .catch( err => console.log( err ) );
-    } );
-
-    app.get( '/social/google/top-trends', ( req, res ) => {
-        const locations = [ 'US', 'GB', 'IN' ];
-        Promise.all( locations.map( e => googleTrends.dailyTrends( { geo: e } ) ) )
-            .then( result => {
-                let newsItems = [];
-                const json = result.map( e => JSON.parse( e ).default.trendingSearchesDays );
-                json.forEach( ctr => ctr.forEach( item => newsItems.push( ...item.trendingSearches ) ) );
-                newsItems = newsItems.map( e => {
-                    return {
-                        title: e.title.query,
                         traffic: +( e.formattedTraffic.replace( 'K+', '' ).replace( 'M+', '000' ) ),
                         articles: e.articles.map( e2 => {
                             return {

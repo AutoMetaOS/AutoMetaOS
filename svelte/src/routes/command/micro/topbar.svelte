@@ -1,5 +1,5 @@
 <script>
-  import { date } from "$lib/shared/js/yoroi.js";
+  import { date } from "$lib/shared/molecular.js";
 
   let dateTime = date();
   setInterval(() => (dateTime = date()), 100);

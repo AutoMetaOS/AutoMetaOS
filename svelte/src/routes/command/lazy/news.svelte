@@ -1,16 +1,14 @@
 <script>
   import Google from "./google.svelte";
+  import { Riquest, serverURL } from "$lib/shared/molecular.js";
   import { base } from "$app/paths";
 
-  let spinner;
+  let spinner,
+    full = [];
 
-  const googleTrends = async () => {
-    const resp = await fetch(serverURL + "social/google/top-trends");
-    return await resp.json();
-  };
-  let full = [];
+  const request = new Riquest(serverURL, "JSON");
 
-  googleTrends().then((r) => {
+  request.get("/social/google/trends").then((r) => {
     full = r;
     spinner.remove();
   });

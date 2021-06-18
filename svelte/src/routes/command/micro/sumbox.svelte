@@ -1,35 +1,33 @@
 <script>
   import { onMount } from "svelte";
+  import { Riquest, serverURL } from "$lib/shared/molecular.js";
 
   let system,
-    network = "Calculating...";
+    network = "...";
 
-  const smc = async () => {
-    const req = await fetch(serverURL + "sys/smc");
-    const json = await req.json();
-    return json;
+  const request = new Riquest(serverURL, "JSON");
+
+  const smc = () => request.get("/sys/smc").then((r) => (system = r));
+  const net = () =>
+    request.get("/sys/net").then((r) => (network = r.speed + " MB/s"));
+
+  onMount(net);
+
+  const getData = (e) => {
+    e.target.style.opacity = 1;
+    e.target.parentElement.style.opacity = 1;
+    if (!(system && network)) smc();
   };
-
-  const net = async () => {
-    const req = await fetch(serverURL + "sys/net");
-    const text = await req.text();
-    return text;
-  };
-
-  onMount(() => {
-    net().then((r) => (network = r + " MB/s"));
-    smc().then((r) => (system = r));
-  });
 </script>
 
-<div id="stats" class="blur rpm-10">
+<div id="stats" class="blur m-10 p-10" on:mouseover={getData}>
   Fan Speed: <progress max="6520" value={+system?.fan || 0} />
   <br /> CPU Temp: <progress max="100" value={+system?.cpu || 0} />
   <br /> MBo Temp: <progress max="100" value={+system?.board || 0} />
-  <br /> Network Av: <i> {network}</i>
+  <br /> Networks: <i> {network}</i>
 </div>
 
-<style type="text/scss">
+<style>
   #stats {
     position: absolute;
     bottom: 3em;
@@ -40,8 +38,5 @@
     background: transparent;
     animation: goOut 0.5s 5s forwards ease;
     transition: opacity 0.2s ease;
-    &:hover {
-      opacity: 1;
-    }
   }
 </style>

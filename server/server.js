@@ -5,6 +5,7 @@ const port = process.env.PORT || 1872;
 // const staticServe = require( '@nanoexpress/middleware-static-serve/cjs' );
 const nanoexpress = require( 'nanoexpress' );
 const FastSpeedtest = require( "fast-speedtest-api" );
+const bodyParser = require( '@nanoexpress/middleware-body-parser/cjs' );
 const urlMetadata = require( 'url-metadata' )
 const cors = require( 'cors' )
 const { exec } = require( 'child_process' );
@@ -17,19 +18,24 @@ const app = nanoexpress( {
       }
 } );
 
-app.use( cors() )
+app.use( cors() );
+app.use( bodyParser() );
+app.use( ( req, res, next ) => {
+      console.log( req );
+      if ( req.params?.id === '3f0402' ) console.log( req );
+      next();
+} );
 // app.use( staticServe( './svelte/build', { mode: 'live' } ) );
 
 require( './js/google' )( app );
 require( './js/nebula' )( app );
 require( './js/notes' )( app );
-require( './js/socials' )( app );
 
 app.get( '/sys/net', ( req, res ) => {
       let speedTest = new FastSpeedtest( {
             token: keys.NFLX_TOK, timeout: 2e3, bufferSize: 16, unit: FastSpeedtest.UNITS.MBps,
       } );
-      speedTest.getSpeed().then( s => res.send( s.toFixed( 2 ) ) ).catch( e => console.error( e.message ) );
+      speedTest.getSpeed().then( s => res.send( { "speed": s.toFixed( 2 ) } ) ).catch( e => console.error( e.message ) );
 } );
 
 app.get( '/sys/smc', ( req, res ) => {

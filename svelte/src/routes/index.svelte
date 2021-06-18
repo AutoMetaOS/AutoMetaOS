@@ -23,6 +23,7 @@
   <script>
     let suggList = [],
       suggI = null;
+
     const returnSug = (data) => {
       const bar = document.getElementById("magic");
       check = (e) => {
@@ -36,24 +37,12 @@
       suggList = data[1].slice(0, 5).map((el) => el[0]);
     };
 
-    const fadeIn = (el) => {
-      el.style.opacity = 0;
-      let tick = () => {
-        el.style.opacity = +el.style.opacity + 0.025;
-        if (+el.style.opacity < 0.66)
-          (window.requestAnimationFrame && requestAnimationFrame(tick)) ||
-            setTimeout(tick, 1);
-      };
-      tick();
-    };
-
     let bgImg = new Image(1440, 900);
-    bgImg.src = "https://picsum.photos/1440/810?random=1";
+    bgImg.src = "https://picsum.photos/1440/810.webp?random=1";
     bgImg.onload = () => {
       const cont = document.getElementById("bgContainer");
       cont.appendChild(bgImg);
-      fadeIn(bgImg);
-      cont.childNodes[0].remove();
+      cont.querySelector("#terra").remove();
     };
   </script>
   <link rel="preconnect" href="https://en.wikipedia.org/" />
@@ -68,7 +57,7 @@
 </svelte:head>
 
 <div id="bgContainer">
-  <img src="./shared/images/Terra.jpg" class="w-100" alt="" />
+  <img id="terra" src="./shared/images/Terra.jpg" class="w-100" alt="" />
 </div>
 
 <section class="w-100">
