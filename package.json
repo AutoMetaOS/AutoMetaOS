@@ -1,9 +1,8 @@
 {
     "name": "ronin",
-    "version": "6.1.0",
+    "version": "6.2.0",
     "license": "MIT",
     "private": true,
-    "contributors": [],
     "scripts": {
         "dev": "cd ./svelte &&  npx svelte-kit dev",
         "build": "cd ./svelte && npx svelte-kit build",

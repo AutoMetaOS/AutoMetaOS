@@ -15,8 +15,9 @@
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-## v6.1.0
+## v6.2.0
 - Create Riquest fetch wrapper & migrate svelte
+- Add timer, for the 4th time -_-
 - Notes performace improvements
 
 ## v6.0.0
