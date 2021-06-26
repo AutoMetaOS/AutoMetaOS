@@ -4,26 +4,10 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "cd ./svelte &&  npx svelte-kit dev",
-        "build": "cd ./svelte && npx svelte-kit build",
-        "client": "cd ./svelte/build && php -q -S ronin.host:1873",
-        "server": "clear && node ./server/server.js",
+        "dev": "cd ./svelte &&  npm run dev",
+        "build": "cd ./svelte && npm run build",
+        "client": "cd ./svelte/build && npm start",
+        "server": "cd ./server && npm start",
         "start": "npm run server & npm run client"
-    },
-    "devDependencies": {
-        "fast-speedtest-api": "^0.3.2",
-        "google-trends-api": "^4.9.2",
-        "minimist": "1.2.5",
-        "node-fetch": "2.6.1",
-        "rss-parser": "^3.12.0"
-    },
-    "dependencies": {
-        "@nanoexpress/middleware-body-parser": "^1.2.2",
-        "@nanoexpress/middleware-static-serve": "^1.0.3",
-        "cors": "^2.8.5",
-        "csso": "^4.2.0",
-        "nanoexpress": "^5.0.6",
-        "node-sass": "4.14.1",
-        "url-metadata": "^2.5.0"
     }
 }

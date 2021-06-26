@@ -1,8 +1,7 @@
-const SSL = './config/keys/';
+const SSL = '../config/keys/';
 const keys = require( '../config/keys/server_keys' );
 const port = process.env.PORT || 1872;
 
-// const staticServe = require( '@nanoexpress/middleware-static-serve/cjs' );
 const nanoexpress = require( 'nanoexpress' );
 const FastSpeedtest = require( "fast-speedtest-api" );
 const bodyParser = require( '@nanoexpress/middleware-body-parser/cjs' );
@@ -20,7 +19,6 @@ const app = nanoexpress( {
 
 app.use( cors() );
 app.use( bodyParser() );
-// app.use( staticServe( './svelte/build', { mode: 'live' } ) );
 
 require( './js/google' )( app );
 require( './js/nebula' )( app );
