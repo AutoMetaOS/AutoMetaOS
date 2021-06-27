@@ -1,0 +1,14 @@
+#! /bin/bash
+
+echo $2;
+
+if [[ $2 -eq 'repo' ]]
+then
+  cd '~/Documents/Github.nosync/Ronin';
+else
+  cd '~/Documents/Github.nosync/Ronin/config';
+fi
+
+git add *;
+git commit -m "$3";
+git push;
