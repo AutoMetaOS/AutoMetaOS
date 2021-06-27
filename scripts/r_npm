@@ -1,12 +1,23 @@
 #! /bin/bash
 
-pwd;
-
 # SET CASE
 if [[ "$2" = "+" ]]; then
+  echo "Where to?"
+  read repo;
+  cd "./$repo";
+  echo "We are at $(pwd)";
   pnpm install $3;
 fi;
 
 if [[ "$2" = "-" ]]; then
+  echo "Where to?"
+  read repo;
+  cd "./$repo";
+  echo "We are at $(pwd)";
   pnpm uninstall $3;
+fi;
+
+if [[ "$2" = "list" ]]; then
+  pwd;
+  node ./scripts/list;
 fi;
