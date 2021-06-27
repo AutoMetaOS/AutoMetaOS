@@ -4,7 +4,7 @@ echo $2;
 
 if [[ $2 -eq 'repo' ]]
 then
-  cd '~/Documents/Github.nosync/Ronin';
+  cd '~/Documents/Github.nosync/Roninous';
 else
   cd '~/Documents/Github.nosync/Ronin/config';
 fi
