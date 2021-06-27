@@ -9,6 +9,8 @@ else
   cd '~/Documents/Github.nosync/Ronin/config';
 fi
 
+pwd;
+
 git add *;
 git commit -m "$3";
 git push;
