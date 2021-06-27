@@ -1,6 +1,10 @@
 #! /bin/bash
+cd "/Users/$(whoami)/Documents/Github.nosync/Ronin/";
 
-if [[ $1 -eq 'git' ]]
-then
-    . r_git;
+if [[ "$1" = "git" ]]; then
+    . ./scripts/r_git;
+fi
+
+if [[ "$1" = "npm" ]]; then
+    . ./scripts/r_npm;
 fi

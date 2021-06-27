@@ -1,0 +1,12 @@
+#! /bin/bash
+
+pwd;
+
+# SET CASE
+if [[ "$2" = "+" ]]; then
+  pnpm install $3;
+fi;
+
+if [[ "$2" = "-" ]]; then
+  pnpm uninstall $3;
+fi;
