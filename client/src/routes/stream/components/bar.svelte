@@ -1,18 +1,24 @@
 <script>
   import { onMount } from "svelte";
-  import { nebula } from "../core/nebulaStore";
+  import { nebula } from "../core/api";
   import { SvgIcon } from "$lib/components";
+  import { channels } from "../core/store";
 
-  export let searcher, channels;
+  export let searcher;
 
   let bar,
     searchText = "";
+
+  const caller = () => {
+    nebula();
+    channels();
+  };
 
   onMount(() => (searchText = URLpars().q || ""));
 </script>
 
 <section class="o-0 p-10 flex blur" bind:this={bar}>
-  <div>Mars</div>
+  <div>Helios</div>
 
   <form on:submit|preventDefault={searcher} style="background:#444;">
     <input
@@ -30,8 +36,7 @@
   </form>
 
   <div>
-    <button class="blue" on:click={nebula}> ★ </button>
-    <button class="red" on:click={channels}> ★ </button>
+    <button class="red" on:click={caller}> ★ </button>
   </div>
 </section>
 
@@ -65,8 +70,5 @@
   }
   .red {
     background: #c22;
-  }
-  .blue {
-    background: #22c;
   }
 </style>

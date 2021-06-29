@@ -9,33 +9,31 @@
     ];
 </script>
 
-{#if $vId}
-    <div class="w-100" id="wrapper">
+<div class="w-100 tx-c" id="wrapper">
+    {#if $vId}
         <iframe
             title="vid"
-            class="w-100"
+            class="w-100 h-100"
             bind:this={maxwell}
-            src={$vId}
+            src={"https://" + $vId}
             {allow}
             {sandbox}
         />
-    </div>
-{:else}
-    <div
-        class="w-100 tx-c"
-        style="height:400px;margin-top: 10%;font: italic 100 48px Helvetica;"
-    >
-        Helios
-    </div>
-{/if}
+    {:else}
+        <img class="m-h-auto" src="/assets/nebula.png" alt="" />
+    {/if}
+</div>
 
 <style type="text/scss">
     #wrapper {
         height: 100vh;
         iframe {
-            height: 100%;
             border: 0;
             background: #111;
         }
+    }
+    img {
+        margin-top: 5%;
+        filter: hue-rotate(100deg);
     }
 </style>

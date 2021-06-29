@@ -1,19 +1,22 @@
 # Changelog
 
 ## Pending
-- Move debounce to molecular
 - Create auto minifier for server
 
 ## Code Quality
 - Add a testing system
 - Test for all functions return value. Made as many funcs return as possible
 - Add defualt value to EVERY variable
-- Convert all short names to proper names variables and functions
 - Remove all multiple e.style.property1, 2, 3..n and change combine them to one e.toggleclass
 - Remove all trailing commas
-- DOn't do i=0;i<a.length. It reads length repeatedly and is shit. Do. i=0,j=a.length;i<j; or predeclare
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
+
+## 6.3.0
+- Create Kron to assist with Time related functions
+- Remove Playlist support from Stream due to low usage
+- Disable Segmenter from Command
+- Bug Fixes + Cleanup | Something will probably break soon
 
 ## v6.2.0
 - Create Riquest fetch wrapper & migrate svelte

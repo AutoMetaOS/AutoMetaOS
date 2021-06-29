@@ -1,14 +1,17 @@
 <script>
-    import { subscriptions } from "../core/nebulaStore";
+    import { subscriptions } from "../core/api";
+    import Card from "../shared/videoCard.svelte";
 
     $: videos = $subscriptions;
 
-    import Card from "../shared/videoCard.svelte";
+    const clear = () => (videos = []);
 </script>
 
 <section class="flex p-20" id="search" style="flex-wrap: wrap;">
     {#if videos.length}
-        <span class="w-100 p-5">Nebula Subscriptions ({videos.length})</span>
+        <span class="w-100 p-5" on:click={clear}
+            >Nebula Subscriptions ({videos.length})</span
+        >
         {#each videos as vid}
             <Card
                 title={vid.title}
@@ -16,8 +19,7 @@
                 type="NebulaVideo"
                 image={vid.image}
                 lhs={vid.channel}
-                rhs={~~((new Date() - new Date(vid.date)) / (36 * 1e5)) +
-                    " hours ago"}
+                rhs={vid.date}
             />
         {/each}
     {/if}

@@ -1,5 +1,5 @@
 <script>
-  import { date } from "$lib/shared/molecular";
+  import { Kron } from "$lib/shared/molecular";
   import { onMount } from "svelte";
   import { Riquest } from "$lib/shared/molecular";
 
@@ -48,7 +48,9 @@
           <span class="desc">{urlP(n.url)}</span>
         </div>
         <div class="desc">
-          {n.score} points | {n.descendants} comments | {date(n.time * 1e3)}
+          {n.score} points | {n.descendants} comments | {new Kron(
+            n.time * 1e3
+          ).timeSince()}
         </div>
       </a>
     </div>

@@ -26,7 +26,7 @@ setInterval
 
                 if ( cmd.dataset.cmd === 'download' ) {
                     let lnk = document.createElement( 'a' ), e;
-                    lnk.download = new Date().getTime().toString() + ".jpg";
+                    lnk.download = (+new Date()).toString() + ".jpg";
                     const canvas = document.getElementById( "downcanvas" );
                     lnk.href = canvas.toDataURL( "image/jpeg" );
                     if ( document.createEvent ) {

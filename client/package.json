@@ -1,6 +1,5 @@
 {
 	"name": "rurouni",
-	"version": "2.1.0",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "rm -rf build .svelte-kit && svelte-kit build",
@@ -18,6 +17,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"crypto-js": "^4.0.0"
+		"crypto-js": "^4.0.0",
+		"csso": "^4.2.0"
 	}
 }

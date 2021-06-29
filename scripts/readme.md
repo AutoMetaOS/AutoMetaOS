@@ -1,5 +1,9 @@
 # Usage
 
+```bash
+$ alias ronin='sh ~/Documents/GitHub.nosync/Ronin/scripts/ronin'
+```
+
 ## GIT
 
 Sync Repo

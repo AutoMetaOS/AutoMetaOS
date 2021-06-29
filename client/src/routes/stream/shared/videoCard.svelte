@@ -1,5 +1,6 @@
 <script>
     import { videoSet } from "../core/store";
+    import { Kron } from "$lib/shared/molecular";
     import { SvgIcon } from "$lib/components";
 
     export let title = "",
@@ -11,7 +12,7 @@
 
     const [ext, yt] = [
         "?autoplay=1&enablejsapi=1",
-        "https://www.youtube-nocookie.com/embed/",
+        "www.youtube-nocookie.com/embed/",
     ];
 
     const embedCalculator = (type, url) => {
@@ -20,7 +21,12 @@
     };
 </script>
 
-<div class="recom" data-type={type} style="position:relative;">
+<div
+    class="recom"
+    data-type={type}
+    style="position:relative;"
+    on:click={videoSet}
+>
     <div style="position:absolute;right:5px;top:5px;border-radius:7px;">
         <SvgIcon
             size="20"
@@ -31,12 +37,7 @@
             <path d="M16 2 L16 30 M2 16 L30 16" />
         </SvgIcon>
     </div>
-    <a
-        href="#wrapper"
-        on:click={videoSet}
-        data-title={title}
-        data-url={embedCalculator(type, url)}
-    >
+    <a href="#wrapper" data-title={title} data-url={embedCalculator(type, url)}>
         <img src={image} alt="" />
         <div class="name">
             {@html title.slice(0, 60)}
@@ -44,7 +45,7 @@
         </div>
         <div class="channel flex" style="justify-content:space-between;">
             <span>{lhs}</span>
-            <span>{rhs}</span>
+            <span>{new Kron(rhs).timeSince()}</span>
         </div>
     </a>
 </div>

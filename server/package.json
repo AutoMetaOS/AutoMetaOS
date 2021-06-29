@@ -1,8 +1,5 @@
 {
     "name": "battosai",
-    "version": "6.2.0",
-    "license": "MIT",
-    "private": true,
     "scripts": {
         "dev": "clear && nodemon ./server.js",
         "start": "clear && node ./server.js"

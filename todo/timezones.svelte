@@ -10,7 +10,7 @@
         GMT: "Europe/London",
     };
 
-    const recalc = () => (d = new Date(new Date().getTime() + 36e5 * offset));
+    const recalc = () => (d = new Date(+new Date() + 36e5 * offset));
 </script>
 
 <article>

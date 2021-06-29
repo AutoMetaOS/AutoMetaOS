@@ -1,5 +1,7 @@
+"use strict";
+
 const fs = require( 'fs' );
-const notes = './config/database/notes/';
+const notes = '../config/database/notes/';
 
 async function routes ( app, options ) {
     app.get( '/notes/', ( req, res ) => {

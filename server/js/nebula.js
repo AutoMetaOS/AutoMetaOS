@@ -1,10 +1,12 @@
+"use strict";
+
 const fetch = require( 'node-fetch' );
 const keys = require( '../../config/keys/server_keys' );
 const NEBULA_TOKEN = keys.NEBULA_TOKEN;
 
 const nebulaFilter = ( r, tok ) => {
     const filtered = r.results.map( e => {
-        const prefix = "https://content.watchnebula.com/video/";
+        const prefix = "content.watchnebula.com/video/";
         const suffix = '/iframe/' + tok;
         return {
             title: e.title,

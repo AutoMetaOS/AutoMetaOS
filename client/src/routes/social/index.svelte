@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import { date } from "$lib/shared/molecular";
+    import { Kron } from "$lib/shared/molecular";
     import { Riquest } from "$lib/shared/molecular";
 
     const request = new Riquest(
@@ -20,7 +20,11 @@
                 <span class="f-wt7">{el.title}</span>
                 <hr />
                 <details>
-                    <summary>{el.newsSite} / {date(el.publishedAt)}</summary>
+                    <summary
+                        >{el.newsSite} / {new Kron(
+                            el.publishedAt
+                        ).timeSince()}</summary
+                    >
                     <p>{el.summary}</p>
                 </details>
             </div>

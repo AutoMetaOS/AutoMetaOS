@@ -1,10 +1,9 @@
 <script>
   import { onMount } from "svelte";
 
-  import TopBar from "./command/micro/topbar.svelte";
-  import SummaryBox from "./command/micro/sumbox.svelte";
+  import TopBar from "./command/components/topbar.svelte";
+  import SummaryBox from "./command/components/sumbox.svelte";
   import Search from "./command/components/search.svelte";
-  import IFrame from "./command/components/ifr.svelte";
   import News from "./command/lazy/news.svelte";
 
   import { base } from "$app/paths";
@@ -86,8 +85,6 @@
     {/if}
   </div>
 </section>
-
-<IFrame />
 
 <style type="text/scss">
   #bgContainer {

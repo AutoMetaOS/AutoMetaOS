@@ -1,3 +1,5 @@
+"use strict";
+
 const SSL = '../config/keys/';
 const keys = require( '../config/keys/server_keys' );
 const port = process.env.PORT || 1872;

@@ -1,3 +1,5 @@
+"use strict";
+
 const fetch = require( 'node-fetch' );
 const googleTrends = require( 'google-trends-api' );
 const keys = require( '../../config/keys/server_keys' );

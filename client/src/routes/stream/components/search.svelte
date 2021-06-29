@@ -16,8 +16,7 @@
         url={vid.id.videoId}
         lhs={vid.snippet.channelTitle}
         image={vid.snippet.thumbnails.medium.url}
-        rhs={~~((new Date() - new Date(vid.snippet.publishedAt)) / (36 * 1e5)) +
-          " hours ago"}
+        rhs={vid.snippet.publishedAt}
       />
     {/each}
   {/if}

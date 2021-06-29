@@ -1,6 +1,6 @@
 <script>
     import Timer from "$lib/shared/timer";
-    import { s_hms, hms_s } from "$lib/shared/molecular";
+    import { Kron } from "$lib/shared/molecular";
 
     let //
         loop = false,
@@ -14,7 +14,8 @@
         else stopHandler();
     };
 
-    const displayHandler = (ms) => (time = s_hms(Math.round(ms / 1000)));
+    const displayHandler = (ms) =>
+        (time = new Kron().secondsToClock(Math.round(ms / 1000)));
 
     const stopHandler = () => {
         clock.stop();
@@ -29,7 +30,7 @@
         if (paused) clock.start();
         else {
             time = duration;
-            clock.start(hms_s(duration));
+            clock.start(new Kron().clockToSeconds(duration));
         }
     };
 

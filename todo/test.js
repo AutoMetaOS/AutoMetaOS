@@ -1,84 +1,47 @@
-"use strict";
+class Kron extends Date {
+    #months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 
-class Riquest {
-    #base;
-    #type;
-    #config;
-    constructor ( base_url, type, config ) {
-        this.#base = base_url;
-        this.#type = type.toLowerCase() || 'JSON';
-        this.#config = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            redirect: 'follow',
-            referrerPolicy: ( config === null || config === void 0 ? void 0 : config.identity.toLowerCase() ) === 'anonymous' ? 'no-referrer' : 'strict-origin-when-cross-origin',
-            body: ''
-        };
-    }
+    timeSince ( val ) {
+        val = 0 | ( Date.now() - new Date( val ) ) / 1000;
+        let unit, length = {
+            second: 60, minute: 60, hour: 24, day: 7, week: 4.35,
+            month: 12, year: 10000
+        }, result;
 
-    // JSON & TXT PROCESSOR
-    async response_processor ( response ) {
-        if ( this.#type === 'json' ) return await response.json();
-        return await response.text();
-    }
-
-    // CONFIG BODY PROCESSOR
-    async data_processor ( data ) {
-        let temp;
-        if ( typeof data === 'object' ) temp = JSON.stringify( data );
-        if ( typeof data === 'string' ) temp = data;
-        this.#config.body = temp;
-    }
-
-    // MAIN
-    async requester ( endpoint ) {
-        let response = await ( fetch( this.#base + endpoint, this.#config ).catch( this.handleError ) );
-        if ( !response.ok ) {
-            const message = `An ${ response.status } has occured on: ${ this.#config.method }`;
-            return message
+        for ( unit in length ) {
+            result = val % length[ unit ];
+            if ( !( val = 0 | val / length[ unit ] ) )
+                return result + ' ' + ( result - 1 ? unit + 's' : unit );
         }
-        const processed = await this.response_processor( response );
-        if ( this.#config.body ) delete this.#config.body;
-        return processed
-    }
+    };
 
-    // ENDPOINT OPTION TYPES
-    async get ( endpoint ) {
-        this.#config.method = 'GET';
-        if ( this.#config.body ) delete this.#config.body;
-        return await this.requester( endpoint );
-    }
+    toLocal ( loc = "en-GB" ) {
+        console.log( this.getTime() );
+        return new Date( this.getTime() || new Date() ).toLocaleDateString( loc, {
+            weekday: "short", day: "numeric",
+            hour12: false, hour: "2-digit",
+            month: "short", minute: "2-digit"
+        } );
+    };
 
-    async post ( endpoint, data ) {
-        this.#config.method = 'POST';
-        if ( data ) this.data_processor( data );
-        return await this.requester( endpoint );
-    }
+    secondsToClock ( seconds ) {
+        return [ 3600, 60 ]
+            .reduceRight(
+                ( p, b ) => r => [ Math.floor( r / b ) ].concat( p( r % b ) ),
+                r => [ r ]
+            )( seconds )
+            .map( a => a.toString().padStart( 2, '0' ) )
+            .join( ':' );
+    };
 
-    async delete ( endpoint, data ) {
-        this.#config.method = 'DELETE';
-        if ( data ) this.data_processor( data );
-        return await this.requester( endpoint );
-    }
-
-    async put ( endpoint, data ) {
-        this.#config.method = 'DELETE';
-        if ( data ) this.data_processor( data );
-        return await this.requester( endpoint );
-    }
-
-    async patch ( endpoint, data ) {
-        this.#config.method = 'DELETE';
-        if ( data ) this.data_processor( data );
-        return await this.requester( endpoint );
-    }
-
+    clockToSeconds ( hhmmss ) {
+        const span = hhmmss.split( ":" );
+        const duration = +span[ 0 ] * 3600 + +span[ 1 ] * 60 + +span[ 2 ];
+        return duration;
+    };
 };
 
-
-const request = new Riquest( 'https://jsonplaceholder.typicode.com', 'JSON' );
-const response_POST = request.post( '/posts/1', { name: "paul rudd", movies: [ "I Love You Man", "Role Models" ] } ).then( console.log );
-const response_GET = request.get( '/posts/2' ).then( console.log );
-const response_DELETE = request.delete( '/posts/3' ).then( console.log );
+// console.log( new Kron().timeSince( 1624964788192 ) );
+// console.log( new Kron( 1624964788192 ).toLocal() );
+// console.log( new Kron().secondsToClock( 5267 ) );
+// console.log( new Kron().clockToSeconds( "12:45:22" ) );
