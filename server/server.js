@@ -22,7 +22,6 @@ const app = nanoexpress( {
 app.use( cors() );
 app.use( bodyParser() );
 
-require( './js/google' )( app );
 require( './js/nebula' )( app );
 require( './js/notes' )( app );
 

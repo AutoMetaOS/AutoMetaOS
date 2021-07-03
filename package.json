@@ -1,6 +1,6 @@
 {
     "name": "ronin",
-    "version": "6.3.0",
+    "version": "6.4.0",
     "license": "MIT",
     "private": true,
     "scripts": {
@@ -9,5 +9,9 @@
         "client": "cd ./svelte/build && npm start",
         "server": "cd ./server && npm start",
         "start": "npm run server & npm run client"
+    },
+    "devDependencies": {
+        "node-fetch": "^2.6.1",
+        "@cloudflare/wrangler": "^1.17.0"
     }
 }

@@ -1,6 +1,7 @@
 "use strict";
 
 export const serverURL = 'https://ronin.host:1872';
+export const cloudURL = 'https://api.nukes.in';
 
 export class Kron extends Date {
     #months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];

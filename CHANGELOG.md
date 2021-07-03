@@ -12,6 +12,11 @@
 - Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
+## 6.4.0
+- Remove Extension, now wasn't needed due to advancements in other features
+- Google is no longer needed offline, trends have been offloaded to cloudflare
+- Cloudflare worker scripts enabled
+
 ## 6.3.0
 - Create Kron to assist with Time related functions
 - Remove Playlist support from Stream due to low usage

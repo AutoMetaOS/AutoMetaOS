@@ -1,20 +1,20 @@
 <script>
   import Google from "./google.svelte";
-  import { Riquest, serverURL } from "$lib/shared/molecular.js";
+  import { Riquest, cloudURL } from "$lib/shared/molecular.js";
   import { base } from "$app/paths";
 
   let spinner,
     full = [];
 
-  const request = new Riquest(serverURL, "json");
+  const cloudquest = new Riquest(cloudURL, "json");
 
-  request.get("/social/google/trends").then((r) => {
+  cloudquest.get("/gt/US").then((r) => {
     full = r;
     spinner.remove();
   });
 </script>
 
-<section class="flex" style="flex-wrap:wrap;">
+<section class="flex">
   <div
     class="blurW rpm-5 p-20 w-100"
     style="text-align:center;"
@@ -24,3 +24,12 @@
   </div>
   <Google google={full} />
 </section>
+
+<style>
+  section {
+    flex-wrap: wrap;
+    content-visiblity: auto;
+    -ms-content-visiblity: auto;
+    -webkit-content-visiblity: auto;
+  }
+</style>
