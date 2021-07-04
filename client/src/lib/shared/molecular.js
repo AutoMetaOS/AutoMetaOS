@@ -65,8 +65,11 @@ export class Riquest {
     change_type = ( type ) => this.#type = type || 'json';
     // JSON & TXT PROCESSOR
     async response_processor ( response ) {
-        if ( this.#type === 'json' ) return await response.json();
-        return await response.text();
+        const { headers } = response;
+        const contentType = headers.get( "content-type" ) || "";
+        if ( contentType.includes( "application/json" ) )
+            return await response.json();
+        else return await response.text();
     }
     // CONFIG BODY PROCESSOR
     data_processor ( data ) {

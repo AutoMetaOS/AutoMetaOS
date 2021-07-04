@@ -22,8 +22,7 @@ const app = nanoexpress( {
 app.use( cors() );
 app.use( bodyParser() );
 
-require( './js/nebula' )( app );
-require( './js/notes' )( app );
+require( 'notes' )( app );
 
 app.get( '/sys/net', ( req, res ) => {
       let speedTest = new FastSpeedtest( {

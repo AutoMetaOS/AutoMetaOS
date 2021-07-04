@@ -8,7 +8,7 @@
 
   const cloudquest = new Riquest(cloudURL, "json");
 
-  cloudquest.get("/gt/US").then((r) => {
+  cloudquest.get("/data/gt/US").then((r) => {
     full = r;
     spinner.remove();
   });

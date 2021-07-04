@@ -1,8 +1,0 @@
-[development]
-port = 8000
-log = "normal"
-workers = 8
-secret-key = "generated"
-keep-alive = "5s"
-read-timeout = "5s"
-write-timeout = "5s"

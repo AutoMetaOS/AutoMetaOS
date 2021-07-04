@@ -10,11 +10,10 @@
 
   import { SvgIcon } from "$lib/components";
 
-  const state = { news: 0 };
+  let news = false;
 
   onMount(
-    () =>
-      (window.onscroll = () => (window.scrollY > 10 ? (state.news = 1) : null))
+    () => (window.onscroll = () => (window.scrollY > 2 ? (news = true) : null))
   );
 </script>
 
@@ -35,15 +34,8 @@
         .join("<br />");
       suggList = data[1].slice(0, 5).map((el) => el[0]);
     };
-
-    let bgImg = new Image(1440, 900);
-    bgImg.src = "https://picsum.photos/1440/810.webp?random=1";
-    bgImg.onload = () => {
-      const cont = document.getElementById("bgContainer");
-      cont.appendChild(bgImg);
-      cont.querySelector("#terra").remove();
-    };
   </script>
+  <link rel="preconnect" href="https://web.whatsapp.com/" />
   <link rel="preconnect" href="https://en.wikipedia.org/" />
   <link rel="preconnect" href="https://github.com" />
   <link rel="prefetch" href="{base}/stream" />
@@ -56,7 +48,13 @@
 </svelte:head>
 
 <div id="bgContainer">
-  <img id="terra" src="./shared/images/Terra.jpg" class="w-100" alt="" />
+  <img
+    id="terra"
+    src="https://picsum.photos/1440/810.webp?random=1"
+    onerror="this.src='./shared/images/Terra.jpg'"
+    class="w-100 o-50 h-100"
+    alt=""
+  />
 </div>
 
 <section class="w-100">
@@ -64,7 +62,7 @@
   <SummaryBox />
   <Search />
   <br />
-  <div id="Qlinks">
+  <div id="Qlinks" class="tx-c">
     <SvgIcon>
       <path d="M30 12 L16 24 2 12" stroke-width="1" />
     </SvgIcon>
@@ -73,15 +71,10 @@
 
 <section style="padding:0 25%;height:auto;">
   <div id="newsBox" class="w-100 m-h-auto" style="margin-top:20%;">
-    {#if state.news}
+    {#if news}
       <News />
     {:else}
-      <div
-        class="blurW rpm-5 p-20 w-100"
-        style="text-align:center;font-size:100px;line-height:100px;"
-      >
-        &nbsp;
-      </div>
+      <div class="blurW rpm-5 p-20 w-100 tx-c m-20">&nbsp;</div>
     {/if}
   </div>
 </section>
@@ -94,13 +87,11 @@
     height: 100vh;
     background: #000;
     img {
-      height: 100%;
       object-fit: cover;
     }
   }
   #Qlinks {
     width: calc(100% - 10px);
-    text-align: center;
     animation: downBar 0.2s 0.5s ease forwards;
     position: absolute;
     bottom: -5em;

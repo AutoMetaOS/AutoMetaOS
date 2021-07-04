@@ -1,5 +1,5 @@
 import keys from '../../../../../config/keys/client_keys';
-import { Riquest, serverURL } from "$lib/shared/molecular";
+import { Riquest, cloudURL } from "$lib/shared/molecular";
 import { writable } from 'svelte/store';
 
 const yt_req = new Riquest( 'https://youtube.googleapis.com/youtube/v3', 'json' );
@@ -28,12 +28,12 @@ export const getRecents = async ( ids ) => {
     return videoList.flat();
 }
 
-const nb_req = new Riquest( serverURL, 'json' );
+const nb_req = new Riquest( cloudURL, 'json' );
 
 export const subscriptions = writable( [] );
 
 export const nebula = async () => {
-    const videos = await nb_req.get( '/nebula/videos' );
+    const videos = await nb_req.get( '/nebula/subs' );
     subscriptions.set( videos )
     return 0;
 }
