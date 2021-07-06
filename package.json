@@ -11,7 +11,7 @@
         "start": "npm run server & npm run client"
     },
     "devDependencies": {
-        "node-fetch": "^2.6.1",
-        "@cloudflare/wrangler": "^1.17.0"
+        "node-fetch": "2.6.1",
+        "@cloudflare/wrangler": "1.17.0"
     }
 }
