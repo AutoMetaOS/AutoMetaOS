@@ -17,12 +17,12 @@
   onMount(() => (searchText = URLpars().q || ""));
 </script>
 
-<section class="o-0 p-10 flex blur" bind:this={bar}>
+<section class="o-0 ◼ 💪 🥃" bind:this={bar}>
   <div>Helios</div>
 
-  <form on:submit|preventDefault={searcher} style="background:#444;">
+  <form on:submit|preventDefault={searcher}>
     <input
-      class="p-5"
+      class="◼"
       id="srcBox"
       size="35"
       placeholder="Search"
@@ -41,6 +41,9 @@
 </section>
 
 <style type="text/scss">
+  form {
+    background: #444;
+  }
   section {
     z-index: 9;
     font-size: 1.1em;

@@ -9,7 +9,7 @@
     ];
 </script>
 
-<div class="w-100 tx-c" id="wrapper">
+<div class="w-100 ↕" id="wrapper">
     {#if $vId}
         <iframe
             title="vid"

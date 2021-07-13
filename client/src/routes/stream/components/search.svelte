@@ -4,9 +4,9 @@
   import Card from "../shared/videoCard.svelte";
 </script>
 
-<section class="p-20 flex" id="search" style="flex-wrap: wrap;">
+<section class="⬛ 💪 💪🌯" id="search">
   {#if videos.length}
-    <div class="p-5" style="width:99vw;">
+    <div class="◼">
       <div on:click={() => (videos = [])}>Search</div>
     </div>
     {#each videos as vid}
@@ -21,3 +21,9 @@
     {/each}
   {/if}
 </section>
+
+<style>
+  .◼ {
+    width: 99vw;
+  }
+</style>

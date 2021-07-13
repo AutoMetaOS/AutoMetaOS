@@ -4,17 +4,8 @@
   import TopBar from "./command/components/topbar.svelte";
   import SummaryBox from "./command/components/sumbox.svelte";
   import Search from "./command/components/search.svelte";
-  import News from "./command/lazy/news.svelte";
 
   import { base } from "$app/paths";
-
-  import { SvgIcon } from "$lib/components";
-
-  let news = false;
-
-  onMount(
-    () => (window.onscroll = () => (window.scrollY > 2 ? (news = true) : null))
-  );
 </script>
 
 <svelte:head>
@@ -47,12 +38,10 @@
   </style>
 </svelte:head>
 
-<div id="bgContainer">
+<div id="bgContainer" class="o-50">
   <img
-    id="terra"
     src="https://picsum.photos/1440/810.webp?random=1"
-    onerror="this.src='./shared/images/Terra.jpg'"
-    class="w-100 o-50 h-100"
+    class="w-100 h-100"
     alt=""
   />
 </div>
@@ -61,22 +50,6 @@
   <TopBar />
   <SummaryBox />
   <Search />
-  <br />
-  <div id="Qlinks" class="tx-c">
-    <SvgIcon>
-      <path d="M30 12 L16 24 2 12" stroke-width="1" />
-    </SvgIcon>
-  </div>
-</section>
-
-<section style="padding:0 25%;height:auto;">
-  <div id="newsBox" class="w-100 m-h-auto" style="margin-top:20%;">
-    {#if news}
-      <News />
-    {:else}
-      <div class="blurW rpm-5 p-20 w-100 tx-c m-20">&nbsp;</div>
-    {/if}
-  </div>
 </section>
 
 <style type="text/scss">
@@ -85,16 +58,10 @@
     z-index: 0;
     width: 100vw;
     height: 100vh;
-    background: #000;
+    background: url(/shared/images/Terra.jpg);
     img {
       object-fit: cover;
     }
-  }
-  #Qlinks {
-    width: calc(100% - 10px);
-    animation: downBar 0.2s 0.5s ease forwards;
-    position: absolute;
-    bottom: -5em;
   }
   @keyframes downBar {
     to {

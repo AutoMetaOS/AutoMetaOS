@@ -1,20 +1,13 @@
 <script>
   import { onMount } from "svelte";
   import { w3, wordCount, initialize } from "./functions";
-  import { Button } from "$lib/components";
   import { base } from "$app/paths";
   import { debounce } from "$lib/shared/molecular";
-  import csso from "csso";
 
   let //
     ifr,
     words,
     oldHT = "";
-
-  const cssMin = () => {
-    const minifiedCss = csso.minify(editor.getValue()).css;
-    recalculate("<div>" + minifiedCss + "</div>");
-  };
 
   const render = () => {
     const html = editor.getValue();
@@ -59,38 +52,30 @@
   </style>
 </svelte:head>
 
-<section class="flex" style="background:#666">
-  <div class="boxies p-0 m-0 w-50" on:keyup={debounce(render, 1000)}>
-    <div class="flex w-100 p-0 m-0" style="justify-content: space-between;">
-      <div>
-        <Button click={render} theme="#18f" style="margin:0;">Render</Button>
-        <Button click={cssMin} theme="#18f" style="margin:0;">Min CSS</Button>
-      </div>
-      <div class="p-10">{words}</div>
-    </div>
-    <div class="w-100 codeContainer" style="position:relative;height:96%;">
-      <textarea spellcheck="true" id="code" value={w3} />
-    </div>
+{words}
+<section class="💪">
+  <div class="w-50 h-100 codeContainer" on:keyup={debounce(render, 1000)}>
+    <textarea spellcheck="true" id="code" value={w3} />
   </div>
-  <div class="boxies p-0 m-0 w-50">
+  <div class="h-100 💪🌯 ◼ ▫ w-50">
     <iframe
       title="sim"
       src="/assets/repl.html"
-      class="w-100 p-0"
+      class="w-100 h-100 ◼"
       frameborder="0"
     />
   </div>
 </section>
 
 <style type="text/scss">
+  .codeContainer {
+    position: relative;
+  }
+  section {
+    height: 100vh;
+    color: #fff;
+  }
   iframe {
     background: #fff;
-    height: 100%;
-  }
-  .boxies {
-    flex-wrap: wrap;
-    color: #fff;
-    height: 100vh;
-    overflow-y: scroll;
   }
 </style>

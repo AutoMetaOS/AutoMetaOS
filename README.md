@@ -14,8 +14,6 @@ $ pnpm i
 $ npm run start
 ```
 
-Safari butler
-
-```bash
-$ xcrun safari-web-extension-converter ./Quartermaster/
-```
+## Todos
+- https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation
+- https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information

@@ -12,7 +12,7 @@
     onMount(getNotes);
 </script>
 
-<div class="p-20 flex" style="border-bottom: 1px solid #8882;">
+<div class="⬛ 💪" style="border-bottom: 1px solid #8882;">
     <input
         class="newNote"
         placeholder="Search..."

@@ -20,7 +20,7 @@
   };
 </script>
 
-<div id="stats" class="blur m-10 p-10" on:mouseover={getData}>
+<div id="stats" class="🥃 ◻ ⬛" on:mouseover={getData}>
   Fan Speed: <progress max="6520" value={+system?.fan || 0} />
   <br /> CPU Temp: <progress max="100" value={+system?.cpu || 0} />
   <br /> MBo Temp: <progress max="100" value={+system?.board || 0} />

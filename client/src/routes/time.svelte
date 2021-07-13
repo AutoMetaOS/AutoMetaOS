@@ -63,7 +63,7 @@
     </style>
 </svelte:head>
 
-<section class="h-1vh flex-col flex-wrap">
+<section class="h-1vh 💪-col 💪🌯">
     <div class="w-100" id="top">
         <input
             type="checkbox"
@@ -87,8 +87,8 @@
             />
         </label>
     </div>
-    <div class="tx-c" contenteditable id="timer" bind:innerHTML={time} />
-    <div class="tx-c o-75" id="controls">
+    <div class="↕" contenteditable id="timer" bind:innerHTML={time} />
+    <div class="↕ o-75" id="controls">
         <svg id="playpause" viewBox="0 0 32 32" on:click={handleClick}>
             {#if running}
                 <path d="M23 2 L23 28 M9 2 L9 28" fill="none" />

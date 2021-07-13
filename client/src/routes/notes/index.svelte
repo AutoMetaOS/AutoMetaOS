@@ -83,13 +83,13 @@
 
 <svelte:window on:keydown={handleKeyDown} />
 
-<main class="flex">
+<main class="💪">
     <nav class="lhs w-20">
         <Logo />
         <section id="list">
             <Lister />
         </section>
-        <functions class="flex" style="height:3.5rem;bottom:0;">
+        <functions class="💪" style="height:3.5rem;bottom:0;">
             <Button click={saver} theme={saveButton} style="margin:0;flex:1;">
                 <SvgIcon>
                     <path

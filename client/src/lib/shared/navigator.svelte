@@ -22,7 +22,7 @@
     </summary>
     <nav class="flex rpm-10">
         {#each pages as pg}
-            <a class="rpm-10 tx-c" href={pg.url}>
+            <a class="rpm-10 ↕" href={pg.url}>
                 <img src={pg.icon} height="60px" width="60px" alt={pg.name} />
                 <div>
                     {pg.name}

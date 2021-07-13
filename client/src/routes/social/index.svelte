@@ -12,12 +12,12 @@
     onMount(() => request.get().then((r) => (space = r)));
 </script>
 
-<section class="flex" style="flex-wrap: wrap;">
+<section class="💪 💪🌯" >
     {#each space as el}
-        <a class="boxy m-20" href={el.url}>
+        <a class="boxy ⬜" href={el.url}>
             <img src={el.imageUrl} class="w-100" alt={el.title} />
-            <div class="title p-20">
-                <span class="f-wt7">{el.title}</span>
+            <div class="title ⬛">
+                <span class="ℹ7">{el.title}</span>
                 <hr />
                 <details>
                     <summary

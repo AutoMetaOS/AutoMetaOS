@@ -6,7 +6,7 @@
     import Search from "./components/search.svelte";
 
     import { onMount } from "svelte";
-    import { vId, channels } from "./core/store";
+    import { vId } from "./core/store";
     import { search } from "./core/api";
 
     let base = [];
@@ -25,8 +25,6 @@
     onMount(() => {
         URLpars().q && searcher(URLpars().q);
         vId.set(decodeURIComponent(URLpars().id || ""));
-        // if (window.location.href.split("/stream")[1] === "") channels();
-
         return 0;
     });
 </script>

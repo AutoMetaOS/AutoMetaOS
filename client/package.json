@@ -3,7 +3,7 @@
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "rm -rf build .svelte-kit && svelte-kit build",
-		"deploy": "npx gh-pages -d build -t true",
+		"deploy": "npm run build && npx gh-pages -d build -t true",
 		"start": "php -q -S ronin.host:1873"
 	},
 	"devDependencies": {
@@ -17,7 +17,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"crypto-js": "^4.0.0",
-		"csso": "^4.2.0"
+		"crypto-js": "^4.0.0"
 	}
 }

@@ -26,21 +26,29 @@
   onMount(() => magic.focus());
 </script>
 
-<section class="flex-col" style="justify-content: center;align-items: center;">
+<section class="💪-col">
   <br />
-  <form class="flex" on:submit|preventDefault>
-    <div class="wrapper flex p-5">
+  <form class="💪" on:submit|preventDefault>
+    <div class="wrapper 💪 ◼">
       <img id="engineImage" src="{base}/icons/Basic.svg" alt="" />
       <input on:keyup={go} bind:this={magic} id="magic" required size="150" />
     </div>
     <input id="submit" type="submit" value=" " />
   </form>
-  <div class="p-10" style="width:calc(100% - 1em);margin-top:0.5em;">
-    <ul id="autoComplete" class="blur m-h-auto o-100" />
+  <div class="⬛">
+    <ul id="autoComplete" class="🥃 m-h-auto o-100" />
   </div>
 </section>
 
 <style type="text/scss">
+  .⬛ {
+    width: calc(100% - 1em);
+    margin-top: 0.5em;
+  }
+  section {
+    justify-content: center;
+    align-items: center;
+  }
   form {
     padding-top: 25%;
     justify-content: center;

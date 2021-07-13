@@ -27,13 +27,8 @@
     style="position:relative;"
     on:click={videoSet}
 >
-    <div style="position:absolute;right:5px;top:5px;border-radius:7px;">
-        <SvgIcon
-            size="20"
-            classes="p-5"
-            stroke="#fff"
-            style="background:#000c;"
-        >
+    <div id="svgBox">
+        <SvgIcon size="20" classes="◼" stroke="#fff" style="background:#000c;">
             <path d="M16 2 L16 30 M2 16 L30 16" />
         </SvgIcon>
     </div>
@@ -43,9 +38,50 @@
             {@html title.slice(0, 60)}
             {title.length > 60 ? "..." : ""}
         </div>
-        <div class="channel flex" style="justify-content:space-between;">
+        <div class="channel 💪">
             <span>{lhs}</span>
             <span>{new Kron(rhs).timeSince()}</span>
         </div>
     </a>
 </div>
+
+<style type="text/scss">
+    #svgBox {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        border-radius: 7px;
+    }
+    .recom {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        font-size: 0.9em;
+        width: calc(20% - 10px);
+        background: #fff;
+        color: #000;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin-bottom: 5px;
+        }
+        .name {
+            padding: 0 5px;
+            height: 2.2em;
+        }
+        .channel {
+            justify-content: space-between;
+            font-size: 0.8em;
+            color: #888;
+            padding: 10px 5px;
+        }
+        transition: transform 0.3s ease;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+</style>
