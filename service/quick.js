@@ -10,38 +10,12 @@ const defaultHeaders = {
     }
 };
 
-const nebulaFilter = ( r, tok ) => {
-    const filtered = r.results.map( e => {
-        const prefix = "content.watchnebula.com/video/";
-        const suffix = '/iframe/' + tok;
-        return {
-            title: e.title,
-            date: e.published_at,
-            embedURL: prefix + e.slug + suffix,
-            channel: e.channel_title,
-            image: e.assets.thumbnail[ "480" ].original
-        };
-    } )
-        .filter( e => ( ( +new Date( e.date ) - +new Date() ) / 864e5 ) <= 4 )
-        .sort( ( a, b ) => new Date( b.date ) - new Date( a.date ) );
-    return filtered;
-};
+async function getBrave ( searchTerm ) {
+    const BRAVE_BASE = "https://search.brave.com/api/suggest?";
+    const response = await fetch( BRAVE_BASE + searchTerm );
+    const json = await response.json();
 
-async function getNeb () {
-    const NEBULA_TOKEN = "19c9f68df91347e674be4ddab1bd7cd88c0377f3";
-    let headers = { Authorization: "Token " + NEBULA_TOKEN };
-    const auth = await fetch( "https://api.watchnebula.com/api/v1/auth/user/", { headers } );
-    const token = ( await auth.json() ).zype_auth_info.access_token;
-
-    const connect = await fetch( "https://api.watchnebula.com/api/v1/authorization/", { headers, method: "POST" } );
-    const verification = await connect.json();
-
-    headers = { Authorization: "Bearer " + verification.token };
-    const library = await fetch( "https://content.watchnebula.com/library/video/", { headers } );
-    const list = await library.json();
-
-    const final = nebulaFilter( list, token );
-    return JSON.stringify( final );
+    return JSON.stringify( json[ 1 ] );
 };
 
 async function gatherResponse ( response ) {
@@ -53,11 +27,12 @@ async function gatherResponse ( response ) {
 };
 
 async function handleRequest ( request ) {
-    const path = request.url.split( 'api.nukes.in/nebula' )[ 1 ];
+    const path = request.url.split( 'api.nukes.in/quick' )[ 1 ];
     let response, results;
 
-    if ( path === '/subs' ) {
-        response = await getNeb();
+    if ( path.split( '?' )[ 0 ] === '/brave' ) {
+        const searchTerm = path.split( '?' )[ 1 ];
+        response = await getBrave( searchTerm );
         return new Response( response, defaultHeaders );
     }
 

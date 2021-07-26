@@ -34,7 +34,7 @@
         clearInterval(x);
       }
     }, 10);
-    ifr = document.querySelector("iframe");
+    ifr = ƒ("iframe");
     ifr = ifr.contentWindow || ifr.contentDocument?.document;
   });
 </script>

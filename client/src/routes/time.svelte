@@ -14,8 +14,10 @@
         else stopHandler();
     };
 
-    const displayHandler = (ms) =>
-        (time = new Kron().secondsToClock(Math.round(ms / 1000)));
+    const displayHandler = (ms) => {
+        time = new Kron().secondsToClock(Math.round(ms / 1000));
+        document.title = time;
+    };
 
     const stopHandler = () => {
         clock.stop();
@@ -58,7 +60,7 @@
 <svelte:head>
     <style>
         body {
-            background: #f63;
+            background: #f52;
         }
     </style>
 </svelte:head>
@@ -152,8 +154,8 @@
         font-size: var(--size);
         outline: none;
     }
-    #top,
-    #bottom {
+    // #bottom,
+    #top {
         position: fixed;
         left: 0;
         right: 0;

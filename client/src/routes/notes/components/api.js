@@ -53,5 +53,5 @@ import ENC_UTF8 from "crypto-js/enc-utf8.js";
 
 import keys from '../../../../../config/keys/client_keys';
 
-export const encrypt = ( obj ) => AES.encrypt( JSON.stringify( obj ), keys.AES_KEY ).toString();
+export const encrypt = ( obj ) => AES.encrypt( obj.toString(), keys.AES_KEY ).toString();
 export const decrypt = ( str ) => JSON.parse( AES.decrypt( str, keys.AES_KEY ).toString( ENC_UTF8 ) );

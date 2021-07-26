@@ -11,25 +11,10 @@
 	%svelte.head%
 
 	<script>
-		const URLpars = () => {
-			const entries = new URLSearchParams( window.location.search ).entries();
-			const params = {};
-			for ( let entry of entries ) params[ entry[ 0 ] ] = entry[ 1 ];
-			return params;
-		};
-		const chURL = ( key, value ) => {
-			let searchParams = new URLSearchParams( window.location.search );
-			searchParams.set( key, value );
-			let newurl = `${ window.location.protocol }//${ window.location.host + window.location.pathname
-				}?${ searchParams.toString() }`;
-			window.history.pushState( { path: newurl }, "", newurl );
-			return 0;
-		};
-
 		const serverURL = 'https://ronin.host:1872/';
 		const clientURL = 'http://ronin.host:1873/';
 	</script>
-	<script src="/shared/js/molecular.js"></script>
+	<script src="/shared/js/RoninScript.js"></script>
 </head>
 
 <body xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:relative;">
