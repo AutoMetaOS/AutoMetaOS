@@ -19,9 +19,8 @@ export const vidoer = ( e ) => {
     document.title = e.target.parentElement.dataset.title;
 };
 
-import cnls from "../../../../../config/channels.json";
-
-export const channels = () => {
+export const channels = async () => {
+    const cnls = ( await import( "../../../../../config/channels.json" ) ).default;
     const size = 49;
     let chanList = new Array( Math.ceil( cnls.length / size ) );
     for ( let i = 0, l = chanList.length;i < l;i++ )
@@ -32,6 +31,5 @@ export const channels = () => {
             ( arr ) => substack.set( [ ...get( substack ), ...( arr || {} ) ] )
         );
     } );
-
     return 0;
 };
