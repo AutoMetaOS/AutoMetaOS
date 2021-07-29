@@ -3,39 +3,31 @@ const corsHeaders = {
     "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
     "Access-Control-Max-Age": "86400",
 }
-const defaultHeaders = {
-    headers: {
-        "content-type": "application/json;charset=UTF-8",
-        'Access-Control-Allow-Origin': "*"
-    }
-};
 
 const converter = "https://api.factmaven.com/xml-to-json/?xml=";
 const CO2_URL = converter + "https://gml.noaa.gov/webdata/ccgg/trends/rss.xml";
 const GT_US_URL = converter + "https://trends.google.com/trends/trendingsearches/daily/rss?geo=US";
-const NASA_IMG_URL = "https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss";
 
 const google_processor = ( rss ) => {
-    const articleProcess = ( e ) => {
-        return {
-            title: e?.news_item_title || "Parent",
-            url: e?.news_item_url || "#",
-            source: e?.news_item_source || "Google",
-            desc: e?.news_item_snippet || "Title",
-        };
-    };
     const itemProcess = ( e ) => {
         const processed = {
-            title: e.title || "Unknown",
-            image: e.picture || "/error.png",
+            title: e.title,
+            image: e?.picture,
             traffic: +e.approx_traffic?.replace( '+', '' ).replaceAll( ',', '' ) / 1000 || 0,
-            articles: articleProcess( e?.news_item[ 0 ] || [] )
+            articles: e.news_item?.map( e2 => {
+                return {
+                    title: e2.news_item_title,
+                    url: e2.news_item_url,
+                    source: e2.news_item_source,
+                    desc: e2.news_item_snippet,
+                }
+            } )
         };
         return processed;
-    };
+    }
     const basic = rss.rss.channel.item.map( itemProcess );
     return JSON.stringify( basic );
-};
+}
 
 const co2_preprocess = ( rss ) => {
     const itemProcess = ( json ) => {
@@ -67,17 +59,16 @@ async function gatherResponse ( response ) {
 }
 
 async function handleRequest ( request ) {
-    const path = request.url.split( 'api.nukes.in/data' )[ 1 ];
+    const defaultHeaders = {
+        headers: {
+            "content-type": "application/json;charset=UTF-8",
+            'Access-Control-Allow-Origin': request.headers.get( "Origin" )
+        }
+    };
+
+    const path = request.url.split( 'api.nukes.in' )[ 1 ];
     let response, results;
 
-    if ( path === '/NASA/img' ) {
-        response = await fetch( NASA_IMG_URL, defaultHeaders );
-        results = await gatherResponse( response );
-        const ur = results
-            .split( '<item>' )[ 1 ].split( '</item>' )[ 0 ]
-            .split( '<enclosure url="' )[ 1 ].split( '" length' )[ 0 ];
-        return Response.redirect( ur, 301 );
-    }
     if ( path === '/co2' ) {
         response = await fetch( CO2_URL, defaultHeaders );
         results = await gatherResponse( response );

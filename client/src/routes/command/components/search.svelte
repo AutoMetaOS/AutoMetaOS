@@ -1,69 +1,60 @@
 <script>
+  import { engine, preprocessor } from "..//samurai";
   import { onMount } from "svelte";
   import { base } from "$app/paths";
-
-  import { engine, preprocessor } from "../samurai";
-  import { recommendations } from "../store";
-
-  import Recoms from "./suggestion.svelte";
-
   let magic;
 
   const go = (e) => {
     const send = engine(magic.value);
-    const recs = $recommendations.map((e) => e.name || e.q);
     switch (e.keyCode) {
       case 40:
-        magic.value = `!${send.key} ${recs[0]}`;
+        magic.value = "!" + send.key + " " + suggList[0];
         break;
       case 38:
-        magic.value = `!${send.key} ${recs[1]}`;
+        magic.value = "!" + send.key + " " + suggList[1];
         break;
       case 13:
         window.location.href = preprocessor(send);
         break;
       default:
-        recommendations.set([]);
+        suggI = null;
         break;
     }
     return send;
   };
 
-  onMount(() => {
-    magic.focus();
-  });
+  onMount(() => magic.focus());
 </script>
 
 <section class="💪-col">
-  <form on:submit|preventDefault>
+  <br />
+  <form class="💪" on:submit|preventDefault>
     <div class="wrapper 💪 ◼">
       <img id="engineImage" src="{base}/icons/Basic.svg" alt="" />
-      <input
-        on:keyup={go}
-        placeholder="Ronin"
-        bind:this={magic}
-        id="magic"
-        required
-        size="150"
-      />
+      <input on:keyup={go} bind:this={magic} id="magic" required size="150" />
     </div>
-    <input id="submit" type="submit" value=" " style="display:none;" />
+    <input id="submit" type="submit" value=" " />
   </form>
-  {#if $recommendations}
-    <Recoms />
-  {/if}
+  <div class="⬛">
+    <ul id="autoComplete" class="🥃 m-h-auto o-100" />
+  </div>
 </section>
 
 <style type="text/scss">
+  .⬛ {
+    width: calc(100% - 1em);
+    margin-top: 0.5em;
+  }
   section {
     justify-content: center;
     align-items: center;
   }
   form {
-    padding-top: 27.5%;
+    padding-top: 25%;
     justify-content: center;
     .wrapper {
-      background: #3348;
+      background: transparent;
+      border-bottom: 3px solid #a00;
       font-size: 1.25rem;
       align-items: center;
       width: calc(80vw - 1em);
@@ -82,11 +73,21 @@
       }
     }
     #submit {
+      color: #a00;
       cursor: pointer;
       position: relative;
       right: 6%;
       top: 8px;
-      font-size: 1px;
+      font-size: 12px;
+    }
+  }
+  #autoComplete {
+    width: calc(75% - 1.5em);
+    padding: 0.5em 0.75em;
+    list-style-type: none;
+    border-radius: 1em;
+    &:empty {
+      opacity: 0;
     }
   }
 </style>

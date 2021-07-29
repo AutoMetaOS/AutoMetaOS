@@ -21,14 +21,12 @@ const nebulaFilter = ( r, tok ) => {
             channel: e.channel_title,
             image: e.assets.thumbnail[ "480" ].original
         };
-    } )
-        .filter( e => ( ( +new Date( e.date ) - +new Date() ) / 864e5 ) <= 4 )
-        .sort( ( a, b ) => new Date( b.date ) - new Date( a.date ) );
+    } ).sort( ( a, b ) => new Date( b.date ) - new Date( a.date ) );
     return filtered;
 };
 
 async function getNeb () {
-    const NEBULA_TOKEN = "19c9f68df91347e674be4ddab1bd7cd88c0377f3";
+    const NEBULA_TOKEN = "NEBULA_TOKEN_HERE";
     let headers = { Authorization: "Token " + NEBULA_TOKEN };
     const auth = await fetch( "https://api.watchnebula.com/api/v1/auth/user/", { headers } );
     const token = ( await auth.json() ).zype_auth_info.access_token;

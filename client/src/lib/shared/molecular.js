@@ -74,7 +74,7 @@ export class Riquest {
     // CONFIG BODY PROCESSOR
     data_processor ( data ) {
         let temp;
-        if ( typeof data === 'object' ) temp = data.toString();
+        if ( typeof data === 'object' ) temp = JSON.stringify( data );
         if ( typeof data === 'string' ) temp = data;
         this.#config.body = temp;
     }

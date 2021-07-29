@@ -7,13 +7,9 @@
 - Test for all functions return value. Made as many funcs return as possible
 - Add defualt value to EVERY variable
 - Remove all trailing commas
+- Keep dom access to a minimum. Its really slow.
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-
-## 6.6.0
-- Standardized functions now in RoninScript
-- Search suggestions are now protected
-- Removed ':' bang format
 
 ## 6.5.0
 - Remove Extension, now wasn't needed due to advancements in other features

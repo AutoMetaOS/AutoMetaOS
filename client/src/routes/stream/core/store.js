@@ -7,14 +7,14 @@ export const substack = writable( [] );
 export const videoSet = ( e ) => {
     const dataset = e.currentTarget.querySelector( 'a' ).dataset;
     vId.set( dataset.url );
-    setµ( "id", encodeURIComponent( get( vId ) ) );
+    chURL( "id", encodeURIComponent( get( vId ) ) );
     window.scrollTo( 0, 0 );
     document.title = dataset.title;
 };
 
 export const vidoer = ( e ) => {
     vId.set( e.target.parentElement.id );
-    setµ( "id", get( vId ) );
+    chURL( "id", get( vId ) );
     window.scrollTo( 0, 0 );
     document.title = e.target.parentElement.dataset.title;
 };
