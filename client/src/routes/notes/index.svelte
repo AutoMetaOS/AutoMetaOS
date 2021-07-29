@@ -32,7 +32,7 @@
     const deleter = () => deleteNote(mainEditor.dataset.id);
 
     onMount(() => {
-        window.mainEditor = ƒ("#editorOfNotes");
+        window.mainEditor = document.querySelector("#editorOfNotes");
         tools = {
             header: Header,
             alert: Alert,

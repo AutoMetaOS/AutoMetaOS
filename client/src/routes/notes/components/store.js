@@ -4,7 +4,7 @@ export const editorData = writable( { "blocks": [ { "type": "header", "data": { 
 export const notesList = writable( [] );
 
 export const updateEditor = ( id, data ) => {
-    const mainEditor = ƒ( "#editorOfNotes" );
+    const mainEditor = document.querySelector( "#editorOfNotes" );
     if ( !( mainEditor.dataset.id === id ) ) {
         editor.render( data );
         mainEditor.setAttribute( "data-id", id );
