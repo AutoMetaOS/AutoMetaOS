@@ -14,17 +14,17 @@
     const searcher = (sc) => {
         const q = typeof sc === "string" ? sc : sc.target[0].value;
         if (!q) {
-            chURL("q", "");
+            setµ("q", "");
             return 0;
         } else search(q).then((r) => (base = r.items));
-        chURL("q", q);
+        setµ("q", q);
         window.location.href = "#search";
         return 0;
     };
 
     onMount(() => {
-        URLpars().q && searcher(URLpars().q);
-        vId.set(decodeURIComponent(URLpars().id || ""));
+        getµ().q && searcher(getµ().q);
+        vId.set(decodeURIComponent(getµ().id || ""));
         return 0;
     });
 </script>

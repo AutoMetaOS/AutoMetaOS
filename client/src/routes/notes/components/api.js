@@ -42,7 +42,7 @@ export const deleteNote = async ( id ) => {
     list = get( notesList ).filter( e => e.id !== id );
     notesList.set( list );
     updateNote( id, '' );
-    const elt = document.querySelector( '#list input[type=radio]' );
+    const elt = ƒ( '#list input[type=radio]' );
     elt.checked = true;
     setNote( { target: { dataset: elt } } )
     return 0;
