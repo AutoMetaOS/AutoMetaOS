@@ -14,7 +14,7 @@
     channels();
   };
 
-  onMount(() => (searchText = URLpars().q || ""));
+  onMount(() => (searchText = getµ().q || ""));
 </script>
 
 <section class="o-0 ◼ 💪 🥃" bind:this={bar}>
