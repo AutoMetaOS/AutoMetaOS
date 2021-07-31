@@ -4,14 +4,13 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "cd ./svelte &&  npm run dev",
-        "build": "node prep && cd ./client && npm run build",
-        "client": "cd ./svelte/build && npm start",
-        "server": "cd ./server && npm start",
-        "start": "npm run server & npm run client"
+        "dev": "cd ./client &&  npm run dev",
+        "build": "sh build.sh",
+        "start": "cd ./server && bytenode server.js"
     },
     "devDependencies": {
+        "@cloudflare/wrangler": "1.17.0",
         "node-fetch": "2.6.1",
-        "@cloudflare/wrangler": "1.17.0"
+        "bytenode": "^1.3.3"
     }
 }

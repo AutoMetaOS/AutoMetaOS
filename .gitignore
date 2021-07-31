@@ -6,10 +6,9 @@ logs
 
 # NODE
 node_modules/
-*lock*.yaml
-*lock*.yml
 **/*.css.map
 **/*.js.map
+**/*.jsc
 
 # APP
 .svelte-kit/
