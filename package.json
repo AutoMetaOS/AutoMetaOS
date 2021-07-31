@@ -1,11 +1,11 @@
 {
     "name": "ronin",
-    "version": "6.6.0",
+    "version": "6.6.1",
     "license": "MIT",
     "private": true,
     "scripts": {
         "dev": "cd ./svelte &&  npm run dev",
-        "build": "cd ./svelte && npm run build",
+        "build": "node prep && cd ./client && npm run build",
         "client": "cd ./svelte/build && npm start",
         "server": "cd ./server && npm start",
         "start": "npm run server & npm run client"

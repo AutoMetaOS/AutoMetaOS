@@ -4,9 +4,9 @@
   import Card from "../shared/videoCard.svelte";
 </script>
 
-<section class="⬛ 💪 💪🌯" id="search">
+<section class="p20 ƒ ƒ∑" id="search">
   {#if videos.length}
-    <div class="◼">
+    <div class="p5">
       <div on:click={() => (videos = [])}>Search</div>
     </div>
     {#each videos as vid}
@@ -23,7 +23,7 @@
 </section>
 
 <style>
-  .◼ {
+  .p5 {
     width: 99vw;
   }
 </style>

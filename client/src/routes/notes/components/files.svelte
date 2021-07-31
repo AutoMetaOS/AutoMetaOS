@@ -12,7 +12,7 @@
     onMount(getNotes);
 </script>
 
-<div class="⬛ 💪" style="border-bottom: 1px solid #8882;">
+<div class="p20 ƒ" style="border-bottom: 1px solid #8882;">
     <input
         class="newNote"
         placeholder="Search..."
@@ -42,10 +42,11 @@
         display: none;
         &:checked + label {
             background: #ddd;
+            font-weight: 500;
         }
     }
     label {
-        padding: 1.5em 1em 0.75em 1.25em;
+        padding: 1.2em 1.1em 0.5em 1em;
         line-height: 1.15em;
         height: 5em;
         white-space: nowrap;

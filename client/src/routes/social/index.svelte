@@ -12,12 +12,12 @@
     onMount(() => request.get().then((r) => (space = r)));
 </script>
 
-<section class="💪 💪🌯" >
+<section class="ƒ ƒ∑">
     {#each space as el}
-        <a class="boxy ⬜" href={el.url}>
+        <a class="boxy m20" href={el.url}>
             <img src={el.imageUrl} class="w-100" alt={el.title} />
-            <div class="title ⬛">
-                <span class="ℹ7">{el.title}</span>
+            <div class="title p20">
+                <span class="fw7">{el.title}</span>
                 <hr />
                 <details>
                     <summary
@@ -47,7 +47,6 @@
         width: calc(33% - 40px);
         img {
             height: 100%;
-            object-fit: cover;
             z-index: 0;
         }
         .title {

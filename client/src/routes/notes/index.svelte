@@ -5,14 +5,14 @@
     import { onMount } from "svelte";
     import { base } from "$app/paths";
 
-    import { Button, SvgIcon } from "$lib/components";
+    import { Button } from "$lib/components";
 
     import { updateNote, deleteNote } from "./components/api";
     import { editorData } from "./components/store";
 
     let tools,
         currentData,
-        saveButton = "#18f";
+        saveButton = "#0000";
 
     const saver = async () => {
         const outputData = await editor.save();
@@ -21,7 +21,7 @@
         saveButton = "#06a";
         currentData = outputData;
         updateNote(mainEditor.dataset.id, outputData)
-            .then((r) => (saveButton = "#18f"))
+            .then((r) => (saveButton = "#0000"))
             .catch((e) => {
                 console.log(e);
                 saveButton = "#f44";
@@ -83,48 +83,51 @@
 
 <svelte:window on:keydown={handleKeyDown} />
 
-<main class="💪">
-    <nav class="lhs w-20">
+<main class="ƒ">
+    <nav class="lhs">
         <Logo />
         <section id="list">
             <Lister />
         </section>
-        <functions class="💪" style="height:3.5rem;bottom:0;">
-            <Button click={saver} theme={saveButton} style="margin:0;flex:1;">
-                <SvgIcon>
-                    <path
-                        d="M9 22 C0 23 1 12 9 13 6 2 23 2 22 10 32 7 32 23 23 22 M11 18 L16 14 21 18 M16 14 L16 29"
-                    />
-                </SvgIcon>
+    </nav>
+    <main class="rhs">
+        <functions class="ƒ w-100" style="direction: rtl;">
+            <Button
+                click={saver}
+                theme={saveButton}
+                style="margin:0;color:#888a;"
+            >
+                Save
             </Button>
-            <Button click={deleter} theme="#f44" style="margin:0;flex:1;">
-                <SvgIcon>
-                    <path
-                        d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6"
-                    />
-                </SvgIcon>
+            <Button click={deleter} theme="#0000" style="margin:0;color:#888a;">
+                Delete
             </Button>
         </functions>
-    </nav>
-    <main class="rhs" style="z-index:0">
         <Editor />
     </main>
 </main>
 
 <style type="text/scss">
+    .ƒ {
+        bottom: 0;
+    }
     main {
-        height: 100%;
+        height: 100vh;
         overflow: hidden;
     }
     .lhs {
+        height: 100%;
+        width: 17.5%;
+        background: #f5f5f2;
         z-index: 0;
         border-right: 1px solid #ccc8;
     }
     .rhs {
-        width: 80%;
+        z-index: 0;
+        width: 82.5%;
     }
     #list {
         overflow-y: scroll;
-        max-height: calc(100vh - 68px - 3.5em);
+        height: calc(100vh - 68px);
     }
 </style>

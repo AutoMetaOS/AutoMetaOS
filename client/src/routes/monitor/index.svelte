@@ -3,20 +3,27 @@
 - https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information
 -->
 <script>
-    import Co2 from "./co2.svelte";
+    import Shows from "./show.svelte";
+    import Checks from "./chkdsk.svelte";
+    import EnvSummary from "./summary.svelte";
 </script>
 
-<main class="◼ 💪 💪🌯">
-    <div class="cont rpm-10 ↕">
-        <Co2 />
+<main class="p5 ƒ ƒ∑">
+    <div class="cont rpm-10 †c">
+        <EnvSummary />
+    </div>
+    <div class="cont rpm-10 p0">
+        <Shows />
     </div>
     <div class="cont rpm-10">
-        <h1>Placeholder</h1>
+        <Checks />
     </div>
 </main>
 
-<style>
+<style type="text/scss">
     .cont {
+        max-height: 350px;
+        overflow-y: scroll;
         background: #444;
         width: calc(50% - 40px);
     }

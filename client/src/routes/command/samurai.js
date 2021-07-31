@@ -11,9 +11,11 @@ export const quickPages = JSON.parse( `{
     "debug": { "url": "${ base }/debug" },"w3": { "url": "${ base }/debug" },"repl": { "url": "${ base }/debug" }
 }`);
 
-const suggestions = ( SIn ) => fetch( `https://api.nukes.in/quick/brave?q=${ SIn }&rich=true` )
-    .then( r => r.json() )
-    .then( r => recommendations.set( r ) );
+const suggestions = ( SIn ) =>
+    fetch( `https://api.nukes.in/quick/brave?q=${ SIn }&rich=true` )
+        .then( r => r.json() )
+        .then( r => recommendations.set( r ) )
+        .catch( console.warn );
 
 const setEngineImage = ( key ) => {
     const engineImage = ƒ( '#engineImage' );
@@ -21,8 +23,6 @@ const setEngineImage = ( key ) => {
 }
 
 export const engine = ( input ) => {
-    setEngineImage( 'root' );
-
     // CHECK FOR QUICK PAGES
     let out = quickPages[ input ] || null;
     if ( out ) return out;
@@ -47,6 +47,7 @@ export const engine = ( input ) => {
     }
     // PLAIN SUGGESTIONS NO BANG
     else suggestions( input );
+    setEngineImage( 'root' );
     return {
         key: 's',
         query: input,

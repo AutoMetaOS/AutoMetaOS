@@ -41,7 +41,7 @@
 
 <section>
   {#each news as n}
-    <div class="⬛ ⬜">
+    <div class="p20 m20">
       <a href={n.url} class="news">
         <div class="title">
           {n.title} - <i>{n.by}</i>
@@ -58,7 +58,7 @@
 </section>
 
 <style>
-  .⬛ {
+  .p20 {
     border-bottom: 1px solid #ccc8;
   }
   .desc {

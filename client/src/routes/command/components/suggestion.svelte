@@ -2,16 +2,16 @@
     import { recommendations } from "../store";
 </script>
 
-<ul id="autoComplete" class="◼ m-h-auto">
+<ul id="autoComplete" class="p5 m-h-auto">
     {#each $recommendations.slice(0, 2) as rec}
-        <li id={rec.name || rec.q} class="💪">
+        <li id={rec.name || rec.q} class="ƒ">
             <img src={rec.img || "https://i.imgur.com/drIqvV8.jpg"} alt="" />
             <div>
                 {#if rec.is_entity}
-                    <div class="ℹ7">{rec.name}</div>
+                    <div class="fw7">{rec.name}</div>
                     <span>{rec.desc}</span>
                 {:else}
-                    <div class="ℹ7">{rec.q}</div>
+                    <div class="fw7">{rec.q}</div>
                 {/if}
             </div>
         </li>

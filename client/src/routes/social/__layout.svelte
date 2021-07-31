@@ -15,11 +15,11 @@
 </svelte:head>
 
 <section>
-  <nav class="💪">
+  <nav class="ƒ">
     <Logo />
-    <div class="💪 ⬛">
+    <div class="ƒ p20">
       {#each pages as pg}
-        <a class="◼" href="/social/{pg.url ?? pg.name}">{pg.name}</a>
+        <a class="p5" href="/social/{pg.url ?? pg.name}">{pg.name}</a>
       {/each}
     </div>
   </nav>

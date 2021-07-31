@@ -28,7 +28,7 @@
     on:click={videoSet}
 >
     <div id="svgBox">
-        <SvgIcon size="20" classes="◼" stroke="#fff" style="background:#000c;">
+        <SvgIcon size="20" classes="p5" stroke="#fff" style="background:#000c;">
             <path d="M16 2 L16 30 M2 16 L30 16" />
         </SvgIcon>
     </div>
@@ -38,7 +38,7 @@
             {@html title.slice(0, 60)}
             {title.length > 60 ? "..." : ""}
         </div>
-        <div class="channel 💪">
+        <div class="channel ƒ">
             <span>{lhs}</span>
             <span>{new Kron(rhs).timeSince()}</span>
         </div>
@@ -66,7 +66,6 @@
         img {
             width: 100%;
             height: auto;
-            object-fit: cover;
             margin-bottom: 5px;
         }
         .name {

@@ -1,4 +1,4 @@
-<div class="↕ ℹ2" id="deets">Ronin</div>
+<div class="†c fw2" id="deets">Ronin</div>
 
 <style>
   #deets {

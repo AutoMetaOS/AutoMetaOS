@@ -11,9 +11,9 @@
   const clear = () => (videos = []);
 </script>
 
-<section class="💪 ⬛ 💪🌯" id="search">
+<section class="ƒ p20 ƒ∑" id="search">
   {#if videos.length}
-    <span class="w-100 ◼" on:click={clear}
+    <span class="w-100 p5" on:click={clear}
       >Youtube Subscriptions ({videos.length}) ({coverage(videos)})</span
     >
     {#each videos.sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt)) as vid, i}

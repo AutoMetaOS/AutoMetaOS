@@ -53,15 +53,15 @@
 </svelte:head>
 
 {words}
-<section class="💪">
+<section class="ƒ">
   <div class="w-50 h-100 codeContainer" on:keyup={debounce(render, 1000)}>
     <textarea spellcheck="true" id="code" value={w3} />
   </div>
-  <div class="h-100 💪🌯 ◼ ▫ w-50">
+  <div class="h-100 ƒ∑ p5 m0 w-50">
     <iframe
       title="sim"
       src="/assets/repl.html"
-      class="w-100 h-100 ◼"
+      class="w-100 h-100 p5"
       frameborder="0"
     />
   </div>

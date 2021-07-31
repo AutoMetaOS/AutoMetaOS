@@ -1,18 +1,17 @@
 # Changelog
 
-## Pending
-- Create auto minifier for server
-
 ## Code Quality
 - Test for all functions return value. Made as many funcs return as possible
 - Add defualt value to EVERY variable
 - Remove all trailing commas
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-## 6.6.0
+## 6.6.1
 - Standardized functions now in RoninScript
 - Search suggestions are now protected
 - Removed ':' bang format
+- Monitoring system has CO2 ppm & TV Show tracker
+- Add unit tests to monitor
 
 ## 6.5.0
 - Remove Extension, now wasn't needed due to advancements in other features

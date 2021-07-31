@@ -30,8 +30,8 @@ thread(reallyReallyLongFunction).then(console.log) // logs return value of reall
 
 Escape and Unescape HTML
 ```js
-escape('<a href="#">Me & you</a>'); //returns '&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'
-unescape('&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'); // returns // '<a href="#">Me & you</a>'
+HTML2String('<a href="#">Me & you</a>'); //returns '&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'
+String2HTML('&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'); // returns // '<a href="#">Me & you</a>'
 ```
 
 URL Params

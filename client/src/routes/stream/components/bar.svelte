@@ -17,12 +17,12 @@
   onMount(() => (searchText = getµ().q || ""));
 </script>
 
-<section class="o-0 ◼ 💪 🥃" bind:this={bar}>
+<section class="o-0 p5 ƒ 🥃" bind:this={bar}>
   <div>Helios</div>
 
   <form on:submit|preventDefault={searcher}>
     <input
-      class="◼"
+      class="p5"
       id="srcBox"
       size="35"
       placeholder="Search"

@@ -38,7 +38,7 @@
         }
 
         &:hover:not(:disabled) {
-            transform: scale(1.1);
+            transform: scale(1.05);
             background: var(--theme);
             color: #ddd;
             z-index: 999;

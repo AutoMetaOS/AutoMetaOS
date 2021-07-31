@@ -7,9 +7,9 @@
     const clear = () => (videos = []);
 </script>
 
-<section class="💪 ⬛ 💪🌯" id="search">
+<section class="ƒ p20 ƒ∑" id="search">
     {#if videos.length}
-        <span class="w-100 ◼" on:click={clear}
+        <span class="w-100 p5" on:click={clear}
             >Nebula Subscriptions ({videos.length})</span
         >
         {#each videos as vid}

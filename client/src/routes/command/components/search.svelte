@@ -32,9 +32,9 @@
   onMount(() => magic.focus());
 </script>
 
-<section class="💪-col">
+<section class="ƒ-col">
   <form on:submit|preventDefault>
-    <div class="wrapper 💪 ◼">
+    <div class="wrapper ƒ p5">
       <img id="engineImage" src="{base}/icons/Basic.svg" alt="" />
       <input
         on:keyup={go}
@@ -66,9 +66,8 @@
       align-items: center;
       width: calc(80vw - 1em);
       img {
-        object-fit: contain;
-        width: 44px;
-        height: 44px;
+        width: 32px;
+        height: 32px;
         border-radius: 5px;
       }
       #magic {
