@@ -22,12 +22,7 @@
   <Search />
 </section>
 
-<style type="text/scss">
-  @keyframes downBar {
-    to {
-      bottom: 0.5em;
-    }
-  }
+<style type="text/scss" global>
   section {
     background: url(https://api.nukes.in/data/NASA/img) center center no-repeat;
     background-size: cover;

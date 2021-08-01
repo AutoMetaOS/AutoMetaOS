@@ -13,12 +13,11 @@ export const getNotes = async () => {
 }
 
 export const getNote = async ( id ) => {
+    console.log( id );
     const text = await reqr.get( '/notes/' + id );
     updateEditor( id, decrypt( text ) );
     return text;
 };
-
-export const setNote = ( e ) => getNote( e.target.dataset.id );
 
 export const updateNote = async ( id, data ) => {
     let list = get( notesList );
@@ -39,7 +38,7 @@ export const updateNote = async ( id, data ) => {
 };
 
 export const deleteNote = async ( id ) => {
-    list = get( notesList ).filter( e => e.id !== id );
+    let list = get( notesList ).filter( e => e.id !== id );
     notesList.set( list );
     updateNote( id, '' );
     const elt = ƒ( '#list input[type=radio]' );

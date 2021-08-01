@@ -6,7 +6,8 @@
 - Remove all trailing commas
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
-## 6.6.1
+## 6.6.2
+- Moved back from brave sugg to google (Cloudflare middleman)
 - Standardized functions now in RoninScript
 - Search suggestions are now protected
 - Removed ':' bang format

@@ -1,5 +1,5 @@
 const fs = require( "fs" );
-const meta_file = '../client/src/lib/meta.json';
+const meta_file = './client/src/lib/meta.json';
 
 const { current: buildNumber, version: web_ver } = JSON.parse( fs.readFileSync( meta_file, 'utf-8' ) ).build;
 const { version } = JSON.parse( fs.readFileSync( './package.json', 'utf8' ) );

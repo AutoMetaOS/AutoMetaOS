@@ -11,7 +11,7 @@
 
   const go = (e) => {
     const send = engine(magic.value);
-    const recs = $recommendations.map((e) => e.name || e.q);
+    const recs = $recommendations.map((e) => e[3]?.zh || e[0]);
     switch (e.keyCode) {
       case 40:
         magic.value = `!${send.key} ${recs[0]}`;
@@ -22,9 +22,9 @@
       case 13:
         window.location.href = preprocessor(send);
         break;
-      default:
-        recommendations.set([]);
-        break;
+      // default:
+      //   recommendations.set([]);
+      // break;
     }
     return send;
   };
@@ -47,18 +47,19 @@
     </div>
     <input id="submit" type="submit" value=" " style="display:none;" />
   </form>
-  {#if $recommendations}
-    <Recoms />
-  {/if}
+  <Recoms />
 </section>
 
 <style type="text/scss">
+  .ƒ-col {
+    position: relative;
+    top: 5%;
+  }
   section {
     justify-content: center;
     align-items: center;
   }
   form {
-    padding-top: 27.5%;
     justify-content: center;
     .wrapper {
       background: #3348;

@@ -3,18 +3,23 @@
 </script>
 
 <ul id="autoComplete" class="p5 m-h-auto">
-    {#each $recommendations.slice(0, 2) as rec}
-        <li id={rec.name || rec.q} class="ƒ">
-            <img src={rec.img || "https://i.imgur.com/drIqvV8.jpg"} alt="" />
-            <div>
-                {#if rec.is_entity}
-                    <div class="fw7">{rec.name}</div>
-                    <span>{rec.desc}</span>
-                {:else}
-                    <div class="fw7">{rec.q}</div>
-                {/if}
-            </div>
-        </li>
+    {#each $recommendations as rec}
+        {#if rec}
+            <li class="ƒ">
+                <img
+                    src={rec[3]?.zs || "https://i.imgur.com/drIqvV8.jpg"}
+                    alt=""
+                />
+                <div>
+                    {#if rec[3]}
+                        <div class="fw7">{@html rec[3]?.zh || rec[0]}</div>
+                        <span>{rec[3]?.zi || ""}</span>
+                    {:else}
+                        <div class="fw7">{@html rec[0]}</div>
+                    {/if}
+                </div>
+            </li>
+        {/if}
     {/each}
 </ul>
 

@@ -1,6 +1,46 @@
 const ƒ = ( x ) => document.querySelector( x );
 const ƒA = ( x ) => [ ...document.querySelectorAll( x ) ];
 
+const hashBrowser = val => // takes in string and returns has promise
+    crypto.subtle
+        .digest( 'SHA-256', new TextEncoder( 'utf-8' ).encode( val ) )
+        .then( h => {
+            let hexes = [],
+                view = new DataView( h );
+            for ( let i = 0;i < view.byteLength;i += 4 )
+                hexes.push( ( '00000000' + view.getUint32( i ).toString( 16 ) ).slice( -8 ) );
+            return hexes.join( '' );
+        } );
+
+const parseCookie = str => //takes in cookie string (value of cookie)
+    str
+        .split( ';' )
+        .map( v => v.split( '=' ) )
+        .reduce( ( acc, v ) => {
+            acc[ decodeURIComponent( v[ 0 ].trim() ) ] = decodeURIComponent( v[ 1 ].trim() );
+            return acc;
+        }, {} );
+
+const copyToClipboard = str => { //takes in raw string
+    const el = document.createElement( 'textarea' );
+    el.value = str;
+    el.setAttribute( 'readonly', '' );
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild( el );
+    const selected =
+        document.getSelection().rangeCount > 0
+            ? document.getSelection().getRangeAt( 0 )
+            : false;
+    el.select();
+    document.execCommand( 'copy' );
+    document.body.removeChild( el );
+    if ( selected ) {
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange( selected );
+    }
+};
+
 const String2HTML = str => str.replace(
     /[&<>'"]/g,
     tag =>

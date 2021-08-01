@@ -12,7 +12,7 @@ export const quickPages = JSON.parse( `{
 }`);
 
 const suggestions = ( SIn ) =>
-    fetch( `https://api.nukes.in/quick/brave?q=${ SIn }&rich=true` )
+    fetch( `https://api.nukes.in/quick/suggest?q=${ SIn }` )
         .then( r => r.json() )
         .then( r => recommendations.set( r ) )
         .catch( console.warn );
