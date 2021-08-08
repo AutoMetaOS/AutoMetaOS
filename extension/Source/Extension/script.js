@@ -23,7 +23,7 @@ const messageHandlers = {
   onload: message => {
     Object.entries( message ).forEach( ( [ fileType, files ] ) => {
       files.forEach( ( [ fileName, content ] ) => {
-        RSlog( `Injecting ${ fileName }` );
+        RSlog( `Injecting onsite ${ fileName }` );
         fileTypeHandlers[ fileType ]( content );
       } );
     } );
@@ -32,14 +32,15 @@ const messageHandlers = {
 
 const fileTypeHandlers = {
   js: content => {
-    if ( document.readyState === "loading" ) {
-      document.addEventListener( "DOMContentLoaded", () => {
-        appendContent( 'body', content, 'script' );
-      } );
-    }
-    else appendContent( 'body', content, 'script' );
+    document.addEventListener( "DOMContentLoaded", () => {
+      eval( content )
+    } );
   },
   css: content => {
-    appendContent( 'head', content, 'style' );
+    document.addEventListener( "DOMContentLoaded", () => {
+      const main = "const RSnode = document.createElement( 'style' );RSnode.textContent = RScontent;document.body.appendChild( RSnode );"
+      const ctx = 'const RScontent = `' + content + '`;';
+      eval( ctx + main )
+    } );
   }
 };

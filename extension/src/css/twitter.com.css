@@ -4,3 +4,7 @@
 .promoted-account {
   display: none;
 }
+
+section[aria-label="Sign up"]{
+  border: 10px solid green;
+}

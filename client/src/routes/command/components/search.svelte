@@ -11,7 +11,12 @@
 
   const go = (e) => {
     const send = engine(magic.value);
-    const recs = $recommendations.map((e) => e[3]?.zh || e[0]);
+    let recs = $recommendations.map((e) => e[3]?.zh || e[0]);
+
+    const div = document.createElement("div");
+    div.innerHTML = recs.join("::::");
+    recs = div.innerText.split("::::");
+
     switch (e.keyCode) {
       case 40:
         magic.value = `!${send.key} ${recs[0]}`;

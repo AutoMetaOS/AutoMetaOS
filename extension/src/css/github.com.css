@@ -4,6 +4,6 @@
   font-size: 12px;
 }
 
-.blob-code-inner,.blob-num,.file-info,.previewable-comment-form textarea,tt,code,pre {
-  font-family: 'Fira Code', 'FiraCode','FiraCodePro', 'Source Code Pro';
+aside[aria-label="Explore"]{
+  display: none;
 }
