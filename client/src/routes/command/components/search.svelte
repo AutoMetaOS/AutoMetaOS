@@ -56,10 +56,6 @@
 </section>
 
 <style type="text/scss">
-  .ƒ-col {
-    position: relative;
-    top: 5%;
-  }
   section {
     justify-content: center;
     align-items: center;

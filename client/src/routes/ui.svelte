@@ -1,7 +1,13 @@
 <script>
-    import { Dropdown } from "$lib/kimono";
+    import {
+        Dropdown,
+        Button,
+        Accordion,
+        CheckBox,
+        ClickableTile,
+    } from "$lib/kimono";
 </script>
 
 <div class="w-50 p20">
-    <Dropdown light href="/">Go there</Dropdown>
+    <Dropdown light type="inline" href="/">Go there</Dropdown>
 </div>

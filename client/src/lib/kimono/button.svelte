@@ -1,20 +1,29 @@
 <script>
+    import "./kimono.css";
     export let //
-        assetClass = "",
+        forceClass = "",
         icon,
         iconView = "0 0 32 32",
         kind = "primary",
+        href = "#",
         disabled;
 </script>
 
-<button class="†l {assetClass}" {kind} {disabled} on:click>
+<a
+    {href}
+    class="†l kimono-ui-base {forceClass}"
+    class:tiny
+    {kind}
+    {disabled}
+    on:click
+>
     {#if icon}
         <svg viewBox={iconView}>
             {@html icon}
         </svg>
     {/if}
     <slot />
-</button>
+</a>
 
 <style type="text/scss">
     svg {
@@ -29,13 +38,13 @@
         stroke: currentColor;
         fill: none;
     }
-    button {
+    a {
         color: #fff;
         background: var(--primary);
         border: 1px solid transparent;
         margin: 10px;
         min-width: 100px;
-        padding: 1em;
+        padding: 1em 1.33em;
         cursor: pointer;
         transition: all 0.2s ease;
         &:disabled {

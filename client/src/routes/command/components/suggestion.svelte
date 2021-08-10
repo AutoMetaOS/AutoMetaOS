@@ -26,6 +26,7 @@
 <style type="text/scss">
     #autoComplete {
         background: #3348;
+        color: #fff;
         font-size: 1.25rem;
         width: calc(80vw - 1em);
         list-style-type: none;

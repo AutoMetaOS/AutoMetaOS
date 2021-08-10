@@ -3,6 +3,7 @@
   import { nebula } from "../core/api";
   import { SvgIcon } from "$lib/components";
   import { channels } from "../core/store";
+  import { Button } from "$lib/kimono";
 
   export let searcher;
 
@@ -18,7 +19,7 @@
 </script>
 
 <section class="o-0 p5 ƒ 🥃" bind:this={bar}>
-  <div>Helios</div>
+  <div class="o-1">Stream</div>
 
   <form on:submit|preventDefault={searcher}>
     <input
@@ -29,14 +30,14 @@
       value={searchText}
     />
     <SvgIcon size="22" style="position:relative;top:3px;left:5px">
-      <circle cx="14" cy="14" r="12" />
-      <path d="M23 23 L30 30" />
+      <circle stroke="#fff" cx="14" cy="14" r="12" />
+      <path stroke="#fff" d="M23 23 L30 30" />
     </SvgIcon>
     <input class="o-0 w-0" type="submit" value="" />
   </form>
 
   <div>
-    <button class="red" on:click={caller}> ★ </button>
+    <Button kind="danger" tiny on:click={caller}>★</Button>
   </div>
 </section>
 
@@ -47,7 +48,7 @@
   section {
     z-index: 9;
     font-size: 1.1em;
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     position: fixed;
     top: 0;
     justify-content: space-between;

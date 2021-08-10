@@ -17,7 +17,18 @@
 </svelte:head>
 
 <section class="w-100">
-  <!-- <TopBar /> -->
+  <!-- <h1 class="w-100 †c">Ronin</h1>
+  <style>
+    h1 {
+      z-index: 9999;
+      color: #fff0;
+      font: 600 156px Serif;
+      line-height: 128px;
+      -webkit-text-stroke-width: 3px;
+      -webkit-text-stroke-color: #fff;
+      position: absolute;
+    }
+  </style> -->
   <SummaryBox />
   <Search />
 </section>

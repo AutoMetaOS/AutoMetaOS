@@ -29,6 +29,14 @@
     });
 </script>
 
+<svelte:head>
+    <style>
+        body {
+            background: #111;
+        }
+    </style>
+</svelte:head>
+
 <main>
     <Bar {searcher} />
     <Player />

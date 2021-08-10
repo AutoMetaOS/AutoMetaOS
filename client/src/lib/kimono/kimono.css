@@ -1,0 +1,10 @@
+.kimono-ui-base {
+    padding: 1em;
+    margin: 10px;
+    border-radius: 0;
+    cursor: pointer;
+    outline: none;
+    background: var(--secondary-hl);
+    color: #000;
+    transition: all 0.2s ease;
+}

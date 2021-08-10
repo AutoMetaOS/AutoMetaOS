@@ -1,0 +1,10 @@
+*::-webkit-scrollbar { display:none}
+#related{
+    display: none;
+}
+ytd-comments{
+    display: none;
+}
+#footer{
+    display: none;
+}
