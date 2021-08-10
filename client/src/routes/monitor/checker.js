@@ -57,7 +57,7 @@ export const notes_test = async () => {
 };
 
 // 4. STREAM
-import { search } from "$routes/stream/core/api";
+import { search } from "$routes/stream/shared/store";
 export const stream_test = async () => {
     const response1 = await search( "despacito" );
     const response2 = await search( "rober squirrel 2.0" );

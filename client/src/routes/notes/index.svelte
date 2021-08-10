@@ -112,15 +112,6 @@
         padding: 0 10%;
         width: 80%;
     }
-    svg {
-        width: 24px;
-        height: 24px;
-        fill: none;
-        stroke: #000;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 3;
-    }
     main {
         height: 100vh;
         overflow: hidden;

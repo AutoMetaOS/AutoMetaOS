@@ -6,8 +6,7 @@
     import Search from "./components/search.svelte";
 
     import { onMount } from "svelte";
-    import { vId } from "./core/store";
-    import { search } from "./core/api";
+    import { videoProcessor, search } from "./shared/store";
 
     let base = [];
 
@@ -23,8 +22,11 @@
     };
 
     onMount(() => {
-        getµ().q && searcher(getµ().q);
-        vId.set(decodeURIComponent(getµ().id || ""));
+        const params = getµ();
+        params.q && searcher(params.q);
+        if (params.id) {
+            videoProcessor(params.type, params.id, params.token);
+        }
         return 0;
     });
 </script>
@@ -33,6 +35,7 @@
     <style>
         body {
             background: #111;
+            color: #fff;
         }
     </style>
 </svelte:head>

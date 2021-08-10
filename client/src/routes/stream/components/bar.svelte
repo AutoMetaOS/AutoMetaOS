@@ -1,31 +1,28 @@
 <script>
   import { onMount } from "svelte";
-  import { nebula } from "../core/api";
   import { SvgIcon } from "$lib/components";
-  import { channels } from "../core/store";
-  import { Button } from "$lib/kimono";
+  import { channels, nebula } from "../shared/store";
 
   export let searcher;
 
-  let bar,
-    searchText = "";
+  let searchText = "";
 
-  const caller = () => {
-    nebula();
-    channels();
-  };
-
-  onMount(() => (searchText = getµ().q || ""));
+  onMount(() => {
+    if (getµ().q || getµ().id) {
+      searchText = getµ()?.q || "";
+    } else {
+      nebula();
+      channels();
+    }
+  });
 </script>
 
-<section class="o-0 p5 ƒ 🥃" bind:this={bar}>
-  <div class="o-1">Stream</div>
-
-  <form on:submit|preventDefault={searcher}>
+<section class="o-0 p5 🥃">
+  <form class="ƒ w-33 m-h-auto" on:submit|preventDefault={searcher}>
     <input
       class="p5"
       id="srcBox"
-      size="35"
+      size="40"
       placeholder="Search"
       value={searchText}
     />
@@ -33,17 +30,13 @@
       <circle stroke="#fff" cx="14" cy="14" r="12" />
       <path stroke="#fff" d="M23 23 L30 30" />
     </SvgIcon>
-    <input class="o-0 w-0" type="submit" value="" />
+    <input class="o-0 w-0" type="submit" value="" style="display: none;" />
   </form>
-
-  <div>
-    <Button kind="danger" tiny on:click={caller}>★</Button>
-  </div>
 </section>
 
 <style type="text/scss">
   form {
-    background: #444;
+    justify-content: space-between;
   }
   section {
     z-index: 9;
@@ -63,16 +56,5 @@
         color: #aaaa;
       }
     }
-  }
-  button {
-    height: 36px;
-    width: 36px;
-    font-size: 1em;
-    color: #fff;
-    border-radius: 20px;
-    color: #fff;
-  }
-  .red {
-    background: #c22;
   }
 </style>

@@ -1,4 +1,6 @@
 .kimono-ui-base {
+    content-visibility: auto;
+    contain-intrinsic-size: 100px 2em;
     padding: 1em;
     margin: 10px;
     border-radius: 0;

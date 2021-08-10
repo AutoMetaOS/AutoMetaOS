@@ -9,14 +9,7 @@
         disabled;
 </script>
 
-<a
-    {href}
-    class="†l kimono-ui-base {forceClass}"
-    class:tiny
-    {kind}
-    {disabled}
-    on:click
->
+<a {href} class="†l kimono-ui-base {forceClass}" {kind} {disabled} on:click>
     {#if icon}
         <svg viewBox={iconView}>
             {@html icon}
