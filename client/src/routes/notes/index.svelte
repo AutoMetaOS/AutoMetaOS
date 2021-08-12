@@ -1,34 +1,52 @@
 <script>
-    import Lister from "./components/files.svelte";
     import Editor from "./components/editor.svelte";
     import { onMount } from "svelte";
     import { base } from "$app/paths";
 
-    import { Button } from "$lib/kimono";
+    import { Button, Dropdown } from "$hakama";
     import { serverURL } from "$lib/shared/molecular";
 
-    import { updateNote, deleteNote } from "./components/api";
-    import { editorData } from "./components/store";
+    import { updateNote, getNotes, getNote } from "./components/api";
+    import { editorData, notesList } from "./components/store";
 
-    let tools,
+    let //
+        tools,
         currentData,
-        saveButton = "#0000";
+        saveButton = "ghost",
+        selectedIndex;
+
+    const onSelect = (e) => {
+        getNote(e.detail.selectedId);
+    };
+
+    const noteFilter = (e) => {
+        return {
+            text: e.title,
+            id: e.id,
+        };
+    };
 
     const saver = async () => {
         const outputData = await editor.save();
 
         if (outputData === currentData) return;
-        saveButton = "#f44";
+        saveButton = "danger";
         currentData = outputData;
         updateNote(mainEditor.dataset.id, outputData)
-            .then((r) => (saveButton = "#0000"))
+            .then((r) => (saveButton = "ghost"))
             .catch(console.log);
         return 0;
     };
 
-    const deleter = () => deleteNote(mainEditor.dataset.id);
+    const deleter = () => {
+        const len = $notesList.length;
+        selectedIndex = (selectedIndex + 1) % len;
+        updateNote(mainEditor.dataset.id);
+    };
 
     onMount(() => {
+        getNotes().then((r) => (selectedIndex = 0));
+
         window.mainEditor = ƒ("#editorOfNotes");
         tools = {
             header: Header,
@@ -64,9 +82,7 @@
     <title>Terrelysium</title>
     <style>
         body {
-            background: #fff;
-            color: #000;
-            font: 200 16px Helvetica;
+            color: #fff;
             min-height: 100vh;
         }
     </style>
@@ -78,39 +94,25 @@
 <svelte:window on:keydown={handleKeyDown} />
 
 <main class="w-100" style="z-index: 0;">
-    <functions class="fns ƒ">
-        <Lister />
-        <hr class="m0" />
-        <Button
-            kind="ghost"
-            assetClass="p0 m0"
-            icon="<path d='M9 22 C0 23 1 12 9 13 6 2 23 2 22 10 32 7 32 23 23 22 M11 18 L16 14 21 18 M16 14 L16 29'/>"
-            on:click={saver}
-        >
-            &nbsp;Save
-        </Button>
-        <hr class="m0" />
-        <Button
-            kind="danger-ghost"
-            assetClass="p0 m0"
-            icon="<path d='M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6'/>"
-            on:click={deleter}
-        >
-            &nbsp;Delete
-        </Button>
-    </functions>
+    <div class="w-100 fns ƒ">
+        <Button kind={saveButton} on:click={saver}>Saver</Button>
+        <Button kind="danger-ghost" on:click={deleter}>Delete</Button>
+        <Dropdown
+            on:select
+            hideLabel
+            type="inline"
+            on:select={onSelect}
+            bind:selectedIndex
+            items={$notesList.map(noteFilter)}
+            style="grid-gap:unset;"
+        />
+    </div>
     <Editor />
 </main>
 
 <style type="text/scss">
-    hr {
-        height: 1em;
-        margin-top: 26px;
-    }
     .fns {
         justify-content: center;
-        padding: 0 10%;
-        width: 80%;
     }
     main {
         height: 100vh;

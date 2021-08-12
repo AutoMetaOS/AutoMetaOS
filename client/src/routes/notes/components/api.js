@@ -2,7 +2,7 @@ import { get } from 'svelte/store'
 import { notesList, updateEditor } from "./store";
 import { Riquest, serverURL } from "$lib/shared/molecular.js";
 
-const reqr = new Riquest( serverURL, 'text', { identity: 'anonymous' } );
+const reqr = new Riquest( serverURL, 'text' );
 
 export const getNotes = async () => {
     console.log( '[Terrelysium] Initialising...' );
@@ -13,39 +13,34 @@ export const getNotes = async () => {
 }
 
 export const getNote = async ( id ) => {
-    console.log( id );
     const text = await reqr.get( '/notes/' + id );
     updateEditor( id, decrypt( text ) );
     return text;
 };
 
-export const updateNote = async ( id, data ) => {
+export const updateNote = async ( id, data = null ) => {
     let list = get( notesList );
 
+    const found = list.find( e => e.id === id );
     if ( data ) {
-        if ( list.find( e => e.id === id ) ) {
-            list.find( e => e.id === id ).title = data.blocks[ 0 ].data.text;
-            list.find( e => e.id === id ).date = data.time;
+        if ( found ) {
+            found.title = data.blocks[ 0 ].data.text;
+            found.date = data.time;
         }
         else {
             list.push( { title: data.blocks[ 0 ].data.text, id, date: data.time } )
         }
+    } else {
+        delete list[ found ];
+        list = list.filter( Boolean );
     }
 
     notesList.set( list );
-    const json = await reqr.patch( '/notes/' + id, { note: data ? encrypt( data ) : '', list: encrypt( get( notesList ) ) } );
+    const json = await reqr.patch( '/notes/' + id,
+        { note: data ? encrypt( data ) : null, list: encrypt( get( notesList ) ) }
+    );
     return json;
 };
-
-export const deleteNote = async ( id ) => {
-    let list = get( notesList ).filter( e => e.id !== id );
-    notesList.set( list );
-    updateNote( id, '' );
-    const elt = ƒ( '#list input[type=radio]' );
-    elt.checked = true;
-    setNote( { target: { dataset: elt } } )
-    return 0;
-}
 
 import AES from "crypto-js/aes.js";
 import ENC_UTF8 from "crypto-js/enc-utf8.js";

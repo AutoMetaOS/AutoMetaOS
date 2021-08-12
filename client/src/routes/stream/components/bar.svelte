@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { SvgIcon } from "$lib/components";
+  import { TextInput } from "$hakama";
   import { channels, nebula } from "../shared/store";
 
   export let searcher;
@@ -12,36 +13,32 @@
       searchText = getµ()?.q || "";
     } else {
       nebula();
-      channels();
+      // channels();
     }
   });
 </script>
 
-<section class="o-0 p5 🥃">
-  <form class="ƒ w-33 m-h-auto" on:submit|preventDefault={searcher}>
-    <input
-      class="p5"
-      id="srcBox"
-      size="40"
-      placeholder="Search"
-      value={searchText}
-    />
-    <SvgIcon size="22" style="position:relative;top:3px;left:5px">
-      <circle stroke="#fff" cx="14" cy="14" r="12" />
-      <path stroke="#fff" d="M23 23 L30 30" />
-    </SvgIcon>
-    <input class="o-0 w-0" type="submit" value="" style="display: none;" />
-  </form>
-</section>
+<form class="o-0 w-100 p5 ƒ 🥃" on:submit|preventDefault={searcher}>
+  <TextInput
+    class="p5"
+    hideLabel
+    size="40"
+    placeholder="Search"
+    value={searchText}
+    style="border:none;background:transparent;outline:none;"
+  />
+  <SvgIcon size="22">
+    <circle stroke="#fff" cx="14" cy="14" r="12" />
+    <path stroke="#fff" d="M23 23 L30 30" />
+  </SvgIcon>
+</form>
 
 <style type="text/scss">
   form {
     justify-content: space-between;
-  }
-  section {
     z-index: 9;
     font-size: 1.1em;
-    width: calc(100% - 10px);
+    padding: 0 30%;
     position: fixed;
     top: 0;
     justify-content: space-between;
@@ -49,12 +46,6 @@
     align-items: center;
     &:hover {
       opacity: 1;
-    }
-    input {
-      color: #fff;
-      &::placeholder {
-        color: #aaaa;
-      }
     }
   }
 </style>

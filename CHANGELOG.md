@@ -6,6 +6,10 @@
 - Remove all trailing commas
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
+## 6.7.0
+- Addition of HakamaUI for sake of standardisation
+
+
 ## 6.6.2
 - Moved back from brave sugg to google (Cloudflare middleman)
 - Standardized functions now in RoninScript

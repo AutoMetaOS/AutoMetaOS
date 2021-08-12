@@ -9,7 +9,7 @@
         image;
 </script>
 
-<div class="recom rpm-5 p0 ƒ-col" on:click={videoSet}>
+<div class="recom m5 p0 ƒ-col" on:click={videoSet}>
     <a
         href="#wrapper"
         data-type={type}
@@ -17,9 +17,8 @@
         data-token={token}
         data-slug={slug}
     >
-        <!-- data-url={embedCalculator(type, url)} -->
         <img style="w-100" src={image} alt="" />
-        <div class="†c p5">
+        <div class="†c w-100 deets p5">
             <div style="padding-bottom:5px;">
                 {@html title.slice(0, 60)}
                 {title.length > 60 ? "..." : ""}
@@ -33,20 +32,35 @@
 
 <style type="text/scss">
     .recom {
+        --displace: calc((20vw - 20px) * 9 / 16);
         cursor: pointer;
-        font-size: 0.9em;
         width: calc(20% - 10px);
-        overflow: hidden;
         z-index: 1;
-        background: #111;
+        transition: all 0.2s ease;
+        position: relative;
+        .deets {
+            background: #222;
+            pointer-events: none;
+
+            position: absolute;
+            z-index: 0;
+            opacity: 0;
+            top: 0;
+
+            transition: all 0.1s ease;
+        }
         img {
             width: 100%;
             height: auto;
         }
-        transition: transform 0.3s ease;
         &:hover {
             transform: scale(1.1);
             z-index: 2;
+            .deets {
+                z-index: 44;
+                opacity: 1;
+                top: var(--displace);
+            }
         }
     }
 </style>
