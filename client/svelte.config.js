@@ -12,7 +12,7 @@ export default {
 			resolve: {
 				alias: {
 					$routes: path.resolve( 'src/routes' ),
-					$hakama: path.resolve( 'src/HakamaUI/src' ),
+					$hakama: path.resolve( '../HakamaUI/src' ),
 				}
 			}
 		}

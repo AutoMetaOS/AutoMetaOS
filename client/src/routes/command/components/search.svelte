@@ -4,13 +4,14 @@
 
   import { engine, preprocessor } from "../samurai";
   import { recommendations } from "../store";
+  import { TextInput } from "$hakama";
 
   import Recoms from "./suggestion.svelte";
 
-  let magic;
+  let value;
 
   const go = (e) => {
-    const send = engine(magic.value);
+    const send = engine(value);
     let recs = $recommendations.map((e) => e[3]?.zh || e[0]);
 
     const div = document.createElement("div");
@@ -19,10 +20,10 @@
 
     switch (e.keyCode) {
       case 40:
-        magic.value = `!${send.key} ${recs[0]}`;
+        value = `!${send.key} ${recs[0]}`;
         break;
       case 38:
-        magic.value = `!${send.key} ${recs[1]}`;
+        value = `!${send.key} ${recs[1]}`;
         break;
       case 13:
         window.location.href = preprocessor(send);
@@ -33,22 +34,28 @@
     }
     return send;
   };
-
-  onMount(() => magic.focus());
 </script>
 
 <section class="ƒ-col">
   <form on:submit|preventDefault>
     <div class="wrapper ƒ p5">
       <img id="engineImage" src="{base}/icons/Basic.svg" alt="" />
-      <input
+      <TextInput
+        on:keyup={go}
+        bind:value
+        hideLabel
+        autofocus
+        labelText="Search"
+        placeholder="Ronin"
+      />
+      <!-- <input
         on:keyup={go}
         placeholder="Ronin"
         bind:this={magic}
         id="magic"
         required
         size="150"
-      />
+      /> -->
     </div>
     <input id="submit" type="submit" value=" " style="display:none;" />
   </form>
@@ -71,13 +78,6 @@
         width: 32px;
         height: 32px;
         border-radius: 5px;
-      }
-      #magic {
-        padding: 0.25em 0.5em;
-        font-size: 1.75rem;
-        overflow: hidden;
-        background: transparent;
-        color: white;
       }
     }
   }

@@ -2,8 +2,6 @@
   "name": "carbon-components-svelte",
   "version": "0.0.0",
   "svelte": "./src/index.js",
-  "main": "./lib/index.js",
-  "module": "./lib/index.mjs",
   "types": "./types/index.d.ts",
   "sideEffects": [
     "css/*.css"
