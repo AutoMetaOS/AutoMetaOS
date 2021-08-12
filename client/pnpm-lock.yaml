@@ -4,19 +4,21 @@ specifiers:
   '@sveltejs/adapter-node': next
   '@sveltejs/adapter-static': next
   '@sveltejs/kit': next
-  crypto-js: ^4.0.0
+  crypto-js: 4.1.1
   sass: 1.35.1
   svelte: 3.38.3
   svelte-preprocess: 4.7.3
   vite: 2.4.1
+  workerize: ^0.1.8
 
 dependencies:
   crypto-js: 4.1.1
+  workerize: 0.1.8
 
 devDependencies:
   '@sveltejs/adapter-node': 1.0.0-next.39
   '@sveltejs/adapter-static': 1.0.0-next.16
-  '@sveltejs/kit': 1.0.0-next.142_svelte@3.38.3
+  '@sveltejs/kit': 1.0.0-next.146_svelte@3.38.3
   sass: 1.35.1
   svelte: 3.38.3
   svelte-preprocess: 4.7.3_sass@1.35.1+svelte@3.38.3
@@ -43,8 +45,8 @@ packages:
     resolution: {integrity: sha512-xGFcg+GHF0BL1fyWx2vCzlYj4S4R+Od9cF00soo1TVp/scGOi1G9grSYYW4x5H+iDn1sscoJ65OGBGWIcOgrXg==}
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.142_svelte@3.38.3:
-    resolution: {integrity: sha512-MxoQz/kxlYOXVHETlxh8+wIvfZ4N2EScDqyuaWwFHqWg6fj6FHADJfZ7JCniqvAe8ME2jA9Om/gVR8e1oY04+w==}
+  /@sveltejs/kit/1.0.0-next.146_svelte@3.38.3:
+    resolution: {integrity: sha512-MSatcaCRfjl88Prd5mW4pNOJ3Gsr525+Vjr24MoKtyTt6PZQmTfQsDVwyP93exn/6w2xl9uMCW6cFpDVBu7jSg==}
     engines: {node: ^12.20 || >=14.13}
     hasBin: true
     peerDependencies:
@@ -454,3 +456,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /workerize/0.1.8:
+    resolution: {integrity: sha512-X2y/MZ4UHXY00CKPbhb7g5Pm7aagKmXqTETvG/gi9I0tlrONqAN8jRuyLvlyvhrXTugJUk9Dzz7UBpSwFIP8pQ==}
+    dev: false

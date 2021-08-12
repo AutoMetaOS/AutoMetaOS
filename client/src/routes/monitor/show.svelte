@@ -13,7 +13,7 @@
     const cleanDate = (dt) => new Date(dt).toLocaleString("en-GB", options);
 
     const show_filter = (e) => {
-        if (e.state < 0 || e.state === 1) return 0;
+        if (e.state < 0.5 || e.state === 1) return 0;
         const time_difference = (TODAY - +new Date(e.day)) / 864e5;
         return 1;
     };

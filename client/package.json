@@ -17,6 +17,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"crypto-js": "4.1.1"
+		"crypto-js": "4.1.1",
+		"workerize": "^0.1.8"
 	}
 }

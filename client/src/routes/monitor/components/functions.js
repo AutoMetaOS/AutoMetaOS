@@ -34,9 +34,10 @@ export const getShows = async ( filtered_list ) => {
     const shows_data = await Promise.all( shows_promises ).then( async ( res ) =>
         Promise.all( res.map( async ( data ) => await data.json() ) )
     );
-    const last_episode_promises = shows_data.map( ( e ) =>
-        fetch( e[ "_links" ].previousepisode?.href )
-    );
+    const last_episode_promises = shows_data.map( ( e ) => {
+        console.log( e[ '_links' ] );
+        return fetch( e[ "_links" ]?.previousepisode?.href.replace( 'http:', 'https:' ) );
+    } );
     const last_episode_data = await Promise.all( last_episode_promises ).then(
         async ( res ) =>
             Promise.all( res.map( async ( data ) => await data.json() ) )

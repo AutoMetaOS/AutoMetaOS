@@ -8,3 +8,8 @@ ytd-comments{
 #footer{
     display: none;
 }
+
+video{
+    min-height: 600px;
+    height: 80%;
+}

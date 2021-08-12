@@ -11,7 +11,8 @@ export default {
 		vite: {
 			resolve: {
 				alias: {
-					$routes: path.resolve( 'src/routes' )
+					$routes: path.resolve( 'src/routes' ),
+					$hakama: path.resolve( 'src/HakamaUI/src' ),
 				}
 			}
 		}
