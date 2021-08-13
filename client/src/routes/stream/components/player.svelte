@@ -2,13 +2,15 @@
     let maxwell;
 
     import { vId } from "../shared/store";
+    import { AspectRatio } from "$hakama";
 </script>
 
-<div class="w-100 †c" id="wrapper">
+<AspectRatio class="w-100 †c" ratio="16x9">
     {#if $vId}
         <iframe
             title="vid"
             class="w-100 h-100"
+            frameborder="0"
             bind:this={maxwell}
             src={$vId}
             allow="accelerometer;autoplay;clipboard-write;encrypted-media;picture-in-picture"
@@ -17,16 +19,9 @@
     {:else}
         <img class="m-h-auto" src="/assets/nebula.png" alt="" />
     {/if}
-</div>
+</AspectRatio>
 
 <style type="text/scss">
-    #wrapper {
-        height: 100vh;
-        iframe {
-            border: 0;
-            background: #111;
-        }
-    }
     img {
         margin-top: 5%;
         filter: hue-rotate(100deg);

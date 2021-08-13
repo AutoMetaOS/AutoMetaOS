@@ -13,7 +13,7 @@
       searchText = getµ()?.q || "";
     } else {
       nebula();
-      // channels();
+      channels();
     }
   });
 </script>

@@ -26,9 +26,6 @@
       case 13:
         window.location.href = preprocessor(send);
         break;
-      // default:
-      //   recommendations.set([]);
-      // break;
     }
     return send;
   };
@@ -74,7 +71,7 @@
   form {
     justify-content: center;
     width: calc(80vw - 0.8em);
-    background: #525252;
+    background: #262626;
     font-size: 1.25rem;
     img {
       width: 1.5em;

@@ -107,14 +107,13 @@
             <rect x="0" y="0" width="32" height="32" />
         </svg>
     </div>
-    <!-- <div class="w-100" id="bottom">&nbsp</div> -->
 </section>
 
 <style type="text/scss">
     :root {
-        --primary: #d41;
+        --primary: #ccc8;
         --disabled: #0004;
-        --hover: #e75;
+        --hover: #fff;
         --active: var(--hover);
     }
     section {
@@ -154,16 +153,10 @@
         font-size: var(--size);
         outline: none;
     }
-    // #bottom,
     #top {
         position: fixed;
         left: 0;
         right: 0;
-    }
-    #top {
         top: 0;
     }
-    // #bottom {
-    //     bottom: 0;
-    // }
 </style>
