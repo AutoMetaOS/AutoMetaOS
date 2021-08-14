@@ -44,7 +44,8 @@
     justify-content: space-between;
     transition: all 0.3s ease;
     align-items: center;
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }

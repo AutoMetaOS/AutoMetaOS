@@ -11,6 +11,12 @@
             "$server": [
                 "server/"
             ],
+            "$keys": [
+                "config/keys"
+            ],
+            "$db": [
+                "config/database"
+            ]
         }
     }
 }

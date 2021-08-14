@@ -1,7 +1,9 @@
 <script>
     import { videoSet } from "../shared/store";
+    import { ImageLoader } from "$hakama";
 
-    export let title = "",
+    export let //
+        title = "",
         details = [],
         token,
         type,
@@ -17,14 +19,14 @@
         data-token={token}
         data-slug={slug}
     >
-        <img style="w-100" src={image} alt="" />
+        <ImageLoader class="w-100" ratio="16x9" src={image} />
         <div class="†c w-100 deets p5">
             <div style="padding-bottom:5px;">
                 {@html title.slice(0, 60)}
                 {title.length > 60 ? "..." : ""}
             </div>
             <div style="color: #888;">
-                {details[0]} &bull; {details[1]}
+                {details.join(" • ")}
             </div>
         </div>
     </a>
@@ -45,13 +47,9 @@
             position: absolute;
             z-index: 0;
             opacity: 0;
-            top: 0;
+            top: 4em;
 
-            transition: all 0.1s ease;
-        }
-        img {
-            width: 100%;
-            height: auto;
+            transition: all 0.15s ease;
         }
         &:hover {
             transform: scale(1.1);
