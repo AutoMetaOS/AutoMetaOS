@@ -63,11 +63,7 @@ const getRecents = async ( ids ) => {
         json.items.map( ( el ) => el.contentDetails.relatedPlaylists.uploads )
             .map( async plId => {
                 let plist = await playlist( plId + "&order=date", 4 )
-                return plist.items.filter( ( r1 ) =>
-                    new Date() -
-                    new Date( r1.snippet.publishedAt ) <=
-                    2 * 864e5
-                )
+                return plist.items
             } )
     );
     const filtered = videoList.flat();

@@ -12,13 +12,10 @@
 
     const searcher = (sc) => {
         const q = typeof sc === "string" ? sc : sc.target[0].value;
-        if (!q) {
-            setµ("q", "");
-            return 0;
-        } else search(q).then((r) => (base = r.items));
-        setµ("q", q);
+        if (!q) return setµ("q", "");
+        else search(q).then((r) => (base = r.items));
         window.location.href = "#search";
-        return 0;
+        return setµ("q", q);
     };
 
     onMount(() => {
@@ -42,13 +39,21 @@
 
 <main>
     <Bar {searcher} />
-    <Player />
+    <div class="ƒ cont">
+        <Player />
+    </div>
     <Search videos={base} />
     <Subsc />
     <NebSubsc />
 </main>
 
 <style>
+    .cont {
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+    }
     main {
         overflow-x: hidden;
     }

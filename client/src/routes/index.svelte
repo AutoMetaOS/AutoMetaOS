@@ -5,6 +5,7 @@
   import { TextInput } from "$hakama";
 
   import Recoms from "./command/suggestion.svelte";
+  import { onMount } from "svelte";
 
   let value;
 
@@ -29,6 +30,8 @@
     }
     return send;
   };
+
+  onMount(() => setInterval(ƒ("#rsc").focus(), 1e3));
 </script>
 
 <svelte:head>
@@ -47,8 +50,8 @@
     <TextInput
       on:keyup={go}
       bind:value
+      id="rsc"
       hideLabel
-      autofocus
       placeholder="Ronin"
       style="outline:none;"
     />

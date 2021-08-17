@@ -5,7 +5,7 @@
     import { AspectRatio } from "$hakama";
 </script>
 
-<AspectRatio class="w-100 †c" ratio="16x9">
+<AspectRatio class="w-100 h-100 †c" ratio="16x10">
     {#if $vId}
         <iframe
             title="vid"
@@ -16,14 +16,5 @@
             allow="accelerometer;autoplay;clipboard-write;encrypted-media;picture-in-picture"
             sandbox="allow-scripts allow-same-origin"
         />
-    {:else}
-        <img class="m-h-auto" src="/assets/nebula.png" alt="" />
     {/if}
 </AspectRatio>
-
-<style type="text/scss">
-    img {
-        margin-top: 5%;
-        filter: hue-rotate(100deg);
-    }
-</style>

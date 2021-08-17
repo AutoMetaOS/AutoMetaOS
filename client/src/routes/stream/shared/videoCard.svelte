@@ -34,7 +34,6 @@
 
 <style type="text/scss">
     .recom {
-        --displace: calc((20vw - 20px) * 9 / 16);
         cursor: pointer;
         width: calc(20% - 10px);
         z-index: 1;
@@ -47,7 +46,7 @@
             position: absolute;
             z-index: 0;
             opacity: 0;
-            top: 4em;
+            top: 50%;
 
             transition: all 0.15s ease;
         }
@@ -57,7 +56,7 @@
             .deets {
                 z-index: 44;
                 opacity: 1;
-                top: var(--displace);
+                top: 100%;
             }
         }
     }
