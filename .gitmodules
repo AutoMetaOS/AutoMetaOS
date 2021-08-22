@@ -1,0 +1,3 @@
+[submodule "AutoMetaUI"]
+	path = AutoMetaUI
+	url = https://github.com/plutoniumm/AutoMetaUI.git
