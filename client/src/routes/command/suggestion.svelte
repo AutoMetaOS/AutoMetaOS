@@ -1,5 +1,5 @@
 <script>
-    import { recommendations } from "./store";
+    import { recommendations } from "./samurai";
     import { Tile } from "$hakama";
 </script>
 

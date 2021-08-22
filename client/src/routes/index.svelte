@@ -1,9 +1,9 @@
 <script>
   import { base } from "$app/paths";
-  import { engine, preprocessor } from "./command/samurai";
-  import { recommendations } from "./command/store";
+  import { engine, preprocessor, recommendations } from "./command/samurai";
   import { TextInput } from "$hakama";
 
+  import TIL from "./command/til.svelte";
   import Recoms from "./command/suggestion.svelte";
   import { onMount } from "svelte";
 
@@ -43,6 +43,8 @@
   <link rel="prefetch" href="{base}/stream" />
   <link rel="prefetch" href="{base}/notes" />
 </svelte:head>
+
+<TIL />
 
 <section class="ƒ-col">
   <form class="ƒ p5" on:submit|preventDefault>

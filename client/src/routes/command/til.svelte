@@ -1,0 +1,40 @@
+<script>
+    import { onMount } from "svelte";
+    import { ClickableTile } from "$hakama";
+
+    let reddit = {
+        image: "https://stayhipp.com/wp-content/uploads/2019/10/reddit.png",
+        title: "fetching...",
+        href: "#",
+    };
+
+    onMount(() =>
+        fetch("https://www.reddit.com/r/todayilearned/new/.json?limit=1")
+            .then((r2) => r2.json())
+            .then((r) => {
+                const fetched = r.data.children[0].data;
+                reddit = {
+                    image:
+                        fetched.preview.images[0].source.url.replaceAll(
+                            "&amp;",
+                            "&"
+                        ) ||
+                        fetched.thumbnail ||
+                        reddit.image,
+                    title: fetched.title,
+                    href: fetched.url,
+                };
+            })
+    );
+</script>
+
+<ClickableTile
+    class="p0 ƒ-col w-25"
+    style="position:absolute;bottom:1em;right:11%;z-index:10;"
+    href={reddit.href}
+>
+    <img src={reddit.image} alt="" style="height:20vh;object-fit:cover;" />
+    <p class="p5 m5">
+        {reddit.title}
+    </p>
+</ClickableTile>

@@ -2,6 +2,7 @@
   export let videos = [];
 
   import Card from "../shared/videoCard.svelte";
+  import { Kron } from "$lib/shared/molecular";
 </script>
 
 <section class="p20 ƒ ƒ∑" id="search">
@@ -12,11 +13,13 @@
     {#each videos as vid}
       <Card
         title={vid.snippet.title}
-        type="YoutubeVideo"
-        url={vid.id.videoId}
-        lhs={vid.snippet.channelTitle}
+        type="Youtube"
         image={vid.snippet.thumbnails.medium.url}
-        rhs={vid.snippet.publishedAt}
+        slug={vid.id.videoId}
+        details={[
+          vid.snippet.channelTitle,
+          new Kron(vid.snippet.publishedAt).timeSince(),
+        ]}
       />
     {/each}
   {/if}
