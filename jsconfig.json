@@ -6,7 +6,7 @@
                 "client/src"
             ],
             "$hakama": [
-                "hakama/src"
+                "AutoMetaUI/src"
             ],
             "$server": [
                 "server/"

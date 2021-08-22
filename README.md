@@ -1,4 +1,4 @@
-# Ronin v6 (MacOS)
+# AutoMetaOS v7 (MacOS)
 
 ## Installation
 
@@ -14,7 +14,7 @@ $ pnpm i
 $ npm run start
 ```
 
-## RoninScript
+## Globally Provided JS
 ### Shorthand
 For QuerySelectors
 ```js

@@ -1,6 +1,6 @@
 {
-    "name": "ronin",
-    "version": "6.7.0",
+    "name": "autometaos",
+    "version": "7.0.0",
     "license": "MIT",
     "private": true,
     "scripts": {

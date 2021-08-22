@@ -8,6 +8,10 @@
 
 
 
+### v7.0.0 (AutoMetaOS)
+- Submodule HakamaUI -> AutoMetaUI
+
+
 ### v6.7.0
 - Addition of HakamaUI for sake of standardisation & Stripping down useless stuff
 - Standardise components with Hakama
