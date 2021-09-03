@@ -82,6 +82,7 @@
       width: 1.5em;
       height: 1.5em;
       border-radius: 5px;
+      color: #fff;
     }
   }
 </style>

@@ -1,5 +1,22 @@
 # Changelog
 
+### Todo
+- Add Code Snippets
+<!-- https://cmsinstallation.blogspot.com/2021/06/15-modern-es6-snippets-for-javascript.html -->
+- Add Stegcloack
+<!-- https://github.com/KuroLabs/stegcloak -->
+
+### Explore
+- Web Excel - @mengshukeji/Luckysheet
+- Documentation - https://devdocs.io/codeception/
+- Timeline - @sbstjn/timesheet.js
+- JS Templating - @blueimp/JavaScript-Templates
+- Calendar - @fullcalendar/fullcalendar
+- Browser Storage - @marcuswestin/store.js
+- Web PDF - @mozilla/pdf.js
+<!--Continue Finding: https://github.com/sorrycc/awesome-javascript#boilerplates -->
+
+
 ### Code Quality
 - Test for all functions return value. Made as many funcs return as possible
 - Add defualt value to EVERY variable
@@ -8,8 +25,9 @@
 
 
 
-### v7.0.0 (AutoMetaOS)
+## v7.0.0 (AutoMetaOS)
 - Submodule HakamaUI -> AutoMetaUI
+- Submodule NinjaExt -> AutoMetaX10
 
 
 ### v6.7.0

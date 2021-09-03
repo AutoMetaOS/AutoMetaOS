@@ -16,7 +16,7 @@
         <div class="w-100 ƒ p5 ∆-bw">
             <span on:click={clear}> Nebula </span>
             <span>
-                <Slider hideTextInput on:change={update} max={4} value={2} />
+                <Slider hideTextInput on:change={update} max={4} value={1} />
             </span>
         </div>
         {#each videos.slice(0, slicer * 5) as vid}

@@ -1,24 +1,29 @@
 "use strict";
 
-const fs = require( 'fs' );
-const notes = '../config/database/notes/';
+const g = require( './amos' );
 
 async function routes ( app, options ) {
     app.get( '/notes/', ( req, res ) => {
-        const list = fs.readFileSync( notes + 'NOTELIST.txt', 'utf-8' );
+        const list = g.read( g.at.notes + 'NOTELIST.txt' );
         res.send( list );
     } );
 
     app.get( '/notes/:id', ( req, res ) => {
-        const note = fs.readFileSync( notes + req.params.id + '-note.txt', 'utf-8' );
+        const note = g.read( g.at.notes + req.params.id + '-note.txt' );
         res.send( note );
     } );
 
     app.patch( '/notes/:id', ( req, res ) => {
         const body = req.body;
-        fs.writeFileSync( notes + 'NOTELIST.txt', body.list );
-        if ( body.note ) fs.writeFileSync( notes + req.params.id + '-note.txt', body.note );
-        else fs.unlinkSync( notes + req.params.id + '-note.txt' );
+        const id = req.params.id + '-note.txt';
+
+        g.write( g.at.notes + 'NOTELIST.txt', body.list );
+
+        if ( body.note ) {
+            g.write( g.at.notes + id, body.note )
+        } else {
+            g.del( g.at.notes + id );
+        }
         res.send( { code: 200 } );
     } );
 };

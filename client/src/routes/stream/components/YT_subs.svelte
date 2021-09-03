@@ -17,7 +17,7 @@
     <div class="w-100 ƒ p5 ∆-bw">
       <span on:click={clear}> Youtube </span>
       <span>
-        <Slider hideTextInput on:change={update} max={4} value={2} />
+        <Slider hideTextInput on:change={update} max={6} value={2} />
       </span>
     </div>
     {#each videos

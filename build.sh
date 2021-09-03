@@ -31,4 +31,5 @@ npx svelte-kit build;
 # SERVER BUILD
 echo "${BLUE}Building Server...${NOCOLOR}";
 cd $BASE/server;
+rm -rf *.jsc;
 bytenode --compile *.js;

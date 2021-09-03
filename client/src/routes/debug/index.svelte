@@ -45,14 +45,8 @@
     <script src="{base}/helpers/codes/{js}.js"></script>
   {/each}
   <link rel="stylesheet" href="{base}/helpers/codes/codemirror+cobalt.css" />
-  <style>
-    body {
-      background: #000;
-    }
-  </style>
 </svelte:head>
 
-{words}
 <section class="ƒ">
   <div class="w-50 h-100 codeContainer" on:keyup={debounce(render, 1000)}>
     <textarea spellcheck="true" id="code" value={w3} />
@@ -61,9 +55,14 @@
     <iframe
       title="sim"
       src="/assets/repl.html"
-      class="w-100 h-100 p5"
+      class="w-100 h-100"
       frameborder="0"
     />
+  </div>
+</section>
+<section class="w-100 h-100">
+  <div class="p20">
+    {words}
   </div>
 </section>
 
@@ -73,6 +72,7 @@
   }
   section {
     height: 100vh;
+    background: #000;
     color: #fff;
   }
   iframe {

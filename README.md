@@ -1,5 +1,7 @@
 # AutoMetaOS v7 (MacOS)
 
+![AutoMetaOS](./amos.png)
+
 ## Installation
 
 ```bash
