@@ -37,7 +37,7 @@ export const updateNote = async ( id, data = null ) => {
 
     notesList.set( list );
     const json = await reqr.patch( '/notes/' + id,
-        { note: data ? encrypt( data ) : null, list: encrypt( get( notesList ) ) }
+        { note: data ? JSON.stringify( data ) : null, list: JSON.stringify( get( notesList ) ) }
     );
     return json;
 };

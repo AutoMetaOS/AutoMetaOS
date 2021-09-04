@@ -12,7 +12,7 @@ export default {
 			resolve: {
 				alias: {
 					$routes: path.resolve( 'src/routes' ),
-					$hakama: path.resolve( '../AutoMetaUI/src' ),
+					$hakama: path.resolve( '../UI/src' ),
 				}
 			}
 		}

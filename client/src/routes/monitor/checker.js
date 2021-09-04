@@ -36,26 +36,6 @@ export const debug_test = async () => {
     ] );
 };
 
-// 3. NOTES
-import { encrypt, decrypt } from "$routes/notes/components/api";
-export const notes_test = async () => {
-    const message = JSON.stringify( metadata )
-    const encc_message = encrypt( message, "ArbitraryPassword" );
-    const decc_success = decrypt( encc_message, "ArbitraryPassword" );
-    let decc_failure;
-    try {
-        decc_failure = decrypt( encc_message, "ArbitraryPassword2" );
-    } catch ( e ) {
-        decc_failure = "ERROR";
-    };
-
-
-    return result( [
-        { name: "Success on Encryption", check: expect( decc_success, message ) },
-        { name: "Failure on Wong Pass", check: expect( decc_failure, "ERROR" ) }
-    ] );
-};
-
 // 4. STREAM
 import { search } from "$routes/stream/shared/store";
 export const stream_test = async () => {

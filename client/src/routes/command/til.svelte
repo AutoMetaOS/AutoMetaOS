@@ -15,11 +15,11 @@
                 const fetched = r.data.children[0].data;
                 reddit = {
                     image:
-                        fetched.preview.images[0].source.url.replaceAll(
+                        fetched?.preview.images[0].source.url.replaceAll(
                             "&amp;",
                             "&"
                         ) ||
-                        fetched.thumbnail ||
+                        fetched?.thumbnail ||
                         reddit.image,
                     title: fetched.title,
                     href: fetched.url,
@@ -29,12 +29,12 @@
 </script>
 
 <ClickableTile
-    class="p0 ƒ-col w-25"
-    style="position:absolute;bottom:1em;right:11%;z-index:10;"
     href={reddit.href}
+    class="p0 ƒ-col †j"
+    style="position: absolute;bottom: 1em;right: 11%;z-index: 10;width:350px;"
 >
-    <img src={reddit.image} alt="" style="height:20vh;object-fit:cover;" />
-    <p class="p5 m5">
-        {reddit.title}
+    <!-- <img height="150px" src={reddit.image} alt="" /> -->
+    <p>
+        {reddit.title} &rarr;
     </p>
 </ClickableTile>

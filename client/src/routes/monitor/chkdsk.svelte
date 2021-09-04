@@ -1,12 +1,7 @@
 <script>
     import Card from "./components/test.svelte";
     import { onMount } from "svelte";
-    import {
-        notes_test,
-        debug_test,
-        stream_test,
-        command_test,
-    } from "./checker";
+    import { debug_test, stream_test, command_test } from "./checker";
 
     let test_list = [];
 

@@ -13,7 +13,7 @@ const suggestions = ( SIn ) =>
 
 const setEngineImage = ( key ) => {
     const engineImage = ƒ( '#engineImage' );
-    if ( engineImage ) engineImage.src = `${ base }/icons/${ sites[ key ].name }.svg`
+    if ( engineImage ) engineImage.src = `${ base }/icons/${ sites[ key ]?.name || key }.svg`
 }
 
 export const engine = ( input ) => {
@@ -38,15 +38,15 @@ export const engine = ( input ) => {
                 url: ( sites[ key ].prelink + encodeURIComponent( query ) + ( sites[ key ].postlink || '' ) )
             };
         }
+    } else {
+        suggestions( input );
+        setEngineImage( 'Basic' );
+        return {
+            key: 's',
+            query: input,
+            url: ( sites[ 's' ].prelink + encodeURIComponent( input ) + ( sites[ 's' ].postlink || '' ) )
+        };
     }
-    // PLAIN SUGGESTIONS NO BANG
-    else suggestions( input );
-    setEngineImage( 'root' );
-    return {
-        key: 's',
-        query: input,
-        url: ( sites[ 's' ].prelink + encodeURIComponent( input ) + ( sites[ 's' ].postlink || '' ) )
-    };
 }
 
 const siteFunctions = {
@@ -57,9 +57,6 @@ const siteFunctions = {
     y: ( q, url ) => {
         if ( q.charAt( 0 ) === '@' ) return sites.y.prelink + '&id=' + q.replace( '@', '' );
         else return url;
-    },
-    qm: ( q, url ) => {
-        return url;
     }
 }
 
