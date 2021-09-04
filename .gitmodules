@@ -1,6 +1,6 @@
-[submodule "AutoMetaUI"]
-	path = AutoMetaUI
-	url = https://github.com/plutoniumm/AutoMetaUI.git
-[submodule "AutoMetaX10"]
-	path = AutoMetaX10
-	url = https://github.com/plutoniumm/AutoMetaX10.git
+[submodule "X10"]
+	path = X10
+	url = https://github.com/AutoMetaOS/X10.git
+[submodule "UI"]
+	path = UI
+	url = https://github.com/AutoMetaOS/UI.git
