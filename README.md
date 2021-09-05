@@ -16,33 +16,6 @@ $ pnpm i
 $ npm run start
 ```
 
-## Globally Provided JS
-### Shorthand
-For QuerySelectors
-```js
-ƒ = document.querySelector;
-ƒA = document.querySelectorAll;
-```
-
-### New Functions
-Run function externally in a worker (run long function while keeping interactive )
-```js
-thread(reallyReallyLongFunction).then(console.log) // logs return value of reallyReallyLongFunction
-```
-
-Escape and Unescape HTML
-```js
-HTML2String('<a href="#">Me & you</a>'); //returns '&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'
-String2HTML('&lt;a href=&quot;#&quot;&gt;Me &amp; you&lt;/a&gt;'); // returns // '<a href="#">Me & you</a>'
-```
-
-URL Params
-```js
-getµ().q // returns the value of (?/&)q= from all params
-setµ(key, value) // adds to URL (?/&)key=value
-```
-
-
 ## Todos
 - https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation
 - https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information

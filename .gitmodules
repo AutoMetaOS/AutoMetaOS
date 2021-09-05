@@ -4,3 +4,6 @@
 [submodule "UI"]
 	path = UI
 	url = https://github.com/AutoMetaOS/UI.git
+[submodule "Web"]
+	path = Web
+	url = https://github.com/AutoMetaOS/Web.git
