@@ -21,10 +21,10 @@ WHITE='\033[1;37m';
 # CLIENT BUILD
 echo "${BLUE}Building Client...${NOCOLOR}";
 node prep;
-cd $BASE/HakamaUI/css;
-cp ./g100.css $BASE/client/static/shared/g100.css;
-cd $BASE/client;
-rm -rf build .svelte-kit;
+cd $BASE/UI/css;
+cp ./g100.css $BASE/Web/static/shared/g100.css;
+cd $BASE/Web;
+rm -rf build .svelte*;
 npx svelte-kit build;
 
 

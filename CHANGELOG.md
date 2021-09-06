@@ -26,8 +26,10 @@
 
 
 ## v7.0.0 (AutoMetaOS)
-- Submodule HakamaUI -> AutoMetaUI
-- Submodule NinjaExt -> AutoMetaX10
+- Submodule HakamaUI -> @AutoMetaOS/UI
+- Submodule NinjaExt -> @AutoMetaOS/X10
+- Submodule Client -> @AutoMetaOS/Web
+- Submodule Server -> @AutoMetaOS/Engine
 
 
 ### v6.7.0

@@ -4,9 +4,9 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "cd ./client &&  npm run dev",
+        "dev": "cd ./Web &&  npm run dev",
         "build": "sh build.sh",
-        "start": "cd ./server && bytenode server.js"
+        "start": "cd ./Engine && bytenode server.js"
     },
     "devDependencies": {
         "bytenode": "1.3.3",
