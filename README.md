@@ -1,6 +1,8 @@
 # AutoMetaOS v7 (MacOS)
 
-![AutoMetaOS](./amos.png)
+<div align="center">
+    <img src="./Web/static/assets/Amos.svg" alt="AMOS" width="100px" height="100px"/>
+</div>
 
 ## Installation
 
@@ -21,4 +23,5 @@ $ npm run start
 - https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information
 - https://www.assemblyscript.org/introduction.html
 - https://www.youtube.com/watch?v=u0Jgz6QVJqg
+- https://free-apis.github.io/#/categories
 - https://developer.apple.com/documentation/safariservices/safari_web_extensions/converting_a_web_extension_for_safari

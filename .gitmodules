@@ -7,3 +7,9 @@
 [submodule "Web"]
 	path = Web
 	url = https://github.com/AutoMetaOS/Web.git
+[submodule "Experiments"]
+	path = Experiments
+	url = https://github.com/AutoMetaOS/Experiments.git
+[submodule "Workers"]
+	path = Workers
+	url = https://github.com/AutoMetaOS/Workers.git

@@ -11,5 +11,8 @@
     "devDependencies": {
         "bytenode": "1.3.3",
         "node-fetch": "2.6.1"
+    },
+    "dependencies": {
+        "@cloudflare/wrangler": "^1.19.2"
     }
 }
