@@ -1,5 +1,5 @@
 #!/bin/bash
-submodules=('config' 'db' 'Engine' 'Experiments' 'UI' 'Web' 'Workers' 'X10');
+submodules=('config' 'db' 'Experiments' 'UI' 'Web' 'Workers' 'X10');
 
 for sub in ${submodules[@]}; do
     cd ./$sub;
