@@ -1,7 +1,7 @@
 # AutoMetaOS v7 (MacOS)
 
 <div align="center">
-    <img src="./Web/static/assets/Amos.svg" alt="AMOS" width="100px" height="100px"/>
+<img src="https://cdn.jsdelivr.net/gh/AutoMetaOS/UI@latest/icons/amos.png" alt="amos" width="300px" height="300px"/>
 </div>
 
 ## Installation

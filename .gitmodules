@@ -13,3 +13,6 @@
 [submodule "Workers"]
 	path = Workers
 	url = https://github.com/AutoMetaOS/Workers.git
+[submodule "db"]
+	path = db
+	url = https://github.com/AutoMetaOS/db.git

@@ -1,10 +1,11 @@
 #!/bin/bash
-submodules=('Engine' 'Experiments' 'Web' 'Workers' 'X10');
+submodules=('config' 'db' 'Engine' 'Experiments' 'UI' 'Web' 'Workers' 'X10');
 
 for sub in ${submodules[@]}; do
     cd ./$sub;
+    echo "COMMITING $sub \n";
     git add .;
-    git commit -m "AMOS AutoCommit";
+    git commit -m "New Iconset";
     git push;
     cd ..;
 done

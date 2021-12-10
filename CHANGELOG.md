@@ -2,9 +2,9 @@
 
 ### Todo
 - Add Code Snippets
-<!-- https://cmsinstallation.blogspot.com/2021/06/15-modern-es6-snippets-for-javascript.html -->
+https://cmsinstallation.blogspot.com/2021/06/15-modern-es6-snippets-for-javascript.html
 - Add Stegcloack
-<!-- https://github.com/KuroLabs/stegcloak -->
+https://github.com/KuroLabs/stegcloak
 
 ### Explore
 - Web Excel - @mengshukeji/Luckysheet
@@ -14,13 +14,12 @@
 - Calendar - @fullcalendar/fullcalendar
 - Browser Storage - @marcuswestin/store.js
 - Web PDF - @mozilla/pdf.js
-<!--Continue Finding: https://github.com/sorrycc/awesome-javascript#boilerplates -->
+Continue Finding: https://github.com/sorrycc/awesome-javascript#boilerplates
 
 
 ### Code Quality
 - Test for all functions return value. Made as many funcs return as possible
 - Add defualt value to EVERY variable
-- Remove all trailing commas
 - Typecheck all data and add ranges and regexes where needed (input fields)
 
 
