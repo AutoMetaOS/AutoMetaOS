@@ -1,18 +1,6 @@
 [submodule "X10"]
 	path = X10
 	url = https://github.com/AutoMetaOS/X10.git
-[submodule "UI"]
-	path = UI
-	url = https://github.com/AutoMetaOS/UI.git
 [submodule "Web"]
 	path = Web
 	url = https://github.com/AutoMetaOS/Web.git
-[submodule "Experiments"]
-	path = Experiments
-	url = https://github.com/AutoMetaOS/Experiments.git
-[submodule "Workers"]
-	path = Workers
-	url = https://github.com/AutoMetaOS/Workers.git
-[submodule "db"]
-	path = db
-	url = https://github.com/AutoMetaOS/db.git

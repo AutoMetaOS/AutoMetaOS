@@ -17,18 +17,10 @@ https://github.com/KuroLabs/stegcloak
 Continue Finding: https://github.com/sorrycc/awesome-javascript#boilerplates
 
 
-### Code Quality
-- Test for all functions return value. Made as many funcs return as possible
-- Add defualt value to EVERY variable
-- Typecheck all data and add ranges and regexes where needed (input fields)
-
-
-
-## v7.0.0 (AutoMetaOS)
+## v7.0.0 [Latest] (AutoMetaOS)
 - Submodule HakamaUI -> @AutoMetaOS/UI
 - Submodule NinjaExt -> @AutoMetaOS/X10
 - Submodule Client -> @AutoMetaOS/Web
-- Submodule Server -> @AutoMetaOS/Engine
 
 
 ### v6.7.0
