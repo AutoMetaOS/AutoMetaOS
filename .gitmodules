@@ -4,3 +4,6 @@
 [submodule "Web"]
 	path = Web
 	url = https://github.com/AutoMetaOS/Web.git
+[submodule "Ursus"]
+	path = Ursus
+	url = https://github.com/AutoMetaOS/Ursus
