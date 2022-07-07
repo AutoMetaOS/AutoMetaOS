@@ -1,27 +1,40 @@
-# AutoMetaOS v7 (MacOS)
+# AutoMetaOS v8 (macOS)
 
 <div align="center">
-<img src="https://cdn.jsdelivr.net/gh/AutoMetaOS/UI@latest/icons/amos.png" alt="amos" width="300px" height="300px"/>
+<img src="https://api.nukes.in/cms/icon?name=amos:amos.svg" alt="amos" width="300px" height="300px"/>
+<h1>AMOS v8</h1>
 </div>
 
-## Installation
+# Structure
 
-```bash
-$ alias ronin='sh ~/Documents/GitHub.nosync/Ronin/scripts/ronin'
+| Icon         | App                   |
+| ------------- | ----------------------- |
+| <img src="https://api.nukes.in/cms/icon?name=amos:cmos.svg" alt="structure" width="50px" height="50px"/>        | **AMOS Web**<br>Everything Front & Center |
+| <img src="https://api.nukes.in/cms/icon?name=amos:ui.svg" alt="structure" width="50px" height="50px"/>        | **AMOS UI**<br>@AMOS/Web UI `css` & `icons` |
+| <img src="https://api.nukes.in/cms/icon?name=amos:x10.svg" alt="structure" width="50px" height="50px"/>        | **Swift AppExtension**<br>Primary Script & Style Injection |
+| <img src="https://api.nukes.in/cms/icon?name=amos:x10sn.svg" alt="structure" width="50px" height="50px"/>         | **JavaScript WebExtension**<br>Custom Bionic Speed Reader |
+| <img src="https://api.nukes.in/cms/icon?name=amos:ursus.svg" alt="structure" width="50px" height="50px"/>         | **Ursus Maritimus**<br>Cloudflare Workers KV & API |
 
-# install dependencies
-$ brew install smckit
+# Under Construction
 
-$ pnpm i
+| Icon         | App                   |
+| ------------- | ----------------------- |
+| <img src="https://api.nukes.in/cms/icon?name=amos:helios.svg" alt="structure" width="50px" height="50px"/>         | **Helios**<br>Complementary iOS App |
+| <img src="https://raw.githubusercontent.com/AutoMetaOS/Toolkit/main/static/AMKit.svg" alt="structure" width="50px" height="50px"/>         | **AMOSKit**<br>General WebDev  Toolkit |
 
-# run
-$ npm run start
-```
 
-## Todos
-- https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation
-- https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information
-- https://www.assemblyscript.org/introduction.html
-- https://www.youtube.com/watch?v=u0Jgz6QVJqg
-- https://free-apis.github.io/#/categories
-- https://developer.apple.com/documentation/safariservices/safari_web_extensions/converting_a_web_extension_for_safari
+# Todos
+- **UN APIs**
+- - [WorkBank Knowledgebase](https://datahelpdesk.worldbank.org/knowledgebase/articles/)
+- - [WorkBank API Information](https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information)
+- **AssemblyScript**
+- - [Google Chrome Developers Youtube](https://www.youtube.com/watch?v=u0Jgz6QVJqg)
+- - [AssemblyScript Docs Homepage](https://www.assemblyscript.org/introduction.html)
+- [Free-Apis.github.io](https://free-apis.github.io/#/categories)
+- [StegCloak](https://github.com/KuroLabs/stegcloak)
+- **EXPLORE**
+- - Web Excel - @mengshukeji/Luckysheet
+- - Documentation - //devdocs.io/codeception
+- - JS Templating - @blueimp/JavaScript-Templates
+- - Browser Storage - @marcuswestin/store.js
+- - https://github.com/sorrycc/awesome-javascript#boilerplates

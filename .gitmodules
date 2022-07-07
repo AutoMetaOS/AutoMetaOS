@@ -1,9 +1,0 @@
-[submodule "X10"]
-	path = X10
-	url = https://github.com/AutoMetaOS/X10.git
-[submodule "Web"]
-	path = Web
-	url = https://github.com/AutoMetaOS/Web.git
-[submodule "Ursus"]
-	path = Ursus
-	url = https://github.com/AutoMetaOS/Ursus

@@ -1,23 +1,19 @@
 # Changelog
 
-### Todo
-- Add Code Snippets
-https://cmsinstallation.blogspot.com/2021/06/15-modern-es6-snippets-for-javascript.html
-- Add Stegcloack
-https://github.com/KuroLabs/stegcloak
+I don't have any longs for v1 & v2 because I will still learning git and rebased by mistake. Post v7 I will stop adding minor changes (since only I use AMOS) and stick to adding major changes only
 
-### Explore
-- Web Excel - @mengshukeji/Luckysheet
-- Documentation - https://devdocs.io/codeception/
-- Timeline - @sbstjn/timesheet.js
-- JS Templating - @blueimp/JavaScript-Templates
-- Calendar - @fullcalendar/fullcalendar
-- Browser Storage - @marcuswestin/store.js
-- Web PDF - @mozilla/pdf.js
-Continue Finding: https://github.com/sorrycc/awesome-javascript#boilerplates
+## v8.0.0 [Latest]
+- X10 Added Scripts & Styles
+- Complete Web Redesign
+- Add Cloudflare Edge Server
+- Add X10s Reading Extension
+- Remove all submodules to sep repo
+- **Under Construction**
+- - iOS App Initialised
+- - AMOSKit Heroku &rarr; Railway
 
 
-## v7.0.0 [Latest] (AutoMetaOS)
+## v7.0.0 (AutoMetaOS)
 - Submodule HakamaUI -> @AutoMetaOS/UI
 - Submodule NinjaExt -> @AutoMetaOS/X10
 - Submodule Client -> @AutoMetaOS/Web
