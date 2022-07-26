@@ -1,6 +1,16 @@
 # Changelog
 
-I don't have any longs for v1 & v2 because I will still learning git and rebased by mistake. Post v7 I will stop adding minor changes (since only I use AMOS) and stick to adding major changes only
+I don't have any longs for v1 & v2 because I will still learning git and rebased by mistake. Post v7 I will stop adding minor changes & bug fixes (since only I use AMOS) and stick to adding major changes only
+
+### v8.1.0 [Latest]
+- Remove Stack
+- Move icons to UI API
+- Init Worker for Social APIs
+- Youtube &rarr; Video.JS Youtube
+- **Under Construction**
+- - Globalize Stack Video Type to Command
+- - iOS App Initialised
+- - AMOSKit Heroku &rarr; Railway
 
 ## v8.0.0 [Latest]
 - X10 Added Scripts & Styles
@@ -8,9 +18,6 @@ I don't have any longs for v1 & v2 because I will still learning git and rebased
 - Add Cloudflare Edge Server
 - Add X10s Reading Extension
 - Remove all submodules to sep repo
-- **Under Construction**
-- - iOS App Initialised
-- - AMOSKit Heroku &rarr; Railway
 
 
 ## v7.0.0 (AutoMetaOS)

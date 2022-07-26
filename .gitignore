@@ -6,25 +6,3 @@ logs
 
 # NODE
 node_modules/
-**/*.css.map
-**/*.js.map
-**/*.jsc
-
-# APP
-.svelte-kit/
-.svelte/
-build/
-.ipynb*/
-**/config/
-
-# EXT
-**/Data/
-xcuserdata/
-.build/
-Carthage/Build/
-Dependencies/
-.accio/
-*.app/
-
-# RUST
-**/target/

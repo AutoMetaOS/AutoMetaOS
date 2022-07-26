@@ -1,5 +1,3 @@
-# AutoMetaOS v8 (macOS)
-
 <div align="center">
 <img src="https://api.nukes.in/cms/icon?name=amos:amos.svg" alt="amos" width="300px" height="300px"/>
 <h1>AMOS v8</h1>
@@ -15,12 +13,13 @@
 | <img src="https://api.nukes.in/cms/icon?name=amos:x10sn.svg" alt="structure" width="50px" height="50px"/>         | **JavaScript WebExtension**<br>Custom Bionic Speed Reader |
 | <img src="https://api.nukes.in/cms/icon?name=amos:ursus.svg" alt="structure" width="50px" height="50px"/>         | **Ursus Maritimus**<br>Cloudflare Workers KV & API |
 
-# Under Construction
+# Others
 
-| Icon         | App                   |
-| ------------- | ----------------------- |
-| <img src="https://api.nukes.in/cms/icon?name=amos:helios.svg" alt="structure" width="50px" height="50px"/>         | **Helios**<br>Complementary iOS App |
-| <img src="https://raw.githubusercontent.com/AutoMetaOS/Toolkit/main/static/AMKit.svg" alt="structure" width="50px" height="50px"/>         | **AMOSKit**<br>General WebDev  Toolkit |
+| Icon         | App                   | State|
+| ------------- | ----------------------- |-----------------|
+| <img src="https://api.nukes.in/cms/icon?name=amos:helios.svg" alt="structure" width="50px" height="50px"/>         | **Helios**<br>Complementary iOS App |  Under Constr |
+| <img src="https://raw.githubusercontent.com/AutoMetaOS/Toolkit/main/static/AMKit.svg" alt="structure" width="50px" height="50px"/>         | **AMOSKit**<br>General WebDev  Toolkit | Under Constr |
+| <img src="https://raw.githubusercontent.com/AutoMetaOS/vecon/main/shared/icon.svg" alt="structure" width="50px" height="50px"/>         | **VECOn**<br>VErsion CONtrol Assist | [Package](https://www.npmjs.com/package/vecon) |
 
 
 # Todos
@@ -38,3 +37,8 @@
 - - JS Templating - @blueimp/JavaScript-Templates
 - - Browser Storage - @marcuswestin/store.js
 - - https://github.com/sorrycc/awesome-javascript#boilerplates
+
+
+## PS
+**BASE** \
+**B**un **A**PIs **S**velteKit **E**dge
