@@ -2,10 +2,10 @@
 General Structure
 `/Endpoint/SubEndpoint?param=value&param=value`
 
-## Quick `/quick`
+## `/quick`
 Endpoints meant to be returned frequently. Ideally I would plan to make these faster and make some optimizations later idk.
 
-### Suggest `/quick/suggest`
+### `/quick/suggest`
 Accepts: URL Params \
 Example: `/quick/suggest?q=New%20York%20City`
 ```ts
@@ -20,7 +20,7 @@ q: string = "New York City"
 ]
 ```
 
-### Metadata `/quick/metadata`
+### `/quick/metadata`
 Accepts: URL Params \
 Example: `/quick/metadata?url=https://nukes.in/`
 ```ts
@@ -44,9 +44,9 @@ url: string = "Website URL"
 }
 ```
 
-## CMS `/cms`
+## `/cms`
 These are all redirect endpoints for Content Management System.
-### css `/cms/css`
+### `/cms/css`
 Accepts: URL Params \
 Example: `/cms/css?name=keyframes.css`
 ```ts
@@ -63,7 +63,7 @@ icon: {
         url: cms_icons
     }, -->
 
-## Social `/social`
+## `/social`
 These are all redirect endpoints for Social Media.
 <!-- ### twitter `/social/twitter`
 twitter: {

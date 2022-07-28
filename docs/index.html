@@ -8,25 +8,36 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-
-  <!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script> -->
-  <!-- <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script> -->
-
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"> -->
-  <!--  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> -->
 </head>
 
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
+      // Docsify Specific
+      routerMode: 'history',
       coverpage: true,
-      // basePath: '/AutoMetaOS/',
-      // relativePath: true,
+      relativePath: true,
       loadSidebar: true,
+      noEmoji: true,
+      notFoundPage: true,
+      subMaxLevel: 2,
+      // AMOS Specific
+      logo: 'https://api.nukes.in/cms/icon?name=amos:amos.svg',
       name: 'AutoMetaOS Docs',
       repo: 'AutoMetaOS/AutoMetaOS',
-
+      themeColor: '#96F',
+      // Aliases
+      alias: {
+        // '/foo/(.*)': '/bar/$1', // supports regexp
+        '/zh-cn/changelog': '/changelog',
+        '/changelog':
+          'https://raw.githubusercontent.com/AutoMetaOS/AutoMetaOS/master/CHANGELOG.md',
+        '/structure':
+          'https://raw.githubusercontent.com/AutoMetaOS/AutoMetaOS/master/README.md',
+        // '/.*/_sidebar.md': '/_sidebar.md', // See #301
+      },
+      // Rendering
       markdown: {
         renderer: {
           code: function ( code, lang ) {
@@ -38,11 +49,21 @@
             return this.origin.code.apply( this, arguments );
           }
         }
-      }
+      },
+      // General Web
+      requestHeaders: {
+        'cache-control': 'max-age=600',
+      },
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"> -->
+  <!--  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> -->
 </body>
 
 </html>
