@@ -13,6 +13,9 @@
 <body>
   <div id="app"></div>
   <script>
+    window.amos = {
+      api: 'https://api.nukes.in'
+    };
     window.$docsify = {
       // Docsify Specific
       routerMode: 'history',
@@ -23,14 +26,14 @@
       notFoundPage: true,
       subMaxLevel: 2,
       // AMOS Specific
-      logo: 'https://api.nukes.in/cms/icon?name=amos:amos.svg',
+      logo: window.amos.api + '/cms/icon?name=amos:amos.svg',
       name: 'AutoMetaOS Docs',
       repo: 'AutoMetaOS/AutoMetaOS',
       themeColor: '#96F',
       // Aliases
       alias: {
         // '/foo/(.*)': '/bar/$1', // supports regexp
-        '/zh-cn/changelog': '/changelog',
+        // '/zh-cn/changelog': '/changelog',
         '/changelog':
           'https://raw.githubusercontent.com/AutoMetaOS/AutoMetaOS/master/CHANGELOG.md',
         '/structure':
@@ -54,6 +57,23 @@
       requestHeaders: {
         'cache-control': 'max-age=600',
       },
+      // Vue
+      vueMounts: {
+        '#test': {
+          data () {
+            return {
+              message: 'Hello, World!'
+            };
+          },
+        },
+      },
+    }
+  </script>
+
+  <script>
+    function data () {
+      return {
+      }
     }
   </script>
   <!-- Docsify v4 -->
@@ -62,8 +82,27 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 
+  <script src="//cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <!-- <script src="//cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script> -->
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"> -->
   <!--  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> -->
 </body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Icon</th>
+      <th>App</th>
+      <th>Base</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="{{apicon}}amos:cmos.svg" alt=""></td>
+      <td><strong>AMOS Web</strong><br>Everything Front &amp; Center</td>
+      <td>Svelte</td>
+    </tr>
+  </tbody>
+</table>
 
 </html>
